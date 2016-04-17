@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="NetMessage">
+      <UniqueIdentifier>{a87c3e9e-29a6-4ee1-b19a-4b3ffcdb2ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{cf13969c-8051-4a79-b864-6fd176a4e83c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\Login">
+      <UniqueIdentifier>{46d130bd-18ea-47b9-b642-546a47623705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comm">
+      <UniqueIdentifier>{972f361b-ba09-4f0a-a8e7-8c5426d8a3ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetApp\NetFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetApp\Connection.hpp">
+      <Filter>NetMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetApp\MessageDispatch.hpp">
+      <Filter>NetMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\protobuf\NetMessage.pb.h">
+      <Filter>NetMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="CLogin.hpp">
+      <Filter>Logic\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClient.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetApp\Observer.hpp">
+      <Filter>Comm</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetApp\NetFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetApp\Connection.cpp">
+      <Filter>NetMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\protobuf\NetMessage.pb.cc">
+      <Filter>NetMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="CLogin.cpp">
+      <Filter>Logic\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetApp\Observer.cpp">
+      <Filter>Comm</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\protobuf\NetMessage.proto">
+      <Filter>NetMessage</Filter>
+    </None>
+  </ItemGroup>
+</Project>

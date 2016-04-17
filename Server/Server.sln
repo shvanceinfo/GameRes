@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogicApp", "Server\Server.vcxproj", "{3560F1C6-8B74-40CB-8F2B-37FCAA6BC581}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetApp", "NetApp\NetApp.vcxproj", "{032026C4-F87B-42BC-A9A1-242AC4DC1B8A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBApp", "DBApp\DBApp.vcxproj", "{53772A81-7306-40D8-A578-6AB0A7730343}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogApp", "LogApp\LogApp.vcxproj", "{6BF8DE6A-BE63-425C-8B77-39A86CB0F1AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3560F1C6-8B74-40CB-8F2B-37FCAA6BC581}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3560F1C6-8B74-40CB-8F2B-37FCAA6BC581}.Debug|Win32.Build.0 = Debug|Win32
+		{3560F1C6-8B74-40CB-8F2B-37FCAA6BC581}.Release|Win32.ActiveCfg = Release|Win32
+		{3560F1C6-8B74-40CB-8F2B-37FCAA6BC581}.Release|Win32.Build.0 = Release|Win32
+		{032026C4-F87B-42BC-A9A1-242AC4DC1B8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{032026C4-F87B-42BC-A9A1-242AC4DC1B8A}.Release|Win32.ActiveCfg = Release|Win32
+		{032026C4-F87B-42BC-A9A1-242AC4DC1B8A}.Release|Win32.Build.0 = Release|Win32
+		{53772A81-7306-40D8-A578-6AB0A7730343}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53772A81-7306-40D8-A578-6AB0A7730343}.Release|Win32.ActiveCfg = Release|Win32
+		{53772A81-7306-40D8-A578-6AB0A7730343}.Release|Win32.Build.0 = Release|Win32
+		{6BF8DE6A-BE63-425C-8B77-39A86CB0F1AF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6BF8DE6A-BE63-425C-8B77-39A86CB0F1AF}.Release|Win32.ActiveCfg = Release|Win32
+		{6BF8DE6A-BE63-425C-8B77-39A86CB0F1AF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

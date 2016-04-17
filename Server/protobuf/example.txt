@@ -1,0 +1,1 @@
+protoc NetMessage.proto --cpp_out=.\
