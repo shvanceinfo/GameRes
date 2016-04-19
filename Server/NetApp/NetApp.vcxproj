@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin</OutDir>
-    <IncludePath>D:\work\self_source\GameRes\Server\protobuf;D:\boost_1_57_0\boost_1_57_0;$(IncludePath)</IncludePath>
+    <IncludePath>D:\work\self_source\GameRes\Server\3rd_lib\libuv\include;D:\work\self_source\GameRes\Server\protobuf;D:\boost_1_57_0\boost_1_57_0;$(IncludePath)</IncludePath>
     <LibraryPath>D:\boost_1_57_0\boost_1_57_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -55,7 +55,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\work\self_source\protobuf-master\builds;D:\work\self_source\protobuf-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\work\self_source\GameRes\Server\3rd_lib;D:\work\self_source\GameRes\Server\3rd_lib\libuv\include;D:\work\self_source\protobuf-master\builds;D:\work\self_source\protobuf-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <CompileAs>Default</CompileAs>
     </ClCompile>
@@ -63,7 +63,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\work\self_source\GameRes\Server\protobuf;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;libuv.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>

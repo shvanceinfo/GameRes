@@ -66,44 +66,40 @@ public:
 		return true;
 	}
 	//玩家登陆
-	void UserLogin(uint32_t userId){}
+	void UserLogin(uint32_t conn){}
 	//玩家下线
-	void UserLoginOut(uint32_t userId){}
+	void UserLoginOut(uint32_t conn){}
 	//玩家接收消息
-	void RecivedMessage(std::shared_ptr<NETAPP::ClientMessage> recvMsg)
+	void RecivedMessage(uint32_t conn, char *buf)
 	{
-		if (recvMsg->buffer == nullptr)
+		if (buf == nullptr)
 		{
-			this->UserLoginOut(recvMsg->clientID);
+			this->UserLoginOut(conn);
 			return;
 		}
 
 		//解析包头
 		NetPackage::CNetHead header;
-		if (false == header.ParsePartialFromString(*recvMsg->buffer))
+		if (false == header.ParsePartialFromString(buf))
 		{
 			return;
 		}
 
-		DISPATCH_MH(header._assistantcmd(), recvMsg->clientID, header._body());
+		DISPATCH_MH(header._assistantcmd(), conn, header._body());
 	}
 	//玩家发送消息
-	void SendClient(uint32_t connection, std::string sendMsg)
+	void SendClient(uint32_t conn, std::string sendMsg)
 	{
-		std::shared_ptr<NETAPP::ClientMessage> msg(new NETAPP::ClientMessage);
-		msg->clientID = connection;
-		msg->buffer = std::make_shared<std::string>(sendMsg);
-
-		m_EchoServer->AddSendMssage(msg);
+		m_EchoServer->PushSendMessage(conn, const_cast<char*>(sendMsg.c_str()));
 	}
 	//通过连接ID获取Client
-	std::shared_ptr<T> GetClientByConnection(uint32_t connectionID){}
+	std::shared_ptr<T> GetClientByConnection(uint32_t conn){}
 	//通过玩家唯一ID获取Client
 	std::shared_ptr<T> GetClientByUserId(uint64_t userId){}
 	//时间迭代更新
 	void OnUpdate(){}
 	//
-	void SetEchoServere(boost::shared_ptr<NETAPP::EchoServer> echo)
+	void SetEchoServere(uv::TCPServer* echo)
 	{
 		m_EchoServer = echo;
 	}
@@ -115,7 +111,7 @@ private:
 	//所有在线玩家列表:uint64_t为玩家唯一ID，T为Client类型
 	std::unordered_map<uint64_t, std::shared_ptr<T>> m_ClientUserId;
 	//保存boost::shared_ptr<EchoServer>
-	boost::shared_ptr<NETAPP::EchoServer> m_EchoServer;
+	uv::TCPServer* m_EchoServer;
 };
 
 #define g_AppManager(T) AppManager<T>::GetInstance()
