@@ -42,9 +42,6 @@
     <ClInclude Include="..\netPack\MessageBuf.hpp">
       <Filter>NetMessage</Filter>
     </ClInclude>
-    <ClInclude Include="Connection.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\protobuf\NetMessage.pb.h">
       <Filter>NetMessage</Filter>
     </ClInclude>
@@ -73,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="..\netPack\MessageBuf.cpp">
       <Filter>NetMessage</Filter>
-    </ClCompile>
-    <ClCompile Include="Connection.cpp">
-      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\protobuf\NetMessage.pb.cc">
       <Filter>NetMessage</Filter>

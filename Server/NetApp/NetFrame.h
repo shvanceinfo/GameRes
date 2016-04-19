@@ -17,10 +17,6 @@
 #include <assert.h>
 #include <iostream>
 #include <string>
-#include <deque>
-#include <set>
-#include <atomic>
-#include <thread>
 #include <unordered_map>
 #include "uv.h"
 #include <vector>

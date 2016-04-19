@@ -6,6 +6,7 @@
 
 //int:命令号,int:Client连接ID, std::string:接收字符数据
 #define PARAMS int, int, std::string
+#define BIND_FUNC(x, y) std::bind(&x, y, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)
 #define REGISTER_MH(x, y) MessageDispatch<PARAMS>::GetInstance()->RegisterMessageHandle(x, y);
 #define DISPATCH_MH(x, y, z) MessageDispatch<PARAMS>::GetInstance()->DispatchMessageHandle(x, x, y, z);
 

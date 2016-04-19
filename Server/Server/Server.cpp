@@ -5,6 +5,7 @@
 #include "NetFrame.h"
 #include "Connection.hpp"
 #include "GameClient.hpp"
+#include <thread>
 
 //struct NETAPP::ClientMessage;
 
