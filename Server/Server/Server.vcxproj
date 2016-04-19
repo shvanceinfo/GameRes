@@ -42,8 +42,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\protobuf;..\..\..\..\..\boost_1_57_0\boost_1_57_0;..\NetApp;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\..\..\boost_1_57_0\boost_1_57_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\protobuf;..\NetApp;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>..\..\bin</OutDir>
     <ReferencePath>..\Server;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
