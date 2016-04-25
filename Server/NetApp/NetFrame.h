@@ -14,12 +14,9 @@
 // #include <boost/date_time/posix_time/posix_time.hpp>
 // #include <boost/atomic.hpp>
 #include <memory>
-#include <assert.h>
 #include <iostream>
-#include <string>
 #include <unordered_map>
 #include "uv.h"
-#include <vector>
 #include <mutex>
 
 namespace uv

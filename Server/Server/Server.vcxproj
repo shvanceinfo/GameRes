@@ -58,6 +58,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\3rd_lib\;..\3rd_lib\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,21 +89,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\NetApp\Connection.hpp" />
     <ClInclude Include="..\NetApp\MessageDispatch.hpp" />
     <ClInclude Include="..\NetApp\NetFrame.h" />
-    <ClInclude Include="..\NetApp\Observer.hpp" />
+    <ClInclude Include="..\NetApp\Observer.h" />
     <ClInclude Include="..\protobuf\NetMessage.pb.h" />
-    <ClInclude Include="CLogin.hpp" />
+    <ClInclude Include="AppInitialze.h" />
+    <ClInclude Include="AppManager.h" />
+    <ClInclude Include="CLogin.h" />
     <ClInclude Include="GameClient.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\NetApp\Connection.cpp" />
     <ClCompile Include="..\NetApp\NetFrame.cpp" />
     <ClCompile Include="..\NetApp\Observer.cpp" />
     <ClCompile Include="..\protobuf\NetMessage.pb.cc" />
+    <ClCompile Include="AppInitialze.cpp" />
+    <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="CLogin.cpp" />
     <ClCompile Include="GameClient.cpp" />
     <ClCompile Include="Server.cpp" />

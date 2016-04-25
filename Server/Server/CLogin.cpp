@@ -1,15 +1,16 @@
-#include "MessageDispatch.hpp"
+#include "AppManager.h"
 #include "NetMessage.pb.h"
-#include "CLogin.hpp"
+#include "MessageDispatch.hpp"
+#include "CLogin.h"
 #include "NetFrame.h"
-#include "Connection.hpp"
 #include "GameClient.hpp"
+#include "AppInitialze.h"
 
 bool CLogin::Initialze()
 {
 	RegisterMessage();
 
-	return true;
+	return false;
 }
 
 void CLogin::RegisterMessage()
@@ -20,7 +21,7 @@ void CLogin::RegisterMessage()
 int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 {
 	NetPackage::CRequestLogin login;
-	
+
 	if (false == login.ParseFromString(recvMsg))
 	{
 		return true;
@@ -30,6 +31,6 @@ int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 	ret.set__username(login._username());
 	std::string out_data = ret.SerializeAsString();
 
-	g_AppManager(abcTest)->SendClient(connection, out_data);
+	g_AppManager->SendClient(connection, out_data);
 	return 1;
 }

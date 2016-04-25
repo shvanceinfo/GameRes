@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "NetFrame.h"
-#include "Connection.hpp"
+#include "AppManager.h"
 #include "GameClient.hpp"
 #include <thread>
 
@@ -18,6 +18,8 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	uv::TCPServer ptrServer("127.0.0.1", 9999);
 	std::thread netApp(Run, &ptrServer);
+	
+
 	/*NETAPP::SetupSignalHandler();
 	NETAPP::IOServeicePtr io_service(new boost::asio::io_service());
 	NETAPP::EchoServerPtr echo_server(new NETAPP::EchoServer(io_service));
@@ -27,9 +29,8 @@ int _tmain(int argc, _TCHAR* argv[])
  		return -1;
  	}*/
 
-	auto AppMagr = AppManager<abcTest>::GetInstance();
-	AppMagr->SetEchoServere(&ptrServer);
-	if (false == AppMagr->StartDemo())
+	g_AppManager->SetEchoServere(&ptrServer);
+	if (false == g_AppManager->StartDemo())
 	{
 		return -1;
 	}
@@ -42,9 +43,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		auto msg = ptrServer.GetRecvMessage();
 		if (msg != nullptr)
 		{
-			AppMagr->RecivedMessage(msg->conn, msg->buf);
+			g_AppManager->RecivedMessage(msg->conn, msg->buf);
 		}
-		AppMagr->OnUpdate();
+		g_AppManager->OnUpdate();
 		std::this_thread::sleep_for(std::chrono::microseconds(10));
  	}
 	netApp.join();

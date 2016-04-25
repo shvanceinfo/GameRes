@@ -39,22 +39,25 @@
     <ClInclude Include="..\NetApp\NetFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\NetApp\Connection.hpp">
-      <Filter>NetMessage</Filter>
-    </ClInclude>
     <ClInclude Include="..\NetApp\MessageDispatch.hpp">
       <Filter>NetMessage</Filter>
     </ClInclude>
     <ClInclude Include="..\protobuf\NetMessage.pb.h">
       <Filter>NetMessage</Filter>
     </ClInclude>
-    <ClInclude Include="CLogin.hpp">
-      <Filter>Logic\Login</Filter>
-    </ClInclude>
     <ClInclude Include="GameClient.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\NetApp\Observer.hpp">
+    <ClInclude Include="AppManager.h">
+      <Filter>NetMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="CLogin.h">
+      <Filter>Logic\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="AppInitialze.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetApp\Observer.h">
       <Filter>Comm</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,9 +71,6 @@
     <ClCompile Include="..\NetApp\NetFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\NetApp\Connection.cpp">
-      <Filter>NetMessage</Filter>
-    </ClCompile>
     <ClCompile Include="..\protobuf\NetMessage.pb.cc">
       <Filter>NetMessage</Filter>
     </ClCompile>
@@ -82,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="..\NetApp\Observer.cpp">
       <Filter>Comm</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
+      <Filter>NetMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="AppInitialze.cpp">
+      <Filter>NetMessage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
