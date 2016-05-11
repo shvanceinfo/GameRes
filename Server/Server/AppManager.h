@@ -54,6 +54,7 @@ public:
 	void RecivedMessage(uint32_t conn, char *buf);
 	//玩家发送消息
 	void SendClient(uint32_t conn, std::string sendMsg);
+	void SendClient(uint32_t conn, uint32_t cmd, void* ptrMsg);
 	//通过连接ID获取Client
 	//std::shared_ptr<T> GetClientByConnection(uint32_t conn){}
 	//通过玩家唯一ID获取Client

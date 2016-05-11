@@ -10,7 +10,7 @@ bool CLogin::Initialze()
 {
 	RegisterMessage();
 
-	return false;
+	return true;
 }
 
 void CLogin::RegisterMessage()
@@ -24,13 +24,12 @@ int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 
 	if (false == login.ParseFromString(recvMsg))
 	{
-		return true;
+		return 0;
 	}
 
 	NetPackage::CRequestLoginRet ret;
 	ret.set__username(login._username());
-	std::string out_data = ret.SerializeAsString();
 
-	g_AppManager->SendClient(connection, out_data);
+	g_AppManager->SendClient(connection, NetPackage::CeC2GType::C2G_Login, &ret);
 	return 1;
 }

@@ -71,9 +71,6 @@ namespace uv
 			TCPServer* tcp = (TCPServer*)handle->data;
 			buf->base[nread] = '\0';
 			tcp->PushRecvMessage(handle, buf->base);
-
-			auto conn = tcp->m_OnlineStream.find(handle);
-			tcp->PushSendMessage(conn->second, nullptr);
 		}
 
 		/*
@@ -200,6 +197,10 @@ namespace uv
 						fprintf(stderr, "uv_shutdown1 error \n");
 					}
 				}
+				else if (strcmp(msg->buf, "") == 0)
+				{
+					fprintf(stderr, "msg is empty");
+				}
 				else
 				{
 					//·¢ËÍÏûÏ¢
@@ -318,7 +319,8 @@ namespace uv
 	{
 		auto conn = m_OnlineStream[handle];
 		std::lock_guard<std::mutex> lck(mutex_recv);
-		m_RecvMessage.push_back(MessageInfo(conn, buf));
+		MessageInfo msg(conn, buf);
+		m_RecvMessage.push_back(msg);
 	}
 
 	std::shared_ptr<MessageInfo> TCPServer::GetRecvMessage()
