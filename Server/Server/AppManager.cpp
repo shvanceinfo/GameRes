@@ -12,7 +12,7 @@ bool MessageHead::Parse(char* msg, uint16_t length)
 	memcpy(&len, msg, sizeof(len));
 	memcpy(&cmd, msg + sizeof(len), sizeof(cmd));
 	
-	int len_body = length - sizeof(len)+sizeof(cmd)+1;
+	int len_body = length - sizeof(len) - sizeof(cmd) + 1;
 	body = new char[len_body];
 	memset(body, 0, len_body);
 

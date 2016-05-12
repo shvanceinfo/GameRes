@@ -205,7 +205,7 @@ namespace uv
 				{
 					//·¢ËÍÏûÏ¢
 					uv_write_t req;
-					uv_buf_t buf = uv_buf_init(msg->buf, strlen(msg->buf));
+					uv_buf_t buf = uv_buf_init(msg->buf, msg->len);
 					int ret = uv_write(&req, stream->second, &buf, 1, after_write);
 
 					if (buf.base != nullptr)
