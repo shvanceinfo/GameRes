@@ -16,9 +16,10 @@ namespace uv
 	struct MessageInfo
 	{
 		uint32_t conn = 0;
+		uint32_t len = 0;
 		char* buf = nullptr;
 
-		MessageInfo(uint32_t conn_, char* buf_) : conn(conn_)
+		MessageInfo(uint32_t conn_, char* buf_, uint32_t len_) : conn(conn_), len(len_)
 		{
 			buf = buf_;
 		}
@@ -28,6 +29,7 @@ namespace uv
 			buf = info.buf;
 			info.buf = nullptr;
 			conn = info.conn;
+			len = info.len;
 		}
 	};
 
@@ -39,7 +41,7 @@ namespace uv
 		int tcp4_echo_start();
 
 		std::shared_ptr<MessageInfo> GetRecvMessage();
-		void PushSendMessage(uint32_t conn, char* buf);
+		void PushSendMessage(uint32_t conn, char* buf, uint32_t len);
 
 	protected:
 		static void after_write(uv_write_t* req, int status);
@@ -56,7 +58,7 @@ namespace uv
 		uint32_t GetConnectionID();
 		void ReleaseConnection(uv_stream_t* handle);
 		void AddConnection(uint32_t conn, uv_stream_t* handle);
-		void PushRecvMessage(uv_stream_t* handle, char* buf);
+		void PushRecvMessage(uv_stream_t* handle, char* buf, uint32_t len);
 		std::shared_ptr<MessageInfo> GetSendMessage();
 	private:
 		std::unordered_map<uv_stream_t*, uint32_t> m_OnlineStream;	//在线连接

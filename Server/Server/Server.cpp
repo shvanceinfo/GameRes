@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		auto msg = ptrServer.GetRecvMessage();
 		if (msg != nullptr)
 		{
-			g_AppManager->RecivedMessage(msg->conn, msg->buf);
+			g_AppManager->RecivedMessage(msg->conn, msg->buf, msg->len);
 		}
 		g_AppManager->OnUpdate();
 		std::this_thread::sleep_for(std::chrono::microseconds(10));

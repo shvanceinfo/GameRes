@@ -28,6 +28,17 @@ private:
 	unsigned char buffer[BLOCK_RING_BUFFER_SIZE];
 };
 
+class MessageHead
+{
+public:
+	uint16_t len = 0;
+	uint16_t cmd = 0;
+	char* body = nullptr;
+
+	bool Parse(char* msg, uint32_t len);
+	char* Pack();
+};
+
 class AppManager
 {
 public:
@@ -51,7 +62,7 @@ public:
 	//玩家下线
 	void UserLoginOut(uint32_t conn){}
 	//玩家接收消息
-	void RecivedMessage(uint32_t conn, char *buf);
+	void RecivedMessage(uint32_t conn, char *buf, uint32_t len);
 	//玩家发送消息
 	void SendClient(uint32_t conn, std::string sendMsg);
 	void SendClient(uint32_t conn, uint32_t cmd, void* ptrMsg);

@@ -58,7 +58,7 @@ namespace uv
 
 			TCPServer* tcp = (TCPServer*)handle->data;
 			//添加空消息给逻辑线程
-			tcp->PushRecvMessage(handle, nullptr);
+			tcp->PushRecvMessage(handle, nullptr, 0);
 			//销毁在线连接
 			tcp->ReleaseConnection(handle);
 			return;
@@ -68,9 +68,9 @@ namespace uv
 			fprintf(stdout, "Everything OK, but nothing read.\n");
 		}else 
 		{
+			int len = strlen(buf->base);
 			TCPServer* tcp = (TCPServer*)handle->data;
-			buf->base[nread] = '\0';
-			tcp->PushRecvMessage(handle, buf->base);
+			tcp->PushRecvMessage(handle, buf->base, nread);
 		}
 
 		/*
@@ -315,11 +315,11 @@ namespace uv
 		}
 	}
 
-	void TCPServer::PushRecvMessage(uv_stream_t* handle, char* buf)
+	void TCPServer::PushRecvMessage(uv_stream_t* handle, char* buf, uint32_t len)
 	{
 		auto conn = m_OnlineStream[handle];
 		std::lock_guard<std::mutex> lck(mutex_recv);
-		MessageInfo msg(conn, buf);
+		MessageInfo msg(conn, buf, len);
 		m_RecvMessage.push_back(msg);
 	}
 
@@ -336,9 +336,9 @@ namespace uv
 		return nullptr;
 	}
 
-	void TCPServer::PushSendMessage(uint32_t conn, char* buf)
+	void TCPServer::PushSendMessage(uint32_t conn, char* buf, uint32_t len)
 	{
-		MessageInfo msg(conn, buf);
+		MessageInfo msg(conn, buf, len);
 		std::lock_guard<std::mutex> lck(mutex_send);
 		m_SendMessage.push_back(msg);
 	}
