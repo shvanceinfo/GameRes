@@ -35,8 +35,8 @@ public:
 	uint16_t cmd = 0;
 	char* body = nullptr;
 
-	bool Parse(char* msg, uint32_t len);
-	char* Pack();
+	bool Parse(char* msg, uint16_t length);
+	char* Pack(const char* msg, uint16_t length, uint16_t cmdIn);
 };
 
 class AppManager

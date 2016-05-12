@@ -2,9 +2,9 @@
 #include "NetMessage.pb.h"
 #include "MessageDispatch.hpp"
 
-bool MessageHead::Parse(char* msg, uint32_t len)
+bool MessageHead::Parse(char* msg, uint16_t length)
 {
-	if (len <= (sizeof(len)+sizeof(cmd)))
+	if (length <= (sizeof(len)+sizeof(cmd)))
 	{
 		return false;
 	}
@@ -12,7 +12,7 @@ bool MessageHead::Parse(char* msg, uint32_t len)
 	memcpy(&len, msg, sizeof(len));
 	memcpy(&cmd, msg + sizeof(len), sizeof(cmd));
 	
-	int len_body = len - sizeof(len) + sizeof(cmd) + 1;
+	int len_body = length - sizeof(len)+sizeof(cmd)+1;
 	body = new char[len_body];
 	memset(body, 0, len_body);
 
@@ -21,9 +21,19 @@ bool MessageHead::Parse(char* msg, uint32_t len)
 	return true;
 }
 
-char* MessageHead::Pack()
+char* MessageHead::Pack(const char* msg, uint16_t length, uint16_t cmdIn)
 {
-	char* msg = new char[sizeof(cmd) + sizeof(len) + ]
+	int total = sizeof(cmdIn)+sizeof(length)+strlen(msg) + 1;
+	char* msgOut = new char[total];
+	memset(msgOut, 0, total);
+
+	memcpy(msgOut, &length, sizeof(length));
+	memcpy(msgOut + sizeof(length), &cmdIn, sizeof(cmdIn));
+	memcpy(msgOut + sizeof(length)+sizeof(cmdIn), msg, strlen(msg));
+
+	len = total;
+
+	return msgOut;
 }
 
 void AppManager::RecivedMessage(uint32_t conn, char *buf, uint32_t len)
@@ -69,18 +79,20 @@ void AppManager::SendClient(uint32_t conn, uint32_t cmd, void* ptrMsg)
 		oBody = pbody->SerializeAsString();
 	}
 
-	NetPackage::CNetHead header;
-	header.set__assistantcmd(cmd);
-	header.set__length(oBody.length());
-	header.set__body(oBody.c_str());
-
-	std::string oHead = header.SerializeAsString();
-	char* msg = (char*)malloc(oHead.length() + 1);
-	memset(msg, 0, oHead.length() + 1);
-	memcpy_s(msg, oHead.length(), oHead.c_str(), oHead.length());
+// 	NetPackage::CNetHead header;
+// 	header.set__assistantcmd(cmd);
+// 	header.set__length(oBody.length());
+// 	header.set__body(oBody.c_str());
+// 
+// 	std::string oHead = header.SerializeAsString();
+// 	char* msg = (char*)malloc(oHead.length() + 1);
+// 	memset(msg, 0, oHead.length() + 1);
+// 	memcpy_s(msg, oHead.length(), oHead.c_str(), oHead.length());
+	MessageHead head;
+	char *msg = head.Pack(oBody.c_str(), oBody.length(), cmd);
 	std::shared_ptr<char*> oMsg = std::make_shared<char*>(msg);
 
-	m_EchoServer->PushSendMessage(conn, *oMsg, oHead.length());
+	m_EchoServer->PushSendMessage(conn, *oMsg, head.len - 1);
 }
 
 void AppManager::SetEchoServere(uv::TCPServer* echo)
