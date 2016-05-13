@@ -30,6 +30,6 @@ int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 	NetPackage::CRequestLoginRet ret;
 	ret.set__username(login._username());
 
-	g_AppManager->SendClient(connection, NetPackage::CeC2GType::C2G_Login, &ret);
+	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_LoginRet, &ret);
 	return 1;
 }

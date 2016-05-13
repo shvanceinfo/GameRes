@@ -23,13 +23,13 @@ bool MessageHead::Parse(char* msg, uint16_t length)
 
 char* MessageHead::Pack(const char* msg, uint16_t length, uint16_t cmdIn)
 {
-	int total = sizeof(cmdIn)+sizeof(length)+strlen(msg) + 1;
-	char* msgOut = new char[total];
-	memset(msgOut, 0, total);
+	uint16_t total = sizeof(cmdIn)+sizeof(length)+strlen(msg);
+	char* msgOut = new char[total + 1];
+	memset(msgOut, 0, total + 1);
 
-	memcpy(msgOut, &length, sizeof(length));
-	memcpy(msgOut + sizeof(length), &cmdIn, sizeof(cmdIn));
-	memcpy(msgOut + sizeof(length)+sizeof(cmdIn), msg, strlen(msg));
+	memcpy(msgOut, &total, sizeof(total));
+	memcpy(msgOut + sizeof(total), &cmdIn, sizeof(cmdIn));
+	memcpy(msgOut + sizeof(total)+sizeof(cmdIn), msg, strlen(msg));
 
 	len = total;
 
@@ -92,7 +92,7 @@ void AppManager::SendClient(uint32_t conn, uint32_t cmd, void* ptrMsg)
 	char *msg = head.Pack(oBody.c_str(), oBody.length(), cmd);
 	std::shared_ptr<char*> oMsg = std::make_shared<char*>(msg);
 
-	m_EchoServer->PushSendMessage(conn, *oMsg, head.len - 1);
+	m_EchoServer->PushSendMessage(conn, *oMsg, head.len);
 }
 
 void AppManager::SetEchoServere(uv::TCPServer* echo)
