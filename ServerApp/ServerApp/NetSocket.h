@@ -1,6 +1,6 @@
 // #ifndef __NET_SOCKET_H__
 // #define __NET_SOCKET_H__
-// 
+//  
 // #include "uv.h"
 // #include "iostream"
 // #include "list"
@@ -128,12 +128,12 @@
 /////////////////////////
 /***************************************
 * @file     tcpsocket.h
-* @brief    »ùÓÚlibuv·â×°µÄtcp·şÎñÆ÷Óë¿Í»§¶Ë,Ê¹ÓÃlog4z×÷ÈÕÖ¾¹¤¾ß
+* @brief    åŸºäºlibuvå°è£…çš„tcpæœåŠ¡å™¨ä¸å®¢æˆ·ç«¯,ä½¿ç”¨log4zä½œæ—¥å¿—å·¥å…·
 * @details
 * @author   phata, wqvbjhc@gmail.com
 * @date     2014-5-13
-* @mod      2014-5-13  phata  ĞŞÕı·şÎñÆ÷Óë¿Í»§¶ËµÄ´íÎó.ÏÖ·şÎñÆ÷Ö§³Ö¶à¿Í»§¶ËÁ¬½Ó
-ĞŞ¸Ä¿Í»§¶Ë²âÊÔ´úÂë£¬Ö§³Ö²¢·¢¶à¿Í»§¶Ë²âÊÔ
+* @mod      2014-5-13  phata  ä¿®æ­£æœåŠ¡å™¨ä¸å®¢æˆ·ç«¯çš„é”™è¯¯.ç°æœåŠ¡å™¨æ”¯æŒå¤šå®¢æˆ·ç«¯è¿æ¥
+ä¿®æ”¹å®¢æˆ·ç«¯æµ‹è¯•ä»£ç ï¼Œæ”¯æŒå¹¶å‘å¤šå®¢æˆ·ç«¯æµ‹è¯•
 ****************************************/
 #ifndef TCPSocket_H
 #define TCPSocket_H
@@ -171,13 +171,13 @@ namespace uv
 			free(client_handle);
 			client_handle = nullptr;
 		}
-		int client_id;//¿Í»§¶Ëid,Î©Ò»
-		uv_tcp_t* client_handle;//¿Í»§¶Ë¾ä±ú
-		TCPServer* tcp_server;//·şÎñÆ÷¾ä±ú(±£´æÊÇÒòÎªÄ³Ğ©»Øµ÷º¯ÊıĞèÒªµ½)
-		uv_buf_t readbuffer;//½ÓÊÜÊı¾İµÄbuf
-		uv_buf_t writebuffer;//Ğ´Êı¾İµÄbuf
+		int client_id;//å®¢æˆ·ç«¯id,æƒŸä¸€
+		uv_tcp_t* client_handle;//å®¢æˆ·ç«¯å¥æŸ„
+		TCPServer* tcp_server;//æœåŠ¡å™¨å¥æŸ„(ä¿å­˜æ˜¯å› ä¸ºæŸäº›å›è°ƒå‡½æ•°éœ€è¦åˆ°)
+		uv_buf_t readbuffer;//æ¥å—æ•°æ®çš„buf
+		uv_buf_t writebuffer;//å†™æ•°æ®çš„buf
 		uv_write_t write_req;
-		server_recvcb recvcb_;//½ÓÊÕÊı¾İ»Øµ÷¸øÓÃ»§µÄº¯Êı
+		server_recvcb recvcb_;//æ¥æ”¶æ•°æ®å›è°ƒç»™ç”¨æˆ·çš„å‡½æ•°
 	};
 
 
@@ -186,11 +186,11 @@ namespace uv
 	public:
 		TCPServer(uv_loop_t* loop = uv_default_loop());
 		virtual ~TCPServer();
-		static void StartLog(const char* logpath = nullptr);//Æô¶¯ÈÕÖ¾£¬±ØĞëÆô¶¯²Å»áÉú³ÉÈÕÖ¾
+		static void StartLog(const char* logpath = nullptr);//å¯åŠ¨æ—¥å¿—ï¼Œå¿…é¡»å¯åŠ¨æ‰ä¼šç”Ÿæˆæ—¥å¿—
 	public:
-		//»ù±¾º¯Êı
-		bool Start(const char *ip, int port);//Æô¶¯·şÎñÆ÷,µØÖ·ÎªIP4
-		bool Start6(const char *ip, int port);//Æô¶¯·şÎñÆ÷£¬µØÖ·ÎªIP6
+		//åŸºæœ¬å‡½æ•°
+		bool Start(const char *ip, int port);//å¯åŠ¨æœåŠ¡å™¨,åœ°å€ä¸ºIP4
+		bool Start6(const char *ip, int port);//å¯åŠ¨æœåŠ¡å™¨ï¼Œåœ°å€ä¸ºIP6
 		void close();
 
 		bool setNoDelay(bool enable);
@@ -202,11 +202,11 @@ namespace uv
 
 		virtual int  send(int clientid, const char* data, std::size_t len);
 		virtual void setnewconnectcb(newconnect cb);
-		virtual void setrecvcb(int clientid, server_recvcb cb);//ÉèÖÃ½ÓÊÕ»Øµ÷º¯Êı£¬Ã¿¸ö¿Í»§¶Ë¸÷ÓĞÒ»¸ö
+		virtual void setrecvcb(int clientid, server_recvcb cb);//è®¾ç½®æ¥æ”¶å›è°ƒå‡½æ•°ï¼Œæ¯ä¸ªå®¢æˆ·ç«¯å„æœ‰ä¸€ä¸ª
 	protected:
-		int GetAvailaClientID()const;//»ñÈ¡¿ÉÓÃµÄclient id
-		bool DeleteClient(int clientid);//É¾³ıÁ´±íÖĞµÄ¿Í»§¶Ë
-		//¾²Ì¬»Øµ÷º¯Êı
+		int GetAvailaClientID()const;//è·å–å¯ç”¨çš„client id
+		bool DeleteClient(int clientid);//åˆ é™¤é“¾è¡¨ä¸­çš„å®¢æˆ·ç«¯
+		//é™æ€å›è°ƒå‡½æ•°
 		static void AfterServerRecv(uv_stream_t *client, ssize_t nread, const uv_buf_t* buf);
 		static void AfterSend(uv_write_t *req, int status);
 		static void onAllocBuffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
@@ -222,33 +222,33 @@ namespace uv
 		bool listen(int backlog = 1024);
 
 
-		uv_tcp_t server_;//·şÎñÆ÷Á´½Ó
-		std::map<int, clientdata*> clients_list_;//×Ó¿Í»§¶ËÁ´½Ó
-		uv_mutex_t mutex_handle_;//±£»¤clients_list_
+		uv_tcp_t server_;//æœåŠ¡å™¨é“¾æ¥
+		std::map<int, clientdata*> clients_list_;//å­å®¢æˆ·ç«¯é“¾æ¥
+		uv_mutex_t mutex_handle_;//ä¿æŠ¤clients_list_
 		uv_loop_t *loop_;
 		std::string errmsg_;
 		newconnect newconcb_;
-		bool isinit_;//ÊÇ·ñÒÑ³õÊ¼»¯£¬ÓÃÓÚcloseº¯ÊıÖĞÅĞ¶Ï
+		bool isinit_;//æ˜¯å¦å·²åˆå§‹åŒ–ï¼Œç”¨äºcloseå‡½æ•°ä¸­åˆ¤æ–­
 	};
 
 
 
 	class TCPClient
 	{
-		//Ö±½Óµ÷ÓÃconnect/connect6»á½øĞĞÁ¬½Ó
+		//ç›´æ¥è°ƒç”¨connect/connect6ä¼šè¿›è¡Œè¿æ¥
 	public:
 		TCPClient(uv_loop_t* loop = uv_default_loop());
 		virtual ~TCPClient();
-		static void StartLog(const char* logpath = nullptr);//Æô¶¯ÈÕÖ¾£¬±ØĞëÆô¶¯²Å»áÉú³ÉÈÕÖ¾
+		static void StartLog(const char* logpath = nullptr);//å¯åŠ¨æ—¥å¿—ï¼Œå¿…é¡»å¯åŠ¨æ‰ä¼šç”Ÿæˆæ—¥å¿—
 	public:
-		//»ù±¾º¯Êı
-		virtual bool connect(const char* ip, int port);//Æô¶¯connectÏß³Ì£¬Ñ­»·µÈ´ıÖ±µ½connectÍê³É
-		virtual bool connect6(const char* ip, int port);//Æô¶¯connectÏß³Ì£¬Ñ­»·µÈ´ıÖ±µ½connectÍê³É
+		//åŸºæœ¬å‡½æ•°
+		virtual bool connect(const char* ip, int port);//å¯åŠ¨connectçº¿ç¨‹ï¼Œå¾ªç¯ç­‰å¾…ç›´åˆ°connectå®Œæˆ
+		virtual bool connect6(const char* ip, int port);//å¯åŠ¨connectçº¿ç¨‹ï¼Œå¾ªç¯ç­‰å¾…ç›´åˆ°connectå®Œæˆ
 		virtual int  send(const char* data, std::size_t len);
-		virtual void setrecvcb(client_recvcb cb, void* userdata);////ÉèÖÃ½ÓÊÕ»Øµ÷º¯Êı£¬Ö»ÓĞÒ»¸ö
+		virtual void setrecvcb(client_recvcb cb, void* userdata);////è®¾ç½®æ¥æ”¶å›è°ƒå‡½æ•°ï¼Œåªæœ‰ä¸€ä¸ª
 		void close();
 
-		//ÊÇ·ñÆôÓÃNagleËã·¨
+		//æ˜¯å¦å¯ç”¨Nagleç®—æ³•
 		bool setNoDelay(bool enable);
 		bool setKeepAlive(int enable, unsigned int delay);
 
@@ -256,15 +256,15 @@ namespace uv
 			return errmsg_.c_str();
 		};
 	protected:
-		//¾²Ì¬»Øµ÷º¯Êı
+		//é™æ€å›è°ƒå‡½æ•°
 		static void AfterConnect(uv_connect_t* handle, int status);
 		static void AfterClientRecv(uv_stream_t *client, ssize_t nread, const uv_buf_t* buf);
 		static void AfterSend(uv_write_t *req, int status);
 		static void onAllocBuffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 		static void AfterClose(uv_handle_t *handle);
 
-		static void ConnectThread(void* arg);//ÕæÕıµÄconnectÏß³Ì
-		static void ConnectThread6(void* arg);//ÕæÕıµÄconnectÏß³Ì
+		static void ConnectThread(void* arg);//çœŸæ­£çš„connectçº¿ç¨‹
+		static void ConnectThread6(void* arg);//çœŸæ­£çš„connectçº¿ç¨‹
 
 		bool init();
 		bool run(int status = UV_RUN_DEFAULT);
@@ -275,22 +275,22 @@ namespace uv
 			CONNECT_ERROR,
 			CONNECT_DIS,
 		};
-		uv_tcp_t client_;//¿Í»§¶ËÁ¬½Ó
+		uv_tcp_t client_;//å®¢æˆ·ç«¯è¿æ¥
 		uv_loop_t *loop_;
-		uv_write_t write_req_;//Ğ´Ê±ÇëÇó
-		uv_connect_t connect_req_;//Á¬½ÓÊ±ÇëÇó
-		uv_thread_t connect_threadhanlde_;//Ïß³Ì¾ä±ú
-		std::string errmsg_;//´íÎóĞÅÏ¢
-		uv_buf_t readbuffer_;//½ÓÊÜÊı¾İµÄbuf
-		uv_buf_t writebuffer_;//Ğ´Êı¾İµÄbuf
-		uv_mutex_t write_mutex_handle_;//±£»¤write,±£´æÇ°Ò»writeÍê³É²Å½øĞĞÏÂÒ»write
+		uv_write_t write_req_;//å†™æ—¶è¯·æ±‚
+		uv_connect_t connect_req_;//è¿æ¥æ—¶è¯·æ±‚
+		uv_thread_t connect_threadhanlde_;//çº¿ç¨‹å¥æŸ„
+		std::string errmsg_;//é”™è¯¯ä¿¡æ¯
+		uv_buf_t readbuffer_;//æ¥å—æ•°æ®çš„buf
+		uv_buf_t writebuffer_;//å†™æ•°æ®çš„buf
+		uv_mutex_t write_mutex_handle_;//ä¿æŠ¤write,ä¿å­˜å‰ä¸€writeå®Œæˆæ‰è¿›è¡Œä¸‹ä¸€write
 
-		int connectstatus_;//Á¬½Ó×´Ì¬
-		client_recvcb recvcb_;//»Øµ÷º¯Êı
-		void* userdata_;//»Øµ÷º¯ÊıµÄÓÃ»§Êı¾İ
-		std::string connectip_;//Á¬½ÓµÄ·şÎñÆ÷IP
-		int connectport_;//Á¬½ÓµÄ·şÎñÆ÷¶Ë¿ÚºÅ
-		bool isinit_;//ÊÇ·ñÒÑ³õÊ¼»¯£¬ÓÃÓÚcloseº¯ÊıÖĞÅĞ¶Ï
+		int connectstatus_;//è¿æ¥çŠ¶æ€
+		client_recvcb recvcb_;//å›è°ƒå‡½æ•°
+		void* userdata_;//å›è°ƒå‡½æ•°çš„ç”¨æˆ·æ•°æ®
+		std::string connectip_;//è¿æ¥çš„æœåŠ¡å™¨IP
+		int connectport_;//è¿æ¥çš„æœåŠ¡å™¨ç«¯å£å·
+		bool isinit_;//æ˜¯å¦å·²åˆå§‹åŒ–ï¼Œç”¨äºcloseå‡½æ•°ä¸­åˆ¤æ–­
 	};
 
 }
