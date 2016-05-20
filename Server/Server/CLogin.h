@@ -15,8 +15,10 @@ public:
 	virtual bool Initialze();
 	void RegisterMessage();
 
+	//Íæ¼ÒµÇÂ½
 	int HandleLogin(int cmd, int connection, std::string recvMsg);
-
+	//Íæ¼Ò´´½Ç
+	int HandleCreateRole(int cmd, int connection, std::string recvMsg);
 private:
 	CLogin(){};
 	~CLogin(){}
