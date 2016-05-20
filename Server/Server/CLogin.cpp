@@ -15,8 +15,8 @@ bool CLogin::Initialze()
 
 void CLogin::RegisterMessage()
 {
-	REGISTER_MH(NetPackage::CeC2GType::C2G_Login, BIND_FUNC(CLogin::HandleLogin, g_Login));
-	REGISTER_MH(NetPackage::CeC2GType::C2G_CreateRole, BIND_FUNC(CLogin::HandleCreateRole, g_Login));
+	REGISTER_MH(NetPackage::CeC2GType::C2G_Login, CLogin::HandleLogin, g_Login);
+	REGISTER_MH(NetPackage::CeC2GType::C2G_CreateRole, CLogin::HandleCreateRole, g_Login);
 }
 
 int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
