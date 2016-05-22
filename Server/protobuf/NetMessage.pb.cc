@@ -162,6 +162,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGCSendCreateRole_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGCSendCreateRole_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGCSendCreateRoleRet_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CGCSendCreateRoleRet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CGCAskRankList_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGCAskRankList_reflection_ = NULL;
@@ -1058,7 +1061,22 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCSendCreateRole),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRole, _internal_metadata_),
       -1);
-  CGCAskRankList_descriptor_ = file->message_type(47);
+  CGCSendCreateRoleRet_descriptor_ = file->message_type(47);
+  static const int CGCSendCreateRoleRet_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRoleRet, _result_),
+  };
+  CGCSendCreateRoleRet_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      CGCSendCreateRoleRet_descriptor_,
+      CGCSendCreateRoleRet::default_instance_,
+      CGCSendCreateRoleRet_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRoleRet, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(CGCSendCreateRoleRet),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRoleRet, _internal_metadata_),
+      -1);
+  CGCAskRankList_descriptor_ = file->message_type(48);
   static const int CGCAskRankList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRankList, m_n8rankcate_),
   };
@@ -1073,7 +1091,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskRankList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRankList, _internal_metadata_),
       -1);
-  CGCAsChargeIOS_descriptor_ = file->message_type(48);
+  CGCAsChargeIOS_descriptor_ = file->message_type(49);
   static const int CGCAsChargeIOS_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, m_bisdebug_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, m_strlen_),
@@ -1090,7 +1108,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAsChargeIOS),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, _internal_metadata_),
       -1);
-  CGCNotifyChargeIOS_descriptor_ = file->message_type(49);
+  CGCNotifyChargeIOS_descriptor_ = file->message_type(50);
   static const int CGCNotifyChargeIOS_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, m_nresult_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, m_strlen_),
@@ -1107,7 +1125,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCNotifyChargeIOS),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, _internal_metadata_),
       -1);
-  CGCReportProcuce_descriptor_ = file->message_type(50);
+  CGCReportProcuce_descriptor_ = file->message_type(51);
   static const int CGCReportProcuce_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _bookid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _busediamond_),
@@ -1123,7 +1141,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportProcuce),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _internal_metadata_),
       -1);
-  CGCAskChapterAward_descriptor_ = file->message_type(51);
+  CGCAskChapterAward_descriptor_ = file->message_type(52);
   static const int CGCAskChapterAward_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _chapternum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _hardchapter_),
@@ -1139,7 +1157,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskChapterAward),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _internal_metadata_),
       -1);
-  CGCAskMedalInfo_descriptor_ = file->message_type(52);
+  CGCAskMedalInfo_descriptor_ = file->message_type(53);
   static const int CGCAskMedalInfo_offsets_[1] = {
   };
   CGCAskMedalInfo_reflection_ =
@@ -1153,7 +1171,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskMedalInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMedalInfo, _internal_metadata_),
       -1);
-  CGCAskMedalLevelUp_descriptor_ = file->message_type(53);
+  CGCAskMedalLevelUp_descriptor_ = file->message_type(54);
   static const int CGCAskMedalLevelUp_offsets_[1] = {
   };
   CGCAskMedalLevelUp_reflection_ =
@@ -1167,7 +1185,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskMedalLevelUp),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMedalLevelUp, _internal_metadata_),
       -1);
-  CGCAskAddFriend_descriptor_ = file->message_type(54);
+  CGCAskAddFriend_descriptor_ = file->message_type(55);
   static const int CGCAskAddFriend_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _friendopt_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _rolename_),
@@ -1184,7 +1202,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _internal_metadata_),
       -1);
   CGCAskAddFriend_FriendSendType_descriptor_ = CGCAskAddFriend_descriptor_->enum_type(0);
-  CGCVipFriend_descriptor_ = file->message_type(55);
+  CGCVipFriend_descriptor_ = file->message_type(56);
   static const int CGCVipFriend_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCVipFriend, _friendopt_),
   };
@@ -1200,7 +1218,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCVipFriend, _internal_metadata_),
       -1);
   CGCVipFriend_FriendSendType_descriptor_ = CGCVipFriend_descriptor_->enum_type(0);
-  CGCAskFriendRecord_descriptor_ = file->message_type(56);
+  CGCAskFriendRecord_descriptor_ = file->message_type(57);
   static const int CGCAskFriendRecord_offsets_[1] = {
   };
   CGCAskFriendRecord_reflection_ =
@@ -1214,7 +1232,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskFriendRecord),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskFriendRecord, _internal_metadata_),
       -1);
-  CGCAskSelectPlayer_descriptor_ = file->message_type(57);
+  CGCAskSelectPlayer_descriptor_ = file->message_type(58);
   static const int CGCAskSelectPlayer_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskSelectPlayer, _byte_),
   };
@@ -1229,7 +1247,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskSelectPlayer),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskSelectPlayer, _internal_metadata_),
       -1);
-  CGCAskGuideComplate_descriptor_ = file->message_type(58);
+  CGCAskGuideComplate_descriptor_ = file->message_type(59);
   static const int CGCAskGuideComplate_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGuideComplate, groupid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGuideComplate, u8finish_),
@@ -1354,6 +1372,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGCSendCreateRole_descriptor_, &CGCSendCreateRole::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      CGCSendCreateRoleRet_descriptor_, &CGCSendCreateRoleRet::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGCAskRankList_descriptor_, &CGCAskRankList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGCAsChargeIOS_descriptor_, &CGCAsChargeIOS::default_instance());
@@ -1476,6 +1496,8 @@ void protobuf_ShutdownFile_NetMessage_2eproto() {
   delete CGSNotifyEMailList_reflection_;
   delete CGCSendCreateRole::default_instance_;
   delete CGCSendCreateRole_reflection_;
+  delete CGCSendCreateRoleRet::default_instance_;
+  delete CGCSendCreateRoleRet_reflection_;
   delete CGCAskRankList::default_instance_;
   delete CGCAskRankList_reflection_;
   delete CGCAsChargeIOS::default_instance_;
@@ -1634,163 +1656,164 @@ void protobuf_AddDesc_NetMessage_2eproto() {
     "tifyEMailList\022\026\n\016m_un32EMailNum\030\001 \001(\r\"h\n"
     "\021CGCSendCreateRole\022\026\n\016_u32VocationID\030\001 \001"
     "(\r\022\023\n\013_byteGender\030\002 \001(\010\022\021\n\t_nickName\030\003 \001"
-    "(\t\022\023\n\013_byteVerify\030\004 \001(\010\"&\n\016CGCAskRankLis"
-    "t\022\024\n\014m_n8RankCate\030\001 \001(\r\"P\n\016CGCAsChargeIO"
-    "S\022\022\n\nm_bIsDebug\030\001 \001(\010\022\020\n\010m_strLen\030\002 \001(\r\022"
-    "\030\n\020m_szAppleReceipt\030\003 \001(\t\"S\n\022CGCNotifyCh"
-    "argeIOS\022\021\n\tm_nResult\030\001 \001(\005\022\020\n\010m_strLen\030\002"
-    " \001(\r\022\030\n\020m_szAppleReceipt\030\003 \001(\t\"9\n\020CGCRep"
-    "ortProcuce\022\017\n\007_bookID\030\001 \001(\r\022\024\n\014_bUseDiam"
-    "ond\030\002 \001(\010\"\?\n\022CGCAskChapterAward\022\023\n\013_chap"
-    "terNum\030\001 \001(\005\022\024\n\014_hardChapter\030\002 \001(\010\"\021\n\017CG"
-    "CAskMedalInfo\"\024\n\022CGCAskMedalLevelUp\"\325\001\n\017"
-    "CGCAskAddFriend\022>\n\n_FriendOpt\030\001 \001(\0162*.Ne"
-    "tPackage.CGCAskAddFriend.FriendSendType\022"
-    "\021\n\t_roleName\030\002 \001(\t\"o\n\016FriendSendType\022\n\n\006"
-    "UNKONW\020\000\022\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020\003"
-    "\022\020\n\014DeleteFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014Rec"
-    "eiveAward\020\006\"\274\001\n\014CGCVipFriend\022;\n\n_FriendO"
-    "pt\030\001 \001(\0162\'.NetPackage.CGCVipFriend.Frien"
-    "dSendType\"o\n\016FriendSendType\022\n\n\006UNKONW\020\000\022"
-    "\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020\003\022\020\n\014Delet"
-    "eFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014ReceiveAward"
-    "\020\006\"\024\n\022CGCAskFriendRecord\"#\n\022CGCAskSelect"
-    "Player\022\r\n\005_byte\030\001 \001(\t\"8\n\023CGCAskGuideComp"
-    "late\022\017\n\007GroupId\030\001 \001(\r\022\020\n\010u8Finish\030\002 \001(\010*"
-    "\367\027\n\tCeC2GType\022\016\n\nC2G_UNKOWN\020\000\022\014\n\010C2G_Pin"
-    "g\020\001\022\r\n\tC2G_Login\020\002\022\022\n\016C2G_CreateRole\020\003\022\022"
-    "\n\016C2G_SelectRole\020\004\022\022\n\016C2G_EnterScene\020\005\022\017"
-    "\n\013C2G_AskMove\020\006\022\016\n\nC2G_Logout\020\007\022\020\n\014C2G_B"
-    "uyGoods\020\010\022\020\n\014C2G_UseGoods\020\t\022\020\n\014C2G_PassG"
-    "ate\020\n\022\022\n\016C2G_EquipGoods\020\013\022\021\n\rC2G_SaleGoo"
-    "ds\020\014\022\024\n\020C2G_BoxDropGoods\020\r\022\024\n\020C2G_AskMov"
-    "eGoods\020\016\022\031\n\025C2G_AskIntensifyEquip\020\017\022\030\n\024C"
-    "2G_AskTransmitEquip\020\020\022\021\n\rC2G_AskRelive\020\021"
-    "\022\032\n\026C2G_AskActiveSkillCard\020\022\022!\n\035C2G_AskR"
-    "efreshActiveSkillCard\020\023\022\030\n\024C2G_AskBuySki"
-    "llPoint\020\024\022\021\n\rC2G_ReportExp\020\025\022\026\n\022C2G_Repo"
-    "rtUseSkill\020\026\022\032\n\026C2G_ReportOBjectAppear\020\027"
-    "\022\035\n\031C2G_ReportOBjectDisappear\020\030\022\032\n\026C2G_R"
-    "eportObjectAction\020\031\022\030\n\024C2G_ReportObjectH"
-    "urm\020\032\022\025\n\021C2G_AskCombineGem\020\033\022\024\n\020C2G_AskW"
-    "ashEquip\020\035\022\023\n\017C2G_AskInlayGem\020\036\022\027\n\023C2G_A"
-    "skChapterAward\020\037\022\027\n\023C2G_AskUpgradeEquip\020"
-    " \022\031\n\025C2G_AskDecomposeEquip\020!\022\031\n\025C2G_AskG"
-    "MSendAnnounce\020\"\022\017\n\013C2G_AskChat\020#\022\023\n\017C2G_"
-    "AskRankList\020$\022\024\n\020C2G_AskEMailList\020%\022\024\n\020C"
-    "2G_AskReadEMail\020&\022\030\n\024C2G_AskGetEMailPriz"
-    "e\020\'\022\026\n\022C2G_AskRemoveEMail\020(\022\032\n\026C2G_AskAc"
-    "hievementList\020)\022\033\n\027C2G_AskAchievementPri"
-    "ze\020*\022\023\n\017C2G_AskUseTitle\020+\022!\n\035C2G_ReportA"
-    "chievementSchedule\020,\022\035\n\031C2G_AskEnterTowe"
-    "rInstance\020-\022 \n\034C2G_ReportTowerInstanceSc"
-    "ore\020.\022\034\n\030C2G_AskTowerInstanceRank\020/\022\035\n\031C"
-    "2G_AskTowerInstanceAward\0200\022\026\n\022C2G_AskBuy"
-    "HPVessel\0201\022\026\n\022C2G_AskBuyMPVessel\0202\022\023\n\017C2"
-    "G_AskShopTemp\0203\022\026\n\022C2G_AskBuyShopItem\0204\022"
-    "\024\n\020C2G_AskChargeIOS\0205\022\023\n\017C2G_AskAddGoods"
-    "\0206\022\026\n\022C2G_ReportHPVessel\0207\022\026\n\022C2G_Report"
-    "MPVessel\0208\022\025\n\021C2G_AskGMPassGate\0209\022\030\n\024C2G"
-    "_AskGMChangeLevel\020:\022\027\n\023C2G_AskSystemNoti"
-    "ce\020;\022\021\n\rC2G_ReportBug\020<\022\026\n\022C2G_AskEnterG"
-    "oblin\020=\022\026\n\022C2G_AskGoblinTimes\020>\022\035\n\031C2G_A"
-    "skGoblinMultiBenefit\020\?\022\031\n\025C2G_AskBuyGobl"
-    "inTimes\020@\022\025\n\021C2G_ReportProduce\020A\022\022\n\016C2G_"
-    "AcceptTask\020B\022\022\n\016C2G_SubmitTask\020C\022\024\n\020C2G_"
-    "GMAcceptTask\020D\022\032\n\026C2G_GMSendAnnouncement"
-    "\020E\022\020\n\014C2G_AskWepon\020F\022\033\n\027C2G_AskEquipWeap"
-    "onSkill\020G\022\023\n\017C2G_AskVipAward\020H\022\023\n\017C2G_As"
-    "kBuyPower\020I\022\026\n\022C2G_ReportScenario\020J\022\022\n\016C"
-    "2G_ReportHurt\020K\022\025\n\021C2G_AskCheckSkill\020L\022\026"
-    "\n\022C2G_AskCultureWing\020M\022\030\n\024C2G_AskEvoluti"
-    "onWing\020N\022\024\n\020C2G_AskArenaInfo\020O\022\023\n\017C2G_As"
-    "kHeroList\020P\022\024\n\020C2G_AskChallenge\020Q\022\035\n\031C2G"
-    "_ReportChallengeResult\020R\022\032\n\026C2G_AskBuyCh"
-    "allengeNum\020S\022\030\n\024C2G_AskHonorShopInfo\020T\022\027"
-    "\n\023C2G_AskBuyHonorItem\020U\022\023\n\017C2G_AskWingIn"
-    "fo\020V\022\033\n\027C2G_AskClearChallengeCD\020W\022\026\n\022C2G"
-    "_AskSyncPVPInfo\020X\022\030\n\024C2G_AskUnsyncPVPInf"
-    "o\020Y\022\030\n\024C2G_AskJoinPVPBattle\020Z\022\035\n\031C2G_Ask"
-    "EncouragePVPBattle\020[\022\037\n\033C2G_AskReceiveHe"
-    "roRankAward\020\\\022\025\n\021C2G_AskBeginSweep\020]\022\024\n\020"
-    "C2G_AskStopSweep\020^\022\032\n\026C2G_AskAccelerateS"
-    "weep\020_\022\022\n\016C2G_AskUseItem\020`\022\025\n\021C2G_AskCre"
-    "ateTeam\020a\022\024\n\020C2G_PreviewMulti\020b\022\022\n\016C2G_A"
-    "skAddTeam\020c\022\024\n\020C2G_QuickAddTeam\020d\022\032\n\026C2G"
-    "_AskBeginFightMulti\020e\022\027\n\023C2G_SendFormTea"
-    "mMsg\020f\022\024\n\020C2G_AskLeaveTeam\020g\022\034\n\030C2G_Repo"
-    "rtMultiPlayerDie\020h\022\027\n\023C2G_AskJoinActivit"
-    "y\020i\022\025\n\021C2G_AskMedalLevel\020j\022\027\n\023C2G_AskMed"
-    "alLevelUp\020k\022\024\n\020C2G_AskAddFriend\020l\022\021\n\rC2G"
-    "_VipFriend\020m\022\027\n\023C2G_AskFriendRecord\020n\022\035\n"
-    "\031C2G_AskUseItemInWorldBoss\020o\022\027\n\023C2G_AskS"
-    "electPlayer\020p\022\034\n\030C2G_ReportAttackedTarge"
-    "t\020q\022\022\n\016C2G_AskPetData\020r\022\025\n\021C2G_AskPetLev"
-    "elUp\020s\022\021\n\rC2G_AskZhuiJi\020t\022\031\n\025C2G_AskCurZ"
-    "huiJiCount\020u\022\034\n\030C2G_AskReceiveArenaAward"
-    "\020v\022\021\n\rC2G_SelectPet\020|\022\026\n\022C2G_AskChannelL"
-    "ist\020}\022\031\n\025C2G_AskChannelChangel\020~\022\030\n\024C2G_"
-    "AskGuideComplate\020\177\022\031\n\024C2G_ChallengePando"
-    "ra\020\201\001\022\030\n\023C2G_ResetPandoraNum\020\202\001\022\034\n\027C2G_C"
-    "hallengeAllPandora\020\203\001\022\024\n\017C2G_OpenPandora"
-    "\020\204\001\022\024\n\017C2G_AskEquipPet\020\205\001*\360\021\n\tCeG2CType\022"
-    "\016\n\nG2C_UNKOWN\020\000\022\020\n\014G2C_LoginRet\020\001\022\020\n\014G2C"
-    "_RoleList\020\002\022\025\n\021G2C_RoleCreateRet\020\003\022\025\n\021G2"
-    "C_SelectRoleRet\020\004\022\026\n\022G2C_EnterSeceneRet\020"
-    "\005\022\017\n\013G2C_BagInfo\020\006\022\025\n\021G2C_EquipmentInfo\020"
-    "\007\022\021\n\rG2C_GemChange\020\010\022\031\n\025G2C_RoleFightPro"
-    "perty\020\t\022\023\n\017G2C_AssetChange\020\n\022\027\n\023G2C_Role"
-    "LevelChange\020\013\022\025\n\021G2C_RoleExpChange\020\014\022\027\n\023"
-    "G2C_RoleCurProperty\020\r\022\027\n\023G2C_RoleChangeS"
-    "cene\020\016\022\023\n\017G2C_ErrorMssage\020\017\022\022\n\016G2C_RoleA"
-    "ppear\020\020\022\027\n\023G2C_ObjectDisappear\020\021\022\022\n\016G2C_"
-    "ObjectMove\020\022\022\030\n\024G2C_ObjectStopAction\020\023\022\026"
-    "\n\022G2C_RoleInfoChange\020\024\022!\n\035G2C_NotifyRole"
-    "MapScheduleList\020\025\022\037\n\033G2C_NotifyDisplayGa"
-    "teIncome\020\026\022\036\n\032G2C_NotifySkillPointChange"
-    "\020\027\022\032\n\026G2C_NotifyCurSkillInfo\020\030\022$\n G2C_No"
-    "tifyCanActiveSkillCardList\020\031\022\033\n\027G2C_Noti"
-    "fySkillReleased\020\032\022\032\n\026G2C_NotifyObjectApp"
-    "ear\020\033\022\035\n\031G2C_NotifyObjectDisappear\020\034\022\032\n\026"
-    "G2C_NotifyTimedCounter\020\035\022\032\n\026G2C_NotifyOb"
-    "jectAction\020\036\022\030\n\024G2C_NotifyObjectHurm\020\037\022\026"
-    "\n\022G2C_NotifyChatInfo\020 \022\026\n\022G2C_NotifyRank"
-    "List\020!\022\027\n\023G2C_NotifyEMailList\020\"\022\026\n\022G2C_N"
-    "otifyPetEquip\020#\022\037\n\033G2C_NotifyAchievement"
-    "Change\020$\022\031\n\025G2C_NotifyTitleChange\020%\022\030\n\024G"
-    "2C_NotifyItemChange\020&\022\026\n\022G2C_NotifyShopT"
-    "emp\020\'\022\027\n\023G2C_NotifyChargeIOS\020(\022\026\n\022G2C_Re"
-    "sponseNotice\020)\022\037\n\033G2C_NotifyGoblinRemain"
-    "Times\020*\022\026\n\022G2C_NotifyTaskInfo\020+\022\035\n\031G2C_N"
-    "otifySkillBookChange\020,\022\034\n\030G2c_NotifyEqui"
-    "pSkillData\020-\022\027\n\023G2C_NotifyPowerInfo\020.\022!\n"
-    "\035G2C_NotifyWeaponSkillSchedule\020/\022\026\n\022G2C_"
-    "NotifyWingInfo\0200\022\027\n\023G2C_NotifyArenaInfo\020"
-    "1\022\032\n\026G2C_NotifyHeroBankInfo\0202\022\034\n\030G2C_Not"
-    "ifyChallengerInfo\0203\022\035\n\031G2C_NotifyChallen"
-    "geResult\0204\022\027\n\023G2C_NotifyHonorShop\0205\022\030\n\024G"
-    "2C_NotifyChallenger\0206\022\023\n\017GSNotifyPVPRank"
-    "\0207\022\022\n\016GSNotifyPVPLog\0208\022\036\n\032GSNotifyAddPVP"
-    "Participator\0209\022!\n\035GSNotifyRemovePVPParti"
-    "cipator\020:\022\027\n\023GSNotifySweepResult\020;\022\025\n\021GS"
-    "NotifyMultiInfo\020<\022\024\n\020GSNotifyTeamInfo\020=\022"
-    "\032\n\026GSNotifyStartCountDown\020>\022\'\n#GSNotifyS"
-    "tartCountDownPlayerOffLine\020\?\022\027\n\023GSNotify"
-    "MultiResult\020@\022\030\n\024GSNotifyPlayerRelive\020A\022"
-    "\025\n\021GCNotifyTowerInfo\020B\022\027\n\023GCNotifyHistor"
-    "yRank\020C\022\023\n\017GCNotifyCurRank\020D\022\036\n\032GCNotyfy"
-    "WorldBossAwardList\020E\022\025\n\021GCNotyfyMedalInf"
-    "o\020F\022\031\n\025GSNotifyWorldBossOpen\020G\022\031\n\025GSNoti"
-    "fyActivityClose\020H\022\034\n\030GSNotifyAddFriendMe"
-    "ssage\020I\022\026\n\022GSNotifyFriendList\020J\022\031\n\025GSNot"
-    "ifyAddFriendList\020K\022\037\n\033GSNotifyWorldBossD"
-    "amageList\020L\022\037\n\033GSNotifyWorldBossTemplate"
-    "ID\020M\022\030\n\024GSNotifySelectResult\020N\022\"\n\036GSNoti"
-    "fyWorldBossUseItemResult\020O\022\023\n\017GSNotifyPe"
-    "tData\020P\022\027\n\023GSNotifyZhuiJiCount\020Q\022\031\n\025GSNo"
-    "tifyFuncOpenParam\020U\022\026\n\022GSNotifyChannelCu"
-    "r\020W\022\027\n\023GSNotifyChannelList\020X\022\025\n\021GSNotify"
-    "GuideList\020Y\022\027\n\023GSNotifyPandoraInfo\020Z", 11276);
+    "(\t\022\023\n\013_byteVerify\030\004 \001(\010\"\'\n\024CGCSendCreate"
+    "RoleRet\022\017\n\007_result\030\001 \001(\005\"&\n\016CGCAskRankLi"
+    "st\022\024\n\014m_n8RankCate\030\001 \001(\r\"P\n\016CGCAsChargeI"
+    "OS\022\022\n\nm_bIsDebug\030\001 \001(\010\022\020\n\010m_strLen\030\002 \001(\r"
+    "\022\030\n\020m_szAppleReceipt\030\003 \001(\t\"S\n\022CGCNotifyC"
+    "hargeIOS\022\021\n\tm_nResult\030\001 \001(\005\022\020\n\010m_strLen\030"
+    "\002 \001(\r\022\030\n\020m_szAppleReceipt\030\003 \001(\t\"9\n\020CGCRe"
+    "portProcuce\022\017\n\007_bookID\030\001 \001(\r\022\024\n\014_bUseDia"
+    "mond\030\002 \001(\010\"\?\n\022CGCAskChapterAward\022\023\n\013_cha"
+    "pterNum\030\001 \001(\005\022\024\n\014_hardChapter\030\002 \001(\010\"\021\n\017C"
+    "GCAskMedalInfo\"\024\n\022CGCAskMedalLevelUp\"\325\001\n"
+    "\017CGCAskAddFriend\022>\n\n_FriendOpt\030\001 \001(\0162*.N"
+    "etPackage.CGCAskAddFriend.FriendSendType"
+    "\022\021\n\t_roleName\030\002 \001(\t\"o\n\016FriendSendType\022\n\n"
+    "\006UNKONW\020\000\022\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020"
+    "\003\022\020\n\014DeleteFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014Re"
+    "ceiveAward\020\006\"\274\001\n\014CGCVipFriend\022;\n\n_Friend"
+    "Opt\030\001 \001(\0162\'.NetPackage.CGCVipFriend.Frie"
+    "ndSendType\"o\n\016FriendSendType\022\n\n\006UNKONW\020\000"
+    "\022\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020\003\022\020\n\014Dele"
+    "teFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014ReceiveAwar"
+    "d\020\006\"\024\n\022CGCAskFriendRecord\"#\n\022CGCAskSelec"
+    "tPlayer\022\r\n\005_byte\030\001 \001(\t\"8\n\023CGCAskGuideCom"
+    "plate\022\017\n\007GroupId\030\001 \001(\r\022\020\n\010u8Finish\030\002 \001(\010"
+    "*\367\027\n\tCeC2GType\022\016\n\nC2G_UNKOWN\020\000\022\014\n\010C2G_Pi"
+    "ng\020\001\022\r\n\tC2G_Login\020\002\022\022\n\016C2G_CreateRole\020\003\022"
+    "\022\n\016C2G_SelectRole\020\004\022\022\n\016C2G_EnterScene\020\005\022"
+    "\017\n\013C2G_AskMove\020\006\022\016\n\nC2G_Logout\020\007\022\020\n\014C2G_"
+    "BuyGoods\020\010\022\020\n\014C2G_UseGoods\020\t\022\020\n\014C2G_Pass"
+    "Gate\020\n\022\022\n\016C2G_EquipGoods\020\013\022\021\n\rC2G_SaleGo"
+    "ods\020\014\022\024\n\020C2G_BoxDropGoods\020\r\022\024\n\020C2G_AskMo"
+    "veGoods\020\016\022\031\n\025C2G_AskIntensifyEquip\020\017\022\030\n\024"
+    "C2G_AskTransmitEquip\020\020\022\021\n\rC2G_AskRelive\020"
+    "\021\022\032\n\026C2G_AskActiveSkillCard\020\022\022!\n\035C2G_Ask"
+    "RefreshActiveSkillCard\020\023\022\030\n\024C2G_AskBuySk"
+    "illPoint\020\024\022\021\n\rC2G_ReportExp\020\025\022\026\n\022C2G_Rep"
+    "ortUseSkill\020\026\022\032\n\026C2G_ReportOBjectAppear\020"
+    "\027\022\035\n\031C2G_ReportOBjectDisappear\020\030\022\032\n\026C2G_"
+    "ReportObjectAction\020\031\022\030\n\024C2G_ReportObject"
+    "Hurm\020\032\022\025\n\021C2G_AskCombineGem\020\033\022\024\n\020C2G_Ask"
+    "WashEquip\020\035\022\023\n\017C2G_AskInlayGem\020\036\022\027\n\023C2G_"
+    "AskChapterAward\020\037\022\027\n\023C2G_AskUpgradeEquip"
+    "\020 \022\031\n\025C2G_AskDecomposeEquip\020!\022\031\n\025C2G_Ask"
+    "GMSendAnnounce\020\"\022\017\n\013C2G_AskChat\020#\022\023\n\017C2G"
+    "_AskRankList\020$\022\024\n\020C2G_AskEMailList\020%\022\024\n\020"
+    "C2G_AskReadEMail\020&\022\030\n\024C2G_AskGetEMailPri"
+    "ze\020\'\022\026\n\022C2G_AskRemoveEMail\020(\022\032\n\026C2G_AskA"
+    "chievementList\020)\022\033\n\027C2G_AskAchievementPr"
+    "ize\020*\022\023\n\017C2G_AskUseTitle\020+\022!\n\035C2G_Report"
+    "AchievementSchedule\020,\022\035\n\031C2G_AskEnterTow"
+    "erInstance\020-\022 \n\034C2G_ReportTowerInstanceS"
+    "core\020.\022\034\n\030C2G_AskTowerInstanceRank\020/\022\035\n\031"
+    "C2G_AskTowerInstanceAward\0200\022\026\n\022C2G_AskBu"
+    "yHPVessel\0201\022\026\n\022C2G_AskBuyMPVessel\0202\022\023\n\017C"
+    "2G_AskShopTemp\0203\022\026\n\022C2G_AskBuyShopItem\0204"
+    "\022\024\n\020C2G_AskChargeIOS\0205\022\023\n\017C2G_AskAddGood"
+    "s\0206\022\026\n\022C2G_ReportHPVessel\0207\022\026\n\022C2G_Repor"
+    "tMPVessel\0208\022\025\n\021C2G_AskGMPassGate\0209\022\030\n\024C2"
+    "G_AskGMChangeLevel\020:\022\027\n\023C2G_AskSystemNot"
+    "ice\020;\022\021\n\rC2G_ReportBug\020<\022\026\n\022C2G_AskEnter"
+    "Goblin\020=\022\026\n\022C2G_AskGoblinTimes\020>\022\035\n\031C2G_"
+    "AskGoblinMultiBenefit\020\?\022\031\n\025C2G_AskBuyGob"
+    "linTimes\020@\022\025\n\021C2G_ReportProduce\020A\022\022\n\016C2G"
+    "_AcceptTask\020B\022\022\n\016C2G_SubmitTask\020C\022\024\n\020C2G"
+    "_GMAcceptTask\020D\022\032\n\026C2G_GMSendAnnouncemen"
+    "t\020E\022\020\n\014C2G_AskWepon\020F\022\033\n\027C2G_AskEquipWea"
+    "ponSkill\020G\022\023\n\017C2G_AskVipAward\020H\022\023\n\017C2G_A"
+    "skBuyPower\020I\022\026\n\022C2G_ReportScenario\020J\022\022\n\016"
+    "C2G_ReportHurt\020K\022\025\n\021C2G_AskCheckSkill\020L\022"
+    "\026\n\022C2G_AskCultureWing\020M\022\030\n\024C2G_AskEvolut"
+    "ionWing\020N\022\024\n\020C2G_AskArenaInfo\020O\022\023\n\017C2G_A"
+    "skHeroList\020P\022\024\n\020C2G_AskChallenge\020Q\022\035\n\031C2"
+    "G_ReportChallengeResult\020R\022\032\n\026C2G_AskBuyC"
+    "hallengeNum\020S\022\030\n\024C2G_AskHonorShopInfo\020T\022"
+    "\027\n\023C2G_AskBuyHonorItem\020U\022\023\n\017C2G_AskWingI"
+    "nfo\020V\022\033\n\027C2G_AskClearChallengeCD\020W\022\026\n\022C2"
+    "G_AskSyncPVPInfo\020X\022\030\n\024C2G_AskUnsyncPVPIn"
+    "fo\020Y\022\030\n\024C2G_AskJoinPVPBattle\020Z\022\035\n\031C2G_As"
+    "kEncouragePVPBattle\020[\022\037\n\033C2G_AskReceiveH"
+    "eroRankAward\020\\\022\025\n\021C2G_AskBeginSweep\020]\022\024\n"
+    "\020C2G_AskStopSweep\020^\022\032\n\026C2G_AskAccelerate"
+    "Sweep\020_\022\022\n\016C2G_AskUseItem\020`\022\025\n\021C2G_AskCr"
+    "eateTeam\020a\022\024\n\020C2G_PreviewMulti\020b\022\022\n\016C2G_"
+    "AskAddTeam\020c\022\024\n\020C2G_QuickAddTeam\020d\022\032\n\026C2"
+    "G_AskBeginFightMulti\020e\022\027\n\023C2G_SendFormTe"
+    "amMsg\020f\022\024\n\020C2G_AskLeaveTeam\020g\022\034\n\030C2G_Rep"
+    "ortMultiPlayerDie\020h\022\027\n\023C2G_AskJoinActivi"
+    "ty\020i\022\025\n\021C2G_AskMedalLevel\020j\022\027\n\023C2G_AskMe"
+    "dalLevelUp\020k\022\024\n\020C2G_AskAddFriend\020l\022\021\n\rC2"
+    "G_VipFriend\020m\022\027\n\023C2G_AskFriendRecord\020n\022\035"
+    "\n\031C2G_AskUseItemInWorldBoss\020o\022\027\n\023C2G_Ask"
+    "SelectPlayer\020p\022\034\n\030C2G_ReportAttackedTarg"
+    "et\020q\022\022\n\016C2G_AskPetData\020r\022\025\n\021C2G_AskPetLe"
+    "velUp\020s\022\021\n\rC2G_AskZhuiJi\020t\022\031\n\025C2G_AskCur"
+    "ZhuiJiCount\020u\022\034\n\030C2G_AskReceiveArenaAwar"
+    "d\020v\022\021\n\rC2G_SelectPet\020|\022\026\n\022C2G_AskChannel"
+    "List\020}\022\031\n\025C2G_AskChannelChangel\020~\022\030\n\024C2G"
+    "_AskGuideComplate\020\177\022\031\n\024C2G_ChallengePand"
+    "ora\020\201\001\022\030\n\023C2G_ResetPandoraNum\020\202\001\022\034\n\027C2G_"
+    "ChallengeAllPandora\020\203\001\022\024\n\017C2G_OpenPandor"
+    "a\020\204\001\022\024\n\017C2G_AskEquipPet\020\205\001*\360\021\n\tCeG2CType"
+    "\022\016\n\nG2C_UNKOWN\020\000\022\020\n\014G2C_LoginRet\020\001\022\020\n\014G2"
+    "C_RoleList\020\002\022\025\n\021G2C_RoleCreateRet\020\003\022\025\n\021G"
+    "2C_SelectRoleRet\020\004\022\026\n\022G2C_EnterSeceneRet"
+    "\020\005\022\017\n\013G2C_BagInfo\020\006\022\025\n\021G2C_EquipmentInfo"
+    "\020\007\022\021\n\rG2C_GemChange\020\010\022\031\n\025G2C_RoleFightPr"
+    "operty\020\t\022\023\n\017G2C_AssetChange\020\n\022\027\n\023G2C_Rol"
+    "eLevelChange\020\013\022\025\n\021G2C_RoleExpChange\020\014\022\027\n"
+    "\023G2C_RoleCurProperty\020\r\022\027\n\023G2C_RoleChange"
+    "Scene\020\016\022\023\n\017G2C_ErrorMssage\020\017\022\022\n\016G2C_Role"
+    "Appear\020\020\022\027\n\023G2C_ObjectDisappear\020\021\022\022\n\016G2C"
+    "_ObjectMove\020\022\022\030\n\024G2C_ObjectStopAction\020\023\022"
+    "\026\n\022G2C_RoleInfoChange\020\024\022!\n\035G2C_NotifyRol"
+    "eMapScheduleList\020\025\022\037\n\033G2C_NotifyDisplayG"
+    "ateIncome\020\026\022\036\n\032G2C_NotifySkillPointChang"
+    "e\020\027\022\032\n\026G2C_NotifyCurSkillInfo\020\030\022$\n G2C_N"
+    "otifyCanActiveSkillCardList\020\031\022\033\n\027G2C_Not"
+    "ifySkillReleased\020\032\022\032\n\026G2C_NotifyObjectAp"
+    "pear\020\033\022\035\n\031G2C_NotifyObjectDisappear\020\034\022\032\n"
+    "\026G2C_NotifyTimedCounter\020\035\022\032\n\026G2C_NotifyO"
+    "bjectAction\020\036\022\030\n\024G2C_NotifyObjectHurm\020\037\022"
+    "\026\n\022G2C_NotifyChatInfo\020 \022\026\n\022G2C_NotifyRan"
+    "kList\020!\022\027\n\023G2C_NotifyEMailList\020\"\022\026\n\022G2C_"
+    "NotifyPetEquip\020#\022\037\n\033G2C_NotifyAchievemen"
+    "tChange\020$\022\031\n\025G2C_NotifyTitleChange\020%\022\030\n\024"
+    "G2C_NotifyItemChange\020&\022\026\n\022G2C_NotifyShop"
+    "Temp\020\'\022\027\n\023G2C_NotifyChargeIOS\020(\022\026\n\022G2C_R"
+    "esponseNotice\020)\022\037\n\033G2C_NotifyGoblinRemai"
+    "nTimes\020*\022\026\n\022G2C_NotifyTaskInfo\020+\022\035\n\031G2C_"
+    "NotifySkillBookChange\020,\022\034\n\030G2c_NotifyEqu"
+    "ipSkillData\020-\022\027\n\023G2C_NotifyPowerInfo\020.\022!"
+    "\n\035G2C_NotifyWeaponSkillSchedule\020/\022\026\n\022G2C"
+    "_NotifyWingInfo\0200\022\027\n\023G2C_NotifyArenaInfo"
+    "\0201\022\032\n\026G2C_NotifyHeroBankInfo\0202\022\034\n\030G2C_No"
+    "tifyChallengerInfo\0203\022\035\n\031G2C_NotifyChalle"
+    "ngeResult\0204\022\027\n\023G2C_NotifyHonorShop\0205\022\030\n\024"
+    "G2C_NotifyChallenger\0206\022\023\n\017GSNotifyPVPRan"
+    "k\0207\022\022\n\016GSNotifyPVPLog\0208\022\036\n\032GSNotifyAddPV"
+    "PParticipator\0209\022!\n\035GSNotifyRemovePVPPart"
+    "icipator\020:\022\027\n\023GSNotifySweepResult\020;\022\025\n\021G"
+    "SNotifyMultiInfo\020<\022\024\n\020GSNotifyTeamInfo\020="
+    "\022\032\n\026GSNotifyStartCountDown\020>\022\'\n#GSNotify"
+    "StartCountDownPlayerOffLine\020\?\022\027\n\023GSNotif"
+    "yMultiResult\020@\022\030\n\024GSNotifyPlayerRelive\020A"
+    "\022\025\n\021GCNotifyTowerInfo\020B\022\027\n\023GCNotifyHisto"
+    "ryRank\020C\022\023\n\017GCNotifyCurRank\020D\022\036\n\032GCNotyf"
+    "yWorldBossAwardList\020E\022\025\n\021GCNotyfyMedalIn"
+    "fo\020F\022\031\n\025GSNotifyWorldBossOpen\020G\022\031\n\025GSNot"
+    "ifyActivityClose\020H\022\034\n\030GSNotifyAddFriendM"
+    "essage\020I\022\026\n\022GSNotifyFriendList\020J\022\031\n\025GSNo"
+    "tifyAddFriendList\020K\022\037\n\033GSNotifyWorldBoss"
+    "DamageList\020L\022\037\n\033GSNotifyWorldBossTemplat"
+    "eID\020M\022\030\n\024GSNotifySelectResult\020N\022\"\n\036GSNot"
+    "ifyWorldBossUseItemResult\020O\022\023\n\017GSNotifyP"
+    "etData\020P\022\027\n\023GSNotifyZhuiJiCount\020Q\022\031\n\025GSN"
+    "otifyFuncOpenParam\020U\022\026\n\022GSNotifyChannelC"
+    "ur\020W\022\027\n\023GSNotifyChannelList\020X\022\025\n\021GSNotif"
+    "yGuideList\020Y\022\027\n\023GSNotifyPandoraInfo\020Z", 11317);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "NetMessage.proto", &protobuf_RegisterTypes);
   CNetHead::default_instance_ = new CNetHead();
@@ -1840,6 +1863,7 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGSNotifyRankList::default_instance_ = new CGSNotifyRankList();
   CGSNotifyEMailList::default_instance_ = new CGSNotifyEMailList();
   CGCSendCreateRole::default_instance_ = new CGCSendCreateRole();
+  CGCSendCreateRoleRet::default_instance_ = new CGCSendCreateRoleRet();
   CGCAskRankList::default_instance_ = new CGCAskRankList();
   CGCAsChargeIOS::default_instance_ = new CGCAsChargeIOS();
   CGCNotifyChargeIOS::default_instance_ = new CGCNotifyChargeIOS();
@@ -1899,6 +1923,7 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGSNotifyRankList::default_instance_->InitAsDefaultInstance();
   CGSNotifyEMailList::default_instance_->InitAsDefaultInstance();
   CGCSendCreateRole::default_instance_->InitAsDefaultInstance();
+  CGCSendCreateRoleRet::default_instance_->InitAsDefaultInstance();
   CGCAskRankList::default_instance_->InitAsDefaultInstance();
   CGCAsChargeIOS::default_instance_->InitAsDefaultInstance();
   CGCNotifyChargeIOS::default_instance_->InitAsDefaultInstance();
@@ -23915,6 +23940,265 @@ void CGCSendCreateRole::clear__byteverify() {
   set_has__byteverify();
   _byteverify_ = value;
   // @@protoc_insertion_point(field_set:NetPackage.CGCSendCreateRole._byteVerify)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CGCSendCreateRoleRet::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CGCSendCreateRoleRet::CGCSendCreateRoleRet()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NetPackage.CGCSendCreateRoleRet)
+}
+
+void CGCSendCreateRoleRet::InitAsDefaultInstance() {
+}
+
+CGCSendCreateRoleRet::CGCSendCreateRoleRet(const CGCSendCreateRoleRet& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NetPackage.CGCSendCreateRoleRet)
+}
+
+void CGCSendCreateRoleRet::SharedCtor() {
+  _cached_size_ = 0;
+  _result_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CGCSendCreateRoleRet::~CGCSendCreateRoleRet() {
+  // @@protoc_insertion_point(destructor:NetPackage.CGCSendCreateRoleRet)
+  SharedDtor();
+}
+
+void CGCSendCreateRoleRet::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void CGCSendCreateRoleRet::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CGCSendCreateRoleRet::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CGCSendCreateRoleRet_descriptor_;
+}
+
+const CGCSendCreateRoleRet& CGCSendCreateRoleRet::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_NetMessage_2eproto();
+  return *default_instance_;
+}
+
+CGCSendCreateRoleRet* CGCSendCreateRoleRet::default_instance_ = NULL;
+
+CGCSendCreateRoleRet* CGCSendCreateRoleRet::New(::google::protobuf::Arena* arena) const {
+  CGCSendCreateRoleRet* n = new CGCSendCreateRoleRet;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CGCSendCreateRoleRet::Clear() {
+  _result_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool CGCSendCreateRoleRet::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NetPackage.CGCSendCreateRoleRet)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 _result = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &_result_)));
+          set_has__result();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NetPackage.CGCSendCreateRoleRet)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NetPackage.CGCSendCreateRoleRet)
+  return false;
+#undef DO_
+}
+
+void CGCSendCreateRoleRet::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NetPackage.CGCSendCreateRoleRet)
+  // optional int32 _result = 1;
+  if (has__result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->_result(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NetPackage.CGCSendCreateRoleRet)
+}
+
+::google::protobuf::uint8* CGCSendCreateRoleRet::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.CGCSendCreateRoleRet)
+  // optional int32 _result = 1;
+  if (has__result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->_result(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.CGCSendCreateRoleRet)
+  return target;
+}
+
+int CGCSendCreateRoleRet::ByteSize() const {
+  int total_size = 0;
+
+  // optional int32 _result = 1;
+  if (has__result()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->_result());
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CGCSendCreateRoleRet::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const CGCSendCreateRoleRet* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const CGCSendCreateRoleRet>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CGCSendCreateRoleRet::MergeFrom(const CGCSendCreateRoleRet& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has__result()) {
+      set__result(from._result());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void CGCSendCreateRoleRet::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CGCSendCreateRoleRet::CopyFrom(const CGCSendCreateRoleRet& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CGCSendCreateRoleRet::IsInitialized() const {
+
+  return true;
+}
+
+void CGCSendCreateRoleRet::Swap(CGCSendCreateRoleRet* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CGCSendCreateRoleRet::InternalSwap(CGCSendCreateRoleRet* other) {
+  std::swap(_result_, other->_result_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CGCSendCreateRoleRet::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CGCSendCreateRoleRet_descriptor_;
+  metadata.reflection = CGCSendCreateRoleRet_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CGCSendCreateRoleRet
+
+// optional int32 _result = 1;
+bool CGCSendCreateRoleRet::has__result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void CGCSendCreateRoleRet::set_has__result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void CGCSendCreateRoleRet::clear_has__result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void CGCSendCreateRoleRet::clear__result() {
+  _result_ = 0;
+  clear_has__result();
+}
+ ::google::protobuf::int32 CGCSendCreateRoleRet::_result() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGCSendCreateRoleRet._result)
+  return _result_;
+}
+ void CGCSendCreateRoleRet::set__result(::google::protobuf::int32 value) {
+  set_has__result();
+  _result_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGCSendCreateRoleRet._result)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

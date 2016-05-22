@@ -71,9 +71,9 @@ int CLogin::HandleCreateRole(int cmd, int connection, std::string recvMsg)
 		return 0;
 	}
 
-// 	NetPackage::CRequestLoginRet loginRet;
-// 	loginRet.set__username(login._username());
-// 
-// 	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_LoginRet, &loginRet);
+	NetPackage::CGCSendCreateRoleRet loginRet;
+	loginRet.set__result(0);
+
+	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleCreateRet, &loginRet);
 	return 1;
 }

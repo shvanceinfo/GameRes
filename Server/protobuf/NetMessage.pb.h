@@ -69,6 +69,7 @@ class CGCReportProcuce;
 class CGCReportTowerInstanceScore;
 class CGCReportUseSkill;
 class CGCSendCreateRole;
+class CGCSendCreateRoleRet;
 class CGCVipFriend;
 class CGSNotifyAssetChange;
 class CGSNotifyChangeScene;
@@ -6049,6 +6050,95 @@ class CGCSendCreateRole : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static CGCSendCreateRole* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CGCSendCreateRoleRet : public ::google::protobuf::Message {
+ public:
+  CGCSendCreateRoleRet();
+  virtual ~CGCSendCreateRoleRet();
+
+  CGCSendCreateRoleRet(const CGCSendCreateRoleRet& from);
+
+  inline CGCSendCreateRoleRet& operator=(const CGCSendCreateRoleRet& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CGCSendCreateRoleRet& default_instance();
+
+  void Swap(CGCSendCreateRoleRet* other);
+
+  // implements Message ----------------------------------------------
+
+  inline CGCSendCreateRoleRet* New() const { return New(NULL); }
+
+  CGCSendCreateRoleRet* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CGCSendCreateRoleRet& from);
+  void MergeFrom(const CGCSendCreateRoleRet& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CGCSendCreateRoleRet* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 _result = 1;
+  bool has__result() const;
+  void clear__result();
+  static const int kResultFieldNumber = 1;
+  ::google::protobuf::int32 _result() const;
+  void set__result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NetPackage.CGCSendCreateRoleRet)
+ private:
+  inline void set_has__result();
+  inline void clear_has__result();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 _result_;
+  friend void  protobuf_AddDesc_NetMessage_2eproto();
+  friend void protobuf_AssignDesc_NetMessage_2eproto();
+  friend void protobuf_ShutdownFile_NetMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static CGCSendCreateRoleRet* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -12306,6 +12396,34 @@ inline void CGCSendCreateRole::set__byteverify(bool value) {
 
 // -------------------------------------------------------------------
 
+// CGCSendCreateRoleRet
+
+// optional int32 _result = 1;
+inline bool CGCSendCreateRoleRet::has__result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CGCSendCreateRoleRet::set_has__result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CGCSendCreateRoleRet::clear_has__result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CGCSendCreateRoleRet::clear__result() {
+  _result_ = 0;
+  clear_has__result();
+}
+inline ::google::protobuf::int32 CGCSendCreateRoleRet::_result() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGCSendCreateRoleRet._result)
+  return _result_;
+}
+inline void CGCSendCreateRoleRet::set__result(::google::protobuf::int32 value) {
+  set_has__result();
+  _result_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGCSendCreateRoleRet._result)
+}
+
+// -------------------------------------------------------------------
+
 // CGCAskRankList
 
 // optional uint32 m_n8RankCate = 1;
@@ -12879,6 +12997,8 @@ inline void CGCAskGuideComplate::set_u8finish(bool value) {
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
