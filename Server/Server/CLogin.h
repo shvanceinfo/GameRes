@@ -16,9 +16,11 @@ public:
 	void RegisterMessage();
 
 	//玩家登陆
-	int HandleLogin(int cmd, int connection, std::string recvMsg);
+	void HandleLogin(int cmd, int connection, std::string recvMsg);
 	//玩家创角
-	int HandleCreateRole(int cmd, int connection, std::string recvMsg);
+	void HandleCreateRole(int cmd, int connection, std::string recvMsg);
+	//全用角色
+	void HandleSelectRole(int cmd, int connection, std::string recvMsg);
 private:
 	CLogin(){};
 	~CLogin(){}

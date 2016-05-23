@@ -6,6 +6,8 @@
 #include "GameClient.hpp"
 #include "AppInitialze.h"
 
+std::unordered_map<int, NetPackage::CGCSendCreateRole> m_UserList;
+
 bool CLogin::Initialze()
 {
 	RegisterMessage();
@@ -17,19 +19,20 @@ void CLogin::RegisterMessage()
 {
 	REGISTER_MH(NetPackage::CeC2GType::C2G_Login, CLogin::HandleLogin, g_Login);
 	REGISTER_MH(NetPackage::CeC2GType::C2G_CreateRole, CLogin::HandleCreateRole, g_Login);
+	REGISTER_MH(NetPackage::CeC2GType::C2G_SelectRole, CLogin::HandleSelectRole, g_Login);
 }
 
-int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
+void CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 {
-	NetPackage::CRequestLogin login;
+	NetPackage::CRequestLogin inData;
 
-	if (false == login.ParseFromString(recvMsg))
+	if (false == inData.ParseFromString(recvMsg))
 	{
-		return 0;
+		return ;
 	}
 
 	NetPackage::CRequestLoginRet loginRet;
-	loginRet.set__username(login._username());
+	loginRet.set__username(inData._username());
 
 	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_LoginRet, &loginRet);
 
@@ -59,21 +62,68 @@ int CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
 // 	roleRet.set_wingid(1);
 // 
 // 	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleList, &roleRet);
-	return 1;
 }
 
-int CLogin::HandleCreateRole(int cmd, int connection, std::string recvMsg)
+void CLogin::HandleCreateRole(int cmd, int connection, std::string recvMsg)
 {
-	NetPackage::CGCSendCreateRole login;
+	NetPackage::CGCSendCreateRole inData;
 
-	if (false == login.ParseFromString(recvMsg))
+	if (false == inData.ParseFromString(recvMsg))
 	{
-		return 0;
+		return ;
 	}
+
+	m_UserList[connection] = inData;
 
 	NetPackage::CGCSendCreateRoleRet loginRet;
 	loginRet.set__result(0);
 
 	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleCreateRet, &loginRet);
-	return 1;
+
+	NetPackage::CGSNotifyRoleBaseInfo roleRet;
+	roleRet.set_m_un32objid(1);
+	roleRet.set_m_n32rolenickname(inData._nickname());
+	roleRet.set_m_n32careerid(inData._u32vocationid());
+	roleRet.set_m_bgender(inData._bytegender());
+	roleRet.set_m_un32coattypeid(1);
+	roleRet.set_m_un32legguardid(1);
+	roleRet.set_m_un32legguardid(1);
+	roleRet.set_m_un32shoeid(1);
+	roleRet.set_m_un32necklaceid(1);
+	roleRet.set_m_un32ringid(1);
+	roleRet.set_m_un32weaponid(1);
+	roleRet.set_m_un32level(1);
+	roleRet.set_m_un32exp(1);
+	roleRet.set_m_un32curhp(1);
+	roleRet.set_m_un32curmp(1);
+	roleRet.set_m_un32curhpvessel(1);
+	roleRet.set_m_un32curmpvessel(1);
+	roleRet.set_m_un32maxhp(100);
+	roleRet.set_m_un32maxmp(100);
+	roleRet.set_m_un32maxhpvessel(100);
+	roleRet.set_m_un32maxmpvessel(100);
+	roleRet.set_m_un32max_packages(1);
+	roleRet.set_wingid(1);
+
+	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleList, &roleRet);
+}
+
+void CLogin::HandleSelectRole(int cmd, int connection, std::string recvMsg)
+{
+	NetPackage::CGCAskSelectRole inData;
+
+	if (false == inData.ParseFromString(recvMsg))
+	{
+		return ;
+	}
+
+	NetPackage::CGSNotifyChangeScene outData;
+	outData.set_m_un32mapid(100000001);
+	outData.set_m_un32sceneid(1);
+	outData.set_m_un32clientno(19);
+	outData.set_m_fposx(-2.12);
+	outData.set_m_fposy(-0.82);
+	outData.set_m_fposz(-0.01);
+
+	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleChangeScene, &outData);
 }

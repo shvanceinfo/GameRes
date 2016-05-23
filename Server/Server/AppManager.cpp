@@ -23,13 +23,13 @@ bool MessageHead::Parse(char* msg, uint16_t length)
 
 char* MessageHead::Pack(const char* msg, uint16_t length, uint16_t cmdIn)
 {
-	uint16_t total = sizeof(cmdIn)+sizeof(length)+strlen(msg);
+	uint16_t total = sizeof(cmdIn)+sizeof(length)+length;
 	char* msgOut = new char[total + 1];
 	memset(msgOut, 0, total + 1);
 
 	memcpy(msgOut, &total, sizeof(total));
 	memcpy(msgOut + sizeof(total), &cmdIn, sizeof(cmdIn));
-	memcpy(msgOut + sizeof(total)+sizeof(cmdIn), msg, strlen(msg));
+	memcpy(msgOut + sizeof(total)+sizeof(cmdIn), msg, length);
 
 	len = total;
 

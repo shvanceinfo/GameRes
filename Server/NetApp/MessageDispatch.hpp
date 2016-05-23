@@ -21,7 +21,7 @@ public:
 		return &m_Instance;
 	}
 
-	void RegisterMessageHandle(int cmd, std::function<int(PARAMS)> func)
+	void RegisterMessageHandle(int cmd, std::function<void(PARAMS)> func)
 	{
 		m_Message[cmd] = func;
 	}
@@ -43,7 +43,7 @@ protected:
 	~MessageDispatch(){}
 
 private:
-	std::unordered_map<int, std::function<int(PARAMS)>> m_Message;
+	std::unordered_map<int, std::function<void(PARAMS)>> m_Message;
 };
 
 #endif
