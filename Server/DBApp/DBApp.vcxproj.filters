@@ -33,12 +33,18 @@
     <ClInclude Include="MySqlConnection.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\NetApp\NetFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DBApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetApp\NetFrame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

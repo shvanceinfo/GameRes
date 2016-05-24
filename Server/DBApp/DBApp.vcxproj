@@ -41,27 +41,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\MySQL\MySQL Server 5.7\lib;C:\Program Files %28x86%29\MySQL\MySQL Server 5.7\include;D:\boost_1_57_0\boost_1_57_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\MySQL\MySQL Server 5.7\include;..\3rd_lib\tbb44_20160413oss\include;..\NetApp;..\protobuf;$(IncludePath)</IncludePath>
     <IntDir>
     </IntDir>
     <OutDir>..\..\bin</OutDir>
-    <LibraryPath>D:\boost_1_57_0\boost_1_57_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <ReferencePath>..\Server;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\3rd_lib\tbb44_20160413oss\build\vs2010\Win32\Debug;..\3rd_lib\;..\3rd_lib\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>tbb_debug.lib;libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;libuv.lib;libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\3rd_lib\tbb44_20160413oss\build\vs2010\Win32\Debug;..\3rd_lib\libuv\;..\protobuf;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,6 +88,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\NetApp\NetFrame.h" />
     <ClInclude Include="DatabaseThreadPool.h" />
     <ClInclude Include="MySqlConnection.h" />
     <ClInclude Include="ProducerConsumerQueue.h" />
@@ -92,6 +96,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\NetApp\NetFrame.cpp" />
     <ClCompile Include="DBApp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -6,10 +6,9 @@
 #include <queue>
 #include <atomic>
 #include <type_traits>
-#include <boost/noncopyable.hpp>
 
 template<typename T>
-class ProducerConsumerQueue : boost::noncopyable
+class ProducerConsumerQueue
 {
 public:
 	void Push(const T &value)

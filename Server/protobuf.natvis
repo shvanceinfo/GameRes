@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+<Type Name="google::protobuf::RepeatedField&lt;*&gt;">
+    <DisplayString>{{ size={current_size_} }}</DisplayString>
+	<Expand>
+        <Item Name="[size]" ExcludeView="simple">current_size_</Item>
+        <Item Name="[capacity]" ExcludeView="simple">total_size_</Item>
+        <IndexListItems>
+            <Size>current_size_</Size>
+            <ValueNode>rep_->elements[$i]</ValueNode>
+        </IndexListItems>
+	</Expand>
+</Type>
+
+<Type Name="google::protobuf::RepeatedPtrField&lt;*&gt;">
+    <DisplayString>{{ size={current_size_} }}</DisplayString>
+	<Expand>
+        <Item Name="[size]" ExcludeView="simple">current_size_</Item>
+        <Item Name="[capacity]" ExcludeView="simple">total_size_</Item>
+        <IndexListItems>
+            <Size>current_size_</Size>
+            <ValueNode>(value_type*)rep_->elements[$i]</ValueNode>
+        </IndexListItems>
+	</Expand>
+</Type>
+
+</AutoVisualizer>

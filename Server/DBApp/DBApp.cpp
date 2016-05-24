@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "NetFrame.h"
 #include "iostream"
 #include "mysql.h"
 
@@ -29,11 +30,30 @@ my_bool error[4];
 #include <condition_variable>
 #include <chrono>
 
+#include "tbb44_20160413oss/include/tbb/tbb.h"
+
+using namespace tbb;
+using namespace std;
+
+void Run(uv::TCPServer *server)
+{
+	server->tcp4_echo_start();
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	{
+		tbb::concurrent_queue<int> que;
+		que.push(10);
+		tbb::parallel_for(0, 10, [](int v){std::cout << v << ""; });
+	}
+	uv::TCPServer ptrServer("127.0.0.1", 9998);
+	std::thread netApp(Run, &ptrServer);
+	//g_AppManager->SetEchoServere(&ptrServer);
+
+	{
 		DatabaseThreadPool<std::string> pool;
-		pool.CreateThreadPool(10, "127.0.0.1", 3306, "root", "root", "testdatabase");
+		//pool.CreateThreadPool(10, "127.0.0.1", 3306, "root", "root", "testdatabase");
 
 		std::string temp = "select * from student";
 		for (;;)
