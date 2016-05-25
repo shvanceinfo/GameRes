@@ -388,6 +388,8 @@ namespace uv
 			uv_close((uv_handle_t*)tcp, close_cb);
 			return;
 		}
+		TCPClient* tcpClient = (TCPClient*)tcp->data;
+		MessageInfo msg(tcpClient->unicode, buf->base, nread);
 	}
 
 	void TCPClient::timer_cb(uv_timer_t* handle)
@@ -451,12 +453,13 @@ namespace uv
 		}
 	}
 
-	TCPClient::TCPClient(const char* ip_, int port_)
+	TCPClient::TCPClient(uint32_t unicode_, const char* ip_, int port_)
 	{
 		ip = new char[10];
 		memset(ip, 0, 10);
 		port = port_;
 		memcpy_s(ip, 10, ip_, strlen(ip_));
+		unicode = unicode_;
 	}
 
 	int TCPClient::tcp4_echo_start()
@@ -485,5 +488,39 @@ namespace uv
 		uv_loop_delete(loop);
 
 		return r;
+	}
+
+	void TCPClient::PushRecvMessage(MessageInfo &&info)
+	{
+		m_RecvMessage.push(info);
+	}
+
+	std::shared_ptr<MessageInfo> TCPClient::GetRecvMessage()
+	{
+		std::shared_ptr<MessageInfo> msg = nullptr;
+		MessageInfo info;
+		if (true == m_RecvMessage.try_pop(info))
+		{
+			msg = std::make_shared<MessageInfo>(info);
+		}
+
+		return msg;
+	}
+
+	void TCPClient::PushSendMssage(MessageInfo&& info)
+	{
+		m_SendMessage.push(info);
+	}
+
+	std::shared_ptr<MessageInfo> TCPClient::GetSendMessage()
+	{
+		std::shared_ptr<MessageInfo> msg = nullptr;
+		MessageInfo info;
+		if (true == m_SendMessage.try_pop(info))
+		{
+			msg = std::make_shared<MessageInfo>(info);
+		}
+
+		return msg;
 	}
 }

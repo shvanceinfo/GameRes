@@ -20,6 +20,8 @@ namespace uv
 		uint32_t len = 0;
 		char* buf = nullptr;
 
+		MessageInfo(){}
+
 		MessageInfo(uint32_t conn_, char* buf_, uint32_t len_) : conn(conn_), len(len_)
 		{
 			buf = buf_;
@@ -91,8 +93,13 @@ namespace uv
 			CONNECTED,	//ÒÑÁ¬½Ó
 		};
 	public:
-		TCPClient(const char* ip_, int port_);
+		TCPClient(uint32_t unicode_, const char* ip_, int port_);
 		int tcp4_echo_start();
+		std::shared_ptr<MessageInfo> GetRecvMessage();
+		void PushSendMssage(MessageInfo&& info);
+	private:
+		void PushRecvMessage(MessageInfo &&info);
+		std::shared_ptr<MessageInfo> GetSendMessage();
 	protected:
 		static void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf);
 		static void close_cb(uv_handle_t* handle);
@@ -102,6 +109,7 @@ namespace uv
 		static void write_cb(uv_write_t* req, int status);
 		static void connect_cb(uv_connect_t* req, int status);
 	private:
+		uint32_t unicode = 0;
 		uv_loop_t* loop = nullptr;
 		uv_tcp_t client;
 		uv_timer_t timer;

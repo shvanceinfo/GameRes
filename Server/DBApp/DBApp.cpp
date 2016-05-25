@@ -16,7 +16,7 @@ void Run(uv::TCPServer *server)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	uv::TCPClient ptrClient("127.0.0.1", 9999);
+	uv::TCPClient ptrClient(1,"127.0.0.1", 9999);
 
 	if (0 != ptrClient.tcp4_echo_start())
 	{
