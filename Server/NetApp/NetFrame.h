@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include "uv.h"
 #include <mutex>
+#include "tbb44_20160413oss/include/tbb/concurrent_queue.h"
 
 namespace uv
 {
@@ -33,6 +34,7 @@ namespace uv
 		}
 	};
 
+	//服务端
 	class TCPServer
 	{
 	public:
@@ -75,8 +77,43 @@ namespace uv
 		uv_tcp_t	tcpServer;
 		uv_handle_t* server = nullptr;
 		uv_timer_t	timer;
-		char *ip;
+		char *ip = nullptr;
 		int port = 0;
+	};
+
+	//客户端
+	class TCPClient
+	{
+		enum STATUS
+		{
+			NONE = 0,	//未连接
+			CONNECTING,	//连接中
+			CONNECTED,	//已连接
+		};
+	public:
+		TCPClient(const char* ip_, int port_);
+		int tcp4_echo_start();
+	protected:
+		static void alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf);
+		static void close_cb(uv_handle_t* handle);
+		static void shutdown_cb(uv_shutdown_t* req, int status);
+		static void read_cb(uv_stream_t* tcp, ssize_t nread, const uv_buf_t* buf);
+		static void timer_cb(uv_timer_t* handle);
+		static void write_cb(uv_write_t* req, int status);
+		static void connect_cb(uv_connect_t* req, int status);
+	private:
+		uv_loop_t* loop = nullptr;
+		uv_tcp_t client;
+		uv_timer_t timer;
+		uv_connect_t connect_req;
+		uv_write_t write_req;
+		uv_shutdown_t shutdown_req;
+		char* ip = nullptr;
+		int port = 0;
+		STATUS status = NONE;
+		struct sockaddr_in addr;
+		tbb::concurrent_queue<MessageInfo> m_SendMessage;
+		tbb::concurrent_queue<MessageInfo> m_RecvMessage;
 	};
 }
 #endif

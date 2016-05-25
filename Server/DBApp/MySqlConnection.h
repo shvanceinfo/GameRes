@@ -3,59 +3,49 @@
 
 #include <iostream>
 #include <mysql.h>
+using namespace std;
 
-template<typename T>
 class MySqlConnection
 {
 public:
-	MySqlConnection(std::string ip, uint16_t port, std::string account, std::string pass, std::string name) : 
-		ip_(ip), 
-		port_(port), 
-		account_(account), 
-		pass_(pass),
-		name_(name), 
-		isConnect_(false)
-	{
-	}
-
-	void init()
+	bool init(std::string ip, uint16_t port, std::string account, std::string pass, std::string name)
 	{
 		MYSQL* mysqlInit;
 
 		if (NULL == (mysqlInit = mysql_init(NULL)))
 		{
-			return ;
+			return false;
 		}
 
 		if (NULL != mysql_options(mysqlInit, MYSQL_SET_CHARSET_NAME, "UTF8"))
 		{
-			return ;
+			return false;
 		}
 
-		if (NULL == (mysql_ = mysql_real_connect(mysqlInit, ip_.c_str(), account_.c_str(), pass_.c_str(), name_.c_str(), port_, NULL, 0)))
+		if (NULL == (mysql_ = mysql_real_connect(mysqlInit, ip.c_str(), account.c_str(), pass.c_str(), name.c_str(), port, NULL, 0)))
 		{
-			return ;
+			return false;
 		}
 
-		isConnect_ = true;
+		return true;
 	}
 
-	void Query( T &value)
+	bool Query(std::string&& sql)
 	{
-		if ( mysql_ == NULL || isConnect_ == false )
+		if (mysql_ == NULL)
 		{
-			return;
+			return false;
 		}
 
 		MYSQL_RES *result = NULL;
 
-		if (0 == mysql_query(mysql_, value.c_str()))
+		if (0 == mysql_query(mysql_, sql.c_str()))
 		{
 			result = mysql_store_result(mysql_);
 		}
 		else
 		{
-			return ;
+			return false;
 		}
 
 		unsigned long long rowcount = mysql_num_rows(result);
@@ -82,16 +72,14 @@ public:
 			cout << endl;
 		}
 
+		//T->Parse(feild);
+
 		mysql_free_result(result);
+
+		return true;
 	};
 private:
-	MYSQL* mysql_;
-	std::string ip_;
-	uint16_t port_;
-	std::string account_;
-	std::string pass_;
-	std::string name_;
-	int isConnect_;
+	MYSQL* mysql_ = nullptr;
 };
 
 #endif

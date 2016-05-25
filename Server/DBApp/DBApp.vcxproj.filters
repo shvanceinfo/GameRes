@@ -36,6 +36,12 @@
     <ClInclude Include="..\NetApp\NetFrame.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="NewConnection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AppManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -45,6 +51,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\NetApp\NetFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

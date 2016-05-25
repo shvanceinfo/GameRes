@@ -3,36 +3,10 @@
 
 #include "stdafx.h"
 #include "NetFrame.h"
-#include "iostream"
-#include "mysql.h"
-
-using namespace std;
-
-#define INSERT_QUERY ""
-#define STRING_SIZE 50
-#define SELECT_SAMPLE "select col1,col2,col3,col4 from test_table"
-
-MYSQL_STMT *stmt;
-MYSQL_BIND _bind[4];
-MYSQL_RES *prepare_meta_result;
-MYSQL_TIME ts;
-unsigned long length[4];
-int param_count, column_count, row_count;
-short small_data;
-int int_data;
-char str_data[STRING_SIZE];
-my_bool is_null[4];
-my_bool error[4];
-
 #include "DatabaseThreadPool.h"
-#include <thread>
-#include <mutex>
-#include <condition_variable>
-#include <chrono>
+#include "ProducerConsumerQueue.h"
+#include "NewConnection.h"
 
-#include "tbb44_20160413oss/include/tbb/tbb.h"
-
-using namespace tbb;
 using namespace std;
 
 void Run(uv::TCPServer *server)
@@ -42,107 +16,32 @@ void Run(uv::TCPServer *server)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	uv::TCPClient ptrClient("127.0.0.1", 9999);
+
+	if (0 != ptrClient.tcp4_echo_start())
 	{
-		tbb::concurrent_queue<int> que;
-		que.push(10);
-		tbb::parallel_for(0, 10, [](int v){std::cout << v << ""; });
+		return 0;
 	}
+
+
+
 	uv::TCPServer ptrServer("127.0.0.1", 9998);
 	std::thread netApp(Run, &ptrServer);
+
 	//g_AppManager->SetEchoServere(&ptrServer);
+	DBConnection::ConnectionMgr<DBConnection::Connection> mgr;
+	mgr.PushConnction(1, new DBConnection::Connection("127.0.0.1", 3306, "root", "root", "testdatabase"));
+	DatabaseThreadPool<TaskInfo> pool;
+	pool.CreateThreadPool(10);
 
+	TaskInfo temp(mgr.GetConnction(1), std::string("select * from student"));
+	for (;;)
 	{
-		DatabaseThreadPool<std::string> pool;
-		//pool.CreateThreadPool(10, "127.0.0.1", 3306, "root", "root", "testdatabase");
-
-		std::string temp = "select * from student";
-		for (;;)
-		{
-			std::this_thread::sleep_for(std::chrono::milliseconds(10));
-			pool.post(temp);
-		}
-
-		pool.wait();
-		getchar();
-		return 0;
-	}
-	MYSQL mydata;
-
-	if (0 != mysql_library_init(0,NULL,NULL))
-	{
-		return 0;
+		//std::this_thread::sleep_for(std::chrono::milliseconds(10));
+		//pool.post(temp);
 	}
 
-	if (NULL == mysql_init(&mydata))
-	{
-		return 0;
-	}
-	
-
- 	if (0 != mysql_options(&mydata,MYSQL_SET_CHARSET_NAME,"UTF8"))
- 	{
- 		return 0;
- 	}
-
-	if (NULL == mysql_real_connect(&mydata,"127.0.0.1", "root", "root", "testdatabase", 3306, NULL,0))
-	{
-		return 0;
-	}
-
-	if (0 != mysql_set_character_set(&mydata, "utf8"))
-	{
-		return 0;
-	}
-
-	string strsql;
-	MYSQL_RES *result = NULL;
-
-	strsql = "insert into student(id, state, nickname) values(6,1,'aaaa')";
-	int ret = mysql_query(&mydata, strsql.c_str());
-	if (0 != ret)
-	{
-		cout << mysql_error(&mydata)<<endl;
-	}
-	
-
-	strsql = "select * from student";
-	if (0 == mysql_query(&mydata, strsql.c_str()))
-	{
-		result = mysql_store_result(&mydata);
-	}
-	else
-	{
-		return 0;
-	}
-
-
-	unsigned long long rowcount = mysql_num_rows(result);
-	//cout << rowcount << endl;
-	int feildcount = mysql_num_fields(result);
-
-	MYSQL_FIELD *feild = NULL;
-	for (int i = 0; i < feildcount; i++)
-	{
-		feild = mysql_fetch_field_direct(result, i);
-		cout << feild->name << "	";
-	}
-
-	cout << endl;
-
-	MYSQL_ROW row = NULL;
-	while (NULL != (row = mysql_fetch_row(result)))
-	{
-		for (int i = 0; i < feildcount; i++)
-		{
-			cout << row[i] << "		";
-		}
-
-		cout << endl;
-	}
-
-	mysql_free_result(result);
-	mysql_close(&mydata);
-
+	pool.wait();
 	getchar();
 	return 0;
 }

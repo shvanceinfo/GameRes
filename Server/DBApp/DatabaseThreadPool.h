@@ -14,48 +14,54 @@
 #include "MySqlConnection.h"
 #include "ProducerConsumerQueue.h"
 
-#define MysqlPtr(x)	std::shared_ptr<MySqlConnection<x>>
-
 template<typename T>
 class DatabaseThreadPool
 {
 private:
 	ProducerConsumerQueue<T> MessageQueue;
-	std::list<std::shared_ptr<std::thread>> ThreadPool;
-	//std::concurrent_queue<int> MysqlPool;
-
-	void run(std::string ip, uint16_t port, std::string account, std::string pass, std::string name)
+	std::list<std::thread*> ThreadPool;
+	void run()
 	{
-		MySqlConnection<T>* ptrConnect = new MySqlConnection<T>(ip, port, account, pass, name);
-
-		ptrConnect->init();
-
 		while (true)
 		{
 			T value;
 			MessageQueue.WaitAndPop(value);
-			ptrConnect->Query(value);
+			
+			if (value.conn == nullptr)
+			{
+				continue;
+			}
+
+			auto conn = value.conn->GetSqlConnection();
+			if (conn == nullptr)
+			{
+				continue;
+			}
+
+			if (false == conn->Query(std::move(value.cmd)))
+			{
+				
+			}
+
+			value.conn->PushConnection(conn);
 		}
 	}
 public:
-
-	void CreateMysqlConnection();
-
-	void CreateThreadPool(std::string ip, uint16_t port, std::string account, std::string pass, std::string name)
+	void CreateThreadPool(uint16_t threadNum)
 	{
-		//for (int i = 0; i < threadsNum; i++)
-		//{
-		//	//shared_ptr<thread> ptrThread(new thread(std::bind(&DatabaseThreadPool::run, this, std::_Placeholder::_1, std::_Placeholder::_2, )))
-		//	//ThreadPool.add_thread(new boost::thread(boost::bind(&DatabaseThreadPool::run, this, ip, port, account, pass, name)));
-		//}
+		for (int i = 0; i < threadNum; i++)
+		{
+			std::thread *ptrThread(new std::thread(&DatabaseThreadPool::run, this));
+			ThreadPool.push_back(ptrThread);
+		}
 	}
 
 	void post(const T &value){ MessageQueue.Push(value); }
 	void wait()
 	{
-		for (auto itr = ThreadPool.begin(); itr != ThreadPool.end(); itr++)
+		for (auto ptr = ThreadPool.begin(); ptr != ThreadPool.end(); ptr++)
 		{
-			(*itr)->join();
+			(*ptr)->join();
 		}
 	}
 };

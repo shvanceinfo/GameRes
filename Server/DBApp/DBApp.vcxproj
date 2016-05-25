@@ -89,14 +89,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\NetApp\NetFrame.h" />
+    <ClInclude Include="AppManager.h" />
     <ClInclude Include="DatabaseThreadPool.h" />
     <ClInclude Include="MySqlConnection.h" />
+    <ClInclude Include="NewConnection.h" />
     <ClInclude Include="ProducerConsumerQueue.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\NetApp\NetFrame.cpp" />
+    <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="DBApp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

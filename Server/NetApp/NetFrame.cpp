@@ -62,11 +62,13 @@ namespace uv
 			//销毁在线连接
 			tcp->ReleaseConnection(handle);
 			return;
-		}else if (nread == 0)
+		}
+		else if (nread == 0)
 		{
 			free(buf->base);
 			fprintf(stdout, "Everything OK, but nothing read.\n");
-		}else 
+		}
+		else
 		{
 			int len = strlen(buf->base);
 			TCPServer* tcp = (TCPServer*)handle->data;
@@ -77,33 +79,34 @@ namespace uv
 		* Scan for the letter Q which signals that we should quit the server.
 		* If we get QS it means close the stream.
 		*/
-// 		if (!server_closed) {
-// 			for (i = 0; i < nread; i++) {
-// 				if (buf->base[i] == 'Q') {
-// 					if (i + 1 < nread && buf->base[i + 1] == 'S') {
-// 						free(buf->base);
-// 						uv_close((uv_handle_t*)handle, on_close);
-// 						return;
-// 					}
-// 					else {
-// 						uv_close(server, on_server_close);
-// 						server_closed = 1;
-// 					}
-// 				}
-// 			}
-// 		}
-		
-// 		uv_buf_t sendbuf;
-// 		sendbuf = uv_buf_init(buf->base, nread);
-// 
-// 		uv_write_t* req = (uv_write_t*)malloc(sizeof(uv_write_t));
-// 		int ret = uv_write(req, handle, &sendbuf, 1, after_write);
-// 		if (0 != ret)
-// 		{
-// 			int x = 0;
-// 			x++;
-// 		}
-// 		free(buf->base);
+		// 		if (!server_closed) {
+		// 			for (i = 0; i < nread; i++) {
+		// 				if (buf->base[i] == 'Q') {
+		// 					if (i + 1 < nread && buf->base[i + 1] == 'S') {
+		// 						free(buf->base);
+		// 						uv_close((uv_handle_t*)handle, on_close);
+		// 						return;
+		// 					}
+		// 					else {
+		// 						uv_close(server, on_server_close);
+		// 						server_closed = 1;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+
+
+		// 		uv_buf_t sendbuf;
+		// 		sendbuf = uv_buf_init(buf->base, nread);
+		// 
+		// 		uv_write_t* req = (uv_write_t*)malloc(sizeof(uv_write_t));
+		// 		int ret = uv_write(req, handle, &sendbuf, 1, after_write);
+		// 		if (0 != ret)
+		// 		{
+		// 			int x = 0;
+		// 			x++;
+		// 		}
+		// 		free(buf->base);
 	}
 
 	void TCPServer::on_close(uv_handle_t* peer)
@@ -163,18 +166,18 @@ namespace uv
 
 	void TCPServer::on_server_close(uv_handle_t* handle)
 	{
-// 		if (handle != server)
-// 		{
-// 			fprintf(stderr, "111111111111111 error \n");
-// 		}
+		// 		if (handle != server)
+		// 		{
+		// 			fprintf(stderr, "111111111111111 error \n");
+		// 		}
 	}
 
 	void TCPServer::close_cb(uv_handle_t* handle)
 	{
-// 		if (handle == (uv_handle_t*)&timer)
-// 		{
-// 			fprintf(stderr, "211111111111111 error \n");
-// 		}
+		// 		if (handle == (uv_handle_t*)&timer)
+		// 		{
+		// 			fprintf(stderr, "211111111111111 error \n");
+		// 		}
 	}
 
 	void TCPServer::timer_cb(uv_timer_t* handle)
@@ -355,244 +358,132 @@ namespace uv
 
 		return nullptr;
 	}
+
+	void TCPClient::alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf)
+	{
+		buf->len = size;
+		buf->base = (char*)malloc(size);
+	}
+
+	void TCPClient::close_cb(uv_handle_t* handle)
+	{
+		TCPClient* tcpClient = (TCPClient*)handle->data;
+		tcpClient->status = NONE;
+		uv_tcp_init(tcpClient->loop, &tcpClient->client);
+	}
+
+	void TCPClient::shutdown_cb(uv_shutdown_t* req, int status)
+	{
+	}
+
+	void TCPClient::read_cb(uv_stream_t* tcp, ssize_t nread, const uv_buf_t* buf)
+	{
+		free(buf->base);
+		if (nread == 0)
+		{
+			return;
+		}
+		else if (nread < 0)
+		{
+			uv_close((uv_handle_t*)tcp, close_cb);
+			return;
+		}
+	}
+
+	void TCPClient::timer_cb(uv_timer_t* handle)
+	{
+		TCPClient* tcpClient = (TCPClient*)handle->data;
+
+		if (tcpClient->status != CONNECTED)
+		{
+			//断线再次连接
+			uv_tcp_connect(&tcpClient->connect_req, &tcpClient->client, (const struct sockaddr*)&tcpClient->addr, connect_cb);
+			return;
+		}
+
+		if (uv_read_start((uv_stream_t*)&tcpClient->client, alloc_cb, read_cb))
+		{
+		}
+
+		//TODO
+		static const char MESSAGE[] = "Failure is for the weak. Everyone dies alone.";
+		uv_buf_t buf;
+		buf.base = (char*)&MESSAGE;
+		buf.len = sizeof MESSAGE;
+
+		if (uv_write(&tcpClient->write_req, (uv_stream_t*)tcpClient->connect_req.handle, &buf, 1, write_cb)) {
+			std::cout << "uv_write failed" << std::endl;
+		}
+
+		int r = uv_timer_start(&tcpClient->timer, timer_cb, 10, 0);
+		if (r)
+		{
+			return;
+		}
+	}
+
+	void TCPClient::write_cb(uv_write_t* req, int status)
+	{
+	}
+
+	void TCPClient::connect_cb(uv_connect_t* req, int status)
+	{
+		TCPClient* tcpClient = (TCPClient*)req->data;
+		if (0 != status)
+		{
+			std::cout <<"connect faild:"<< status << std::endl;
+		}
+		else
+		{
+			tcpClient->status = CONNECTED;
+		}
+
+		int r = uv_timer_init(tcpClient->loop, &tcpClient->timer);
+		if (r)
+		{
+			return;
+		}
+		tcpClient->timer.data = (void*)tcpClient;
+		r = uv_timer_start(&tcpClient->timer, timer_cb, 10, 0);
+		if (r)
+		{
+			return;
+		}
+	}
+
+	TCPClient::TCPClient(const char* ip_, int port_)
+	{
+		ip = new char[10];
+		memset(ip, 0, 10);
+		port = port_;
+		memcpy_s(ip, 10, ip_, strlen(ip_));
+	}
+
+	int TCPClient::tcp4_echo_start()
+	{
+		loop = uv_default_loop();
+		
+		int r = uv_ip4_addr(ip, port, &addr);
+		if (0 != r)
+		{
+			return r;
+		}
+
+		r = uv_tcp_init(loop, &client);
+
+		client.data = this;
+		connect_req.data = this;
+		r = uv_tcp_connect(&connect_req, &client, (const struct sockaddr*)&addr, connect_cb);
+		if (0 != r)
+		{
+			return r;
+		}
+		status = CONNECTING;
+
+		uv_run(loop, UV_RUN_DEFAULT);
+
+		uv_loop_delete(loop);
+
+		return r;
+	}
 }
-// 
-// namespace NETAPP{
-// 	void Connection::Start()
-// 	{
-// 		socket_->async_receive(boost::asio::buffer(msgbuf_, sizeof(msgbuf_)), boost::bind(&Connection::ReadHandler, shared_from_this(), _1, _2));
-// 	}
-// 
-// 	void Connection::Close(bool send /* = true */)
-// 	{
-// 		if (status_.exchange(kClosed) != kClosed)
-// 		{
-// 			boost::system::error_code errcode;
-// 			if (socket_->close(errcode))
-// 			{
-// 				std::cerr << "" << std::endl;
-// 			}
-// 			else
-// 			{
-// 				std::cerr << "" << std::endl;
-// 			}
-// 			
-// 			if (send)
-// 			{
-// 				//发空包处理连接断开
-// 				ClientMessage msg(ClientID, "");
-// 				ServerPtr_->AddRecvMssage(msg);
-// 			}
-// 		}
-// 	}
-// 
-// 	void Connection::ReadHandler(const boost::system::error_code & error, std::size_t bytes_transferred)
-// 	{
-// 		if (!error)
-// 		{
-// 			msgbuf_[bytes_transferred] = '\0';
-// 			std::string sendMessage(msgbuf_);
-// 			ClientMessage msg(ClientID, sendMessage);
-// 			ServerPtr_->AddRecvMssage(msg);
-// 
-// 			socket_->async_receive(boost::asio::buffer(msgbuf_,sizeof(msgbuf_)), boost::bind(&Connection::ReadHandler, shared_from_this(), _1, _2));
-// 		}
-// 		else if (error == boost::asio::error::operation_aborted)
-// 		{
-// 			std::cout << "" << std::endl;
-// 		}
-// 		else
-// 		{
-// 			ConnStatus expected = kConnected;
-// 			if (status_.compare_exchange_strong(expected, kError))
-// 			{
-// 				std::cout << "" << std::endl;
-// 			}
-// 		}
-// 	}
-// 
-// 	void Connection::WriteHandler(const boost::system::error_code& error, std::size_t bytes_transferred)
-// 	{
-// 		if (!error)
-// 		{
-// 			std::cout << "send Message sucees" << std::endl;
-// 		}
-// 		else if (error == boost::asio::error::operation_aborted)
-// 		{
-// 			std::cout << "" << std::endl;
-// 		}
-// 		else
-// 		{
-// 			ConnStatus expected = kConnected;
-// 			if (status_.compare_exchange_strong(expected, kError))
-// 			{
-// 				std::cout << "" << std::endl;
-// 			}
-// 		}
-// 	}
-// 
-// 	void Connection::WriteMessage(ClientMessage msg)
-// 	{
-// 		if (msg.buffer.empty())
-// 		{
-// 			//服务器主动断开连接
-// 			Close(false);
-// 		}
-// 		else
-// 		{
-// 			std::cout << "=======" << msg.buffer <<"======"<< std::endl;
-// 			async_write(*socket_, boost::asio::buffer(msg.buffer), boost::bind(&Connection::WriteHandler, shared_from_this(), _1, _2));
-// 		}
-// 	}
-// 
-// 	void Connection::setStatus(ConnStatus value)
-// 	{
-// 		status_.exchange(value);
-// 	}
-// 
-// 	EchoServer::EchoServer(IOServeicePtr io_service) : stopped_(false), io_service_(io_service), acceptor_(*io_service), maxID(0)
-// 	{
-// 	}
-// 
-// 	int EchoServer::Start(const std::string &host, unsigned short port)
-// 	{
-// 		boost::system::error_code errcode;
-// 		boost::asio::ip::address address = boost::asio::ip::address::from_string(host, errcode);
-// 		if (errcode)
-// 		{
-// 			return false;
-// 		}
-// 
-// 		if (acceptor_.open(boost::asio::ip::tcp::v4(), errcode))
-// 		{
-// 			return false;
-// 		}
-// 
-// 		acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-// 		boost::asio::ip::tcp::endpoint endpoint(address, port);
-// 		if (acceptor_.bind(endpoint, errcode) || acceptor_.listen(1024, errcode))
-// 		{
-// 			return false;
-// 		}
-// 
-// 		SocketPtr socket(new boost::asio::ip::tcp::socket(*io_service_));
-// 		acceptor_.async_accept(*socket, boost::bind(&EchoServer::AcceptHandler, shared_from_this(), socket, _1));
-// 		return true;
-// 	}
-// 
-// 	uint32_t EchoServer::GetClientID()
-// 	{
-// 		uint32_t clientID = 0;
-// 		if (userIDList.empty())
-// 		{
-// 			maxID++;
-// 			clientID = maxID;
-// 		}
-// 		else
-// 		{
-// 			clientID = userIDList.front();
-// 			userIDList.pop_front();
-// 		}
-// 
-// 		return clientID;
-// 	}
-// 
-// 	void EchoServer::AcceptHandler(SocketPtr socket, const boost::system::error_code& error)
-// 	{
-// 		if (error == boost::asio::error::operation_aborted)
-// 		{
-// 			std::cout << "" << std::endl;
-// 			return;
-// 		}
-// 		else if (!error)
-// 		{
-// 			std::cout << "" << std::endl;
-// 			auto clientID = GetClientID();
-// 			ConnPtr new_conn(new Connection(socket, clientID));
-// 			new_conn->SetServerPtr(this);
-// 			new_conn->Start();
-// 			
-// 			conn_set_.insert(std::make_pair(clientID, new_conn));
-// 
-// 			TimerPtr socket_time(new boost::asio::deadline_timer(*io_service_));
-// 			socket_time->expires_from_now(boost::posix_time::millisec(1));
-// 			socket_time->async_wait(boost::bind(&EchoServer::CheckSocketStatus, shared_from_this(), clientID, socket_time, _1));
-// 		}
-// 		else
-// 		{
-// 			std::cout << "" << std::endl;
-// 		}
-// 
-// 		SocketPtr new_socket(new boost::asio::ip::tcp::socket(*io_service_));
-// 		acceptor_.async_accept(*new_socket, boost::bind(&EchoServer::AcceptHandler, shared_from_this(), new_socket, _1));
-// 	}
-// 
-// 	void EchoServer::CheckSocketStatus(uint32_t clientID, TimerPtr socket_timer, const boost::system::error_code& error)
-// 	{
-// 		//遍历要发送的数据
-// 		{ 
-// 			LOCK_GUARD(mutex_);
-// 			for (auto ptr = sendMessageList.begin(); ptr != sendMessageList.end(); ptr++)
-// 			{
-// 				auto iter = conn_set_.find(ptr->clientID);
-// 				if (iter == conn_set_.end())
-// 				{
-// 					continue;
-// 				}
-// 				auto connection = iter->second.get();
-// 				if (connection == nullptr)
-// 				{
-// 					continue;
-// 				}
-// 				connection->WriteMessage(*ptr);
-// 			}
-// 
-// 			sendMessageList.clear();
-// 		}
-// 
-// 		auto iter = conn_set_.find(clientID);
-// 		assert(iter != conn_set_.end());
-// 		if (stopped_.load())
-// 		{
-// 		}
-// 		else if (iter->second->status() == Connection::kError)
-// 		{
-// 			iter->second->Close();
-// 			conn_set_.erase(clientID);
-// 		}
-// 		else if (iter->second->status() == Connection::kClosed)
-// 		{
-// 			conn_set_.erase(clientID);
-// 		}
-// 		else
-// 		{
-// 			socket_timer->expires_from_now(boost::posix_time::seconds(1));
-// 			socket_timer->async_wait(boost::bind(&EchoServer::CheckSocketStatus, shared_from_this(), clientID, socket_timer, _1));
-// 		}
-// 	}
-// 
-// 	void EchoServer::AddRecvMssage(ClientMessage message)
-// 	{
-// 		LOCK_GUARD(mutex_);
-// 		recvMessageList.push_back(message);
-// 	}
-// 
-// 	bool EchoServer::PopRecvMessage(ClientMessage& message)
-// 	{
-// 		LOCK_GUARD(mutex_);
-// 		if (false == recvMessageList.empty())
-// 		{
-// 			message = recvMessageList.back();
-// 			recvMessageList.pop_back();
-// 			return true;
-// 		}
-// 
-// 		return false;
-// 	}
-// 
-// 	void EchoServer::AddSendMssage(ClientMessage message)
-// 	{
-// 		LOCK_GUARD(mutex_);
-// 		sendMessageList.push_back(message);
-// 	}
-// }
