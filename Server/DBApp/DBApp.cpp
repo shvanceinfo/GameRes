@@ -9,15 +9,22 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	if (false == g_AppMgr->Run())
 	{
-		g_AppMgr->CloseDB();
+		g_AppMgr->Close();
 		return -1;
 	}
 
 	uv::TCPServer netServer("127.0.0.1", 9998);
 	netServer.Run();
 	
-	for (;;)
+	while (true)
 	{
+		if (AppManager::STATUS::CLOSE == g_AppMgr->GetStatus())
+		{
+			netServer.Close();
+			g_AppMgr->Close();
+			break;
+		}
+
 		auto msg = netServer.GetRecvMessage();
  		if (nullptr != msg)
  		{
@@ -28,8 +35,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 
-	netServer.Close();
-	g_AppMgr->CloseDB();
 	return 0;
 }
 

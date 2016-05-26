@@ -49,11 +49,7 @@ public:
 		CLOSED,
 	};
 
-	static AppManager* GetInstance()
-	{
-		static AppManager m_instance;
-		return &m_instance;
-	}
+	static AppManager* GetInstance();
 protected:
 	AppManager(){}
 	~AppManager(){}
@@ -63,7 +59,7 @@ private:
 
 public:
 	//App起动
-	bool StartDemo();
+	bool Run();
 	//玩家登陆
 	void UserLogin(uint32_t conn){}
 	//玩家下线
@@ -94,6 +90,7 @@ private:
 	//保存boost::shared_ptr<EchoServer>
 	uv::TCPServer* m_EchoServer;
 	STATUS status = NONE;
+	static AppManager* m_Instance;
 };
 
 #define g_AppManager AppManager::GetInstance()

@@ -11,6 +11,8 @@ bool AppManager::Run()
 
 	StartDB();
 
+	status = RUNNING;
+
 	return true;
 }
 
@@ -45,8 +47,9 @@ void AppManager::NewConnction()
 	TaskMgr.PushConnction(1, new DBConnection::Connection("127.0.0.1", 3306, "root", "root", "testdatabase"));
 }
 
-void AppManager::CloseDB()
+void AppManager::Close()
 {
+	status = CLOSE;
 	DBThreadPool.ClosePool();
 	DBThreadPool.wait();
 }

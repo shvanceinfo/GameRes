@@ -7,6 +7,18 @@ AppBase* appObject[] = {
 	g_Login
 };
 
+AppManager* AppManager::m_Instance = nullptr;
+
+AppManager* AppManager::GetInstance()
+{
+	if (nullptr == m_Instance)
+	{
+		m_Instance = new AppManager();
+	}
+
+	return m_Instance;
+}
+
 void ServerAppSubject::Attach(Observer* obj)
 {
 	m_Initialze.push_back(obj);
@@ -21,7 +33,7 @@ void ServerAppSubject::Detach(Observer* obj)
 	}
 }
 
-bool AppManager::StartDemo()
+bool AppManager::Run()
 {
 	for (size_t index = 0; index < sizeof(appObject) / sizeof(AppBase*); index++)
 	{
