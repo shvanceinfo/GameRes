@@ -5,6 +5,8 @@
 /*                         连接管理类                                   */
 /************************************************************************/
 
+#include <iostream>
+#include <unordered_map>
 #include "MySqlConnection.h"
 #include "tbb44_20160413oss/include/tbb/concurrent_queue.h"
 

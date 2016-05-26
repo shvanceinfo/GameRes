@@ -42,6 +42,13 @@ public:
 class AppManager
 {
 public:
+	enum STATUS
+	{
+		NONE = 0,
+		RUNING,
+		CLOSED,
+	};
+
 	static AppManager* GetInstance()
 	{
 		static AppManager m_instance;
@@ -74,6 +81,9 @@ public:
 	void OnUpdate(){}
 	//
 	void SetEchoServere(uv::TCPServer* echo);
+	//获取状态
+	STATUS GetStatus(){ return status; }
+	void SetStatus(STATUS status_){ status = status_; }
 private:
 	//所有玩家已接收消息队列:TODO由于现在数据有点问题，所以暂时不开启环形对列
 	std::unordered_map<uint32_t, std::shared_ptr<MsgBlock>>	m_UserRecvMessage;
@@ -83,6 +93,7 @@ private:
 	//std::unordered_map<uint64_t, std::shared_ptr<T>> m_ClientUserId;
 	//保存boost::shared_ptr<EchoServer>
 	uv::TCPServer* m_EchoServer;
+	STATUS status = NONE;
 };
 
 #define g_AppManager AppManager::GetInstance()

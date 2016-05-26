@@ -32,5 +32,7 @@ bool AppManager::StartDemo()
 		}
 	}
 
+	status = RUNING;
+
 	return true;
 }

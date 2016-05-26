@@ -3,46 +3,33 @@
 
 #include "stdafx.h"
 #include "NetFrame.h"
-#include "DatabaseThreadPool.h"
-#include "ProducerConsumerQueue.h"
-#include "NewConnection.h"
-
-using namespace std;
-
-void Run(uv::TCPServer *server)
-{
-	server->tcp4_echo_start();
-}
+#include "AppManager.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	uv::TCPClient ptrClient(1,"127.0.0.1", 9999);
-
-	if (0 != ptrClient.tcp4_echo_start())
+	if (false == g_AppMgr->Run())
 	{
-		return 0;
+		g_AppMgr->CloseDB();
+		return -1;
 	}
 
-
-
-	uv::TCPServer ptrServer("127.0.0.1", 9998);
-	std::thread netApp(Run, &ptrServer);
-
-	//g_AppManager->SetEchoServere(&ptrServer);
-	DBConnection::ConnectionMgr<DBConnection::Connection> mgr;
-	mgr.PushConnction(1, new DBConnection::Connection("127.0.0.1", 3306, "root", "root", "testdatabase"));
-	DatabaseThreadPool<TaskInfo> pool;
-	pool.CreateThreadPool(10);
-
-	TaskInfo temp(mgr.GetConnction(1), std::string("select * from student"));
+	uv::TCPServer netServer("127.0.0.1", 9998);
+	netServer.Run();
+	
 	for (;;)
 	{
-		//std::this_thread::sleep_for(std::chrono::milliseconds(10));
-		//pool.post(temp);
+		auto msg = netServer.GetRecvMessage();
+ 		if (nullptr != msg)
+ 		{
+ 			g_AppMgr->RecivedMessage(msg->conn, msg->buf, msg->len);
+ 		}
+		g_AppMgr->OnUpdate();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 
-	pool.wait();
-	getchar();
+	netServer.Close();
+	g_AppMgr->CloseDB();
 	return 0;
 }
 

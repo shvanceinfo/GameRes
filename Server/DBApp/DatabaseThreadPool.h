@@ -29,7 +29,7 @@ private:
 			
 			if (value.conn == nullptr)
 			{
-				continue;
+				break;
 			}
 
 			auto conn = value.conn->GetSqlConnection();
@@ -62,6 +62,15 @@ public:
 		for (auto ptr = ThreadPool.begin(); ptr != ThreadPool.end(); ptr++)
 		{
 			(*ptr)->join();
+		}
+	}
+	void ClosePool()
+	{
+		//利用空指针结束线程
+		T value;
+		for (uint32_t i = 0; i < ThreadPool.size(); i++)
+		{
+			MessageQueue.Push(value);
 		}
 	}
 };

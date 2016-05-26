@@ -14,7 +14,7 @@ namespace uv
 
 	TCPServer::~TCPServer()
 	{
-
+		uv_stop(loop);
 	}
 
 	void TCPServer::after_write(uv_write_t* req, int status)
@@ -220,10 +220,28 @@ namespace uv
 			}
 		}
 
+		if (CLOSE == server->status.load())
+		{
+			uv_stop(server->loop);
+			return;
+		}
+
 		uv_timer_start(handle, timer_cb, 10, 0);
 	}
 
-	int TCPServer::tcp4_echo_start()
+	void TCPServer::Close()
+	{
+		SetStatus(CLOSE);
+		thread_->join();
+	}
+
+	void TCPServer::Run()
+	{
+		std::shared_ptr<std::thread> shared_thread(new std::thread(&TCPServer::Start, this));
+		thread_ = shared_thread;
+	}
+
+	int TCPServer::Start()
 	{
 		loop = uv_default_loop();
 
@@ -240,14 +258,14 @@ namespace uv
 		if (r != 0)
 		{
 			fprintf(stderr, "Socket creation error\n");
-			return 1;
+			return r;
 		}
 
 		r = uv_tcp_bind(&tcpServer, (const struct sockaddr*)&addr, 0);
 		if (r != 0)
 		{
 			fprintf(stderr, "Socket uv_tcp_bind error\n");
-			return 1;
+			return r;
 		}
 
 		tcpServer.data = this;
@@ -256,24 +274,35 @@ namespace uv
 		if (r != 0)
 		{
 			fprintf(stderr, "Socket uv_listen error\n");
-			return 1;
+			return r;
 		}
 
 		r = uv_timer_init(loop, &timer);
 		if (r != 0) {
 			fprintf(stderr, "uv_timer_init %s\n", uv_err_name(r));
-			return 1;
+			return r;
 		}
 
 		timer.data = this;
 		r = uv_timer_start(&timer, timer_cb, 10, 0);
 		if (r != 0) {
 			fprintf(stderr, "uv_timer_init %s\n", uv_err_name(r));
-			return 1;
+			return r;
+		}
+
+		if (NONE == status.load())
+		{
+			status.store(RUNING);
 		}
 
 		uv_run(loop, UV_RUN_DEFAULT);
+
 		return 0;
+	}
+
+	void TCPServer::SetStatus(STATUS status_)
+	{
+		status.store(status_);
 	}
 
 	uint32_t TCPServer::GetConnectionID()
@@ -321,42 +350,39 @@ namespace uv
 	void TCPServer::PushRecvMessage(uv_stream_t* handle, char* buf, uint32_t len)
 	{
 		auto conn = m_OnlineStream[handle];
-		std::lock_guard<std::mutex> lck(mutex_recv);
+
 		MessageInfo msg(conn, buf, len);
-		m_RecvMessage.push_back(msg);
+		m_RecvMessage.push(msg);
 	}
 
 	std::shared_ptr<MessageInfo> TCPServer::GetRecvMessage()
 	{
-		std::lock_guard<std::mutex> lck(mutex_recv);
-		if (m_RecvMessage.empty() == false)
+		std::shared_ptr<MessageInfo> msg = nullptr;
+		MessageInfo info;
+		if (m_RecvMessage.try_pop(info) == true)
 		{
-			MessageInfo msg = m_RecvMessage.front();
-			m_RecvMessage.pop_front();
-			return std::make_shared<MessageInfo>(msg);
+			msg = std::make_shared<MessageInfo>(info);
 		}
 
-		return nullptr;
+		return msg;
 	}
 
 	void TCPServer::PushSendMessage(uint32_t conn, char* buf, uint32_t len)
 	{
 		MessageInfo msg(conn, buf, len);
-		std::lock_guard<std::mutex> lck(mutex_send);
-		m_SendMessage.push_back(msg);
+		m_SendMessage.push(msg);
 	}
 
 	std::shared_ptr<MessageInfo> TCPServer::GetSendMessage()
 	{
-		std::lock_guard<std::mutex> lck(mutex_send);
-		if (m_SendMessage.empty() == false)
+		std::shared_ptr<MessageInfo> msg = nullptr;
+		MessageInfo info;
+		if (m_SendMessage.try_pop(info) == true)
 		{
-			auto msg = std::make_shared<MessageInfo>(m_SendMessage.front());
-			m_SendMessage.pop_front();
-			return msg;
+			msg = std::make_shared<MessageInfo>(info);
 		}
 
-		return nullptr;
+		return msg;
 	}
 
 	void TCPClient::alloc_cb(uv_handle_t* handle, size_t size, uv_buf_t* buf)
@@ -368,7 +394,7 @@ namespace uv
 	void TCPClient::close_cb(uv_handle_t* handle)
 	{
 		TCPClient* tcpClient = (TCPClient*)handle->data;
-		tcpClient->status = NONE;
+		tcpClient->status.store(NONE);
 		uv_tcp_init(tcpClient->loop, &tcpClient->client);
 	}
 
@@ -396,26 +422,36 @@ namespace uv
 	{
 		TCPClient* tcpClient = (TCPClient*)handle->data;
 
-		if (tcpClient->status != CONNECTED)
+		if (tcpClient->status.load() == CLOSE)
+		{
+			//直接关闭
+			uv_shutdown(&tcpClient->shutdown_req, tcpClient->connect_req.handle, shutdown_cb);
+			return;
+		}
+		else if (tcpClient->status.load() == NONE)
 		{
 			//断线再次连接
 			uv_tcp_connect(&tcpClient->connect_req, &tcpClient->client, (const struct sockaddr*)&tcpClient->addr, connect_cb);
 			return;
 		}
 
+		//读取消息
 		if (uv_read_start((uv_stream_t*)&tcpClient->client, alloc_cb, read_cb))
 		{
 		}
 
-		//TODO
-		static const char MESSAGE[] = "Failure is for the weak. Everyone dies alone.";
-		uv_buf_t buf;
-		buf.base = (char*)&MESSAGE;
-		buf.len = sizeof MESSAGE;
+		//发送消息
+		auto msg = tcpClient->GetSendMessage();
+		if (msg != nullptr)
+		{
+			uv_buf_t buf;
+			buf.base = msg->buf;
+			buf.len = msg->len;
 
-		if (uv_write(&tcpClient->write_req, (uv_stream_t*)tcpClient->connect_req.handle, &buf, 1, write_cb)) {
-			std::cout << "uv_write failed" << std::endl;
-		}
+			if (uv_write(&tcpClient->write_req, (uv_stream_t*)tcpClient->connect_req.handle, &buf, 1, write_cb)) {
+				std::cout << "uv_write failed" << std::endl;
+			}
+		}		
 
 		int r = uv_timer_start(&tcpClient->timer, timer_cb, 10, 0);
 		if (r)
@@ -435,9 +471,9 @@ namespace uv
 		{
 			std::cout <<"connect faild:"<< status << std::endl;
 		}
-		else
+		else if (NONE == tcpClient->status.load())
 		{
-			tcpClient->status = CONNECTED;
+			tcpClient->status.store(RUNING);
 		}
 
 		int r = uv_timer_init(tcpClient->loop, &tcpClient->timer);
@@ -462,7 +498,19 @@ namespace uv
 		unicode = unicode_;
 	}
 
-	int TCPClient::tcp4_echo_start()
+	void TCPClient::Close()
+	{
+		SetStatus(CLOSE);
+		thread_->join();
+	}
+
+	void TCPClient::Run()
+	{
+		std::shared_ptr<std::thread> shared_thread(new std::thread(&TCPClient::Start, this));
+		thread_ = shared_thread;
+	}
+
+	int TCPClient::Start()
 	{
 		loop = uv_default_loop();
 		
@@ -481,12 +529,9 @@ namespace uv
 		{
 			return r;
 		}
-		status = CONNECTING;
 
 		uv_run(loop, UV_RUN_DEFAULT);
-
-		uv_loop_delete(loop);
-
+		uv_stop(loop);
 		return r;
 	}
 
