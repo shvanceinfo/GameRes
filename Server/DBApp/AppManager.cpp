@@ -41,7 +41,7 @@ void AppManager::StartDB()
 	DBThreadPool.CreateThreadPool(10);
 }
 
-void AppManager::NewConnction(uint32_t conn)
+void AppManager::NewConnction(uint16_t conn)
 {
 	TaskMgr.PushConnction(conn, std::shared_ptr<DBConnection::Connction<MySqlConnection>>
 		(new DBConnection::Connction<MySqlConnection>("127.0.0.1", 3306, "root", "root", "testdatabase")));

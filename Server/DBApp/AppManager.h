@@ -36,7 +36,7 @@ public:
 	void Close();
 	void StartDB();
 	bool LoadConfigValue();
-	void NewConnction(uint32_t conn);
+	void NewConnction(uint16_t conn);
 	void RecivedMessage(std::shared_ptr<uv::MessageInfo> value);
 	void OnUpdate();
 	STATUS GetStatus(){ return status; }
