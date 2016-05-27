@@ -5,7 +5,17 @@
 #include <mysql.h>
 using namespace std;
 
-class MySqlConnection
+class ConnectionBase
+{
+public:
+	ConnectionBase(){}
+	virtual ~ConnectionBase(){}
+
+	virtual bool init(std::string ip, uint16_t port, std::string account, std::string pass, std::string name) = 0;
+	virtual bool Query(std::string && sql) = 0;
+};
+
+class MySqlConnection : public ConnectionBase
 {
 public:
 	bool init(std::string ip, uint16_t port, std::string account, std::string pass, std::string name)

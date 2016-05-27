@@ -38,10 +38,7 @@ private:
 				continue;
 			}
 
-			if (false == conn->Query(std::move(value.cmd)))
-			{
-				
-			}
+			conn->Query(std::move(value.cmd));
 
 			value.conn->PushConnection(conn);
 		}

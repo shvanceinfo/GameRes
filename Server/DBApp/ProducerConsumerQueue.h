@@ -8,15 +8,6 @@
 #include <type_traits>
 #include "NewConnection.h"
 
-struct TaskInfo
-{
-public:
-	TaskInfo(){};
-	TaskInfo(DBConnection::Connection* conn_, std::string && cmd_) : conn(conn_), cmd(cmd_){}
-	DBConnection::Connection* conn = nullptr;
-	std::string cmd = "";
-};
-
 template<typename T>
 class ProducerConsumerQueue
 {

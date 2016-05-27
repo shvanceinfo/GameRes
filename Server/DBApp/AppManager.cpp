@@ -31,20 +31,20 @@ AppManager* AppManager::GetInstance()
 	return m_Instance;
 }
 
-void AppManager::RecivedMessage(uint32_t conn, char *buf, uint32_t len)
+void AppManager::RecivedMessage(std::shared_ptr<uv::MessageInfo> value)
 {
-
+	m_MessageList.push_back(value);
 }
 
 void AppManager::StartDB()
 {
 	DBThreadPool.CreateThreadPool(10);
-	//TaskInfo temp(TaskMgr.GetConnction(1), std::string("select * from student"));
 }
 
-void AppManager::NewConnction()
+void AppManager::NewConnction(uint32_t conn)
 {
-	TaskMgr.PushConnction(1, new DBConnection::Connection("127.0.0.1", 3306, "root", "root", "testdatabase"));
+	TaskMgr.PushConnction(conn, std::make_shared<DBConnection::Connction<MySqlConnection>*>
+		(new DBConnection::Connction<MySqlConnection>("127.0.0.1", 3306, "root", "root", "testdatabase")));
 }
 
 void AppManager::Close()
@@ -52,4 +52,26 @@ void AppManager::Close()
 	status = CLOSE;
 	DBThreadPool.ClosePool();
 	DBThreadPool.wait();
+}
+
+void AppManager::OnUpdate()
+{
+	for (auto itr = m_MessageList.begin(); itr != m_MessageList.end(); itr++)
+	{
+		auto stat = m_UserStatus.find(itr->get()->conn);
+		if (stat == m_UserStatus.end() || true == stat->second)
+		{
+			continue;
+		}
+
+		//TODO将收到的消息结构体解析成sql语句
+		auto conn = TaskMgr.GetConnction(stat->first);
+		if (conn == nullptr)
+		{
+			continue;
+		}
+
+		TaskInfo temp(conn, std::string("select * from student"));
+		stat->second = true;
+	}
 }

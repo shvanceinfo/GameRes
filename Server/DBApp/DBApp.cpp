@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		auto msg = netServer.GetRecvMessage();
  		if (nullptr != msg)
  		{
- 			g_AppMgr->RecivedMessage(msg->conn, msg->buf, msg->len);
+ 			g_AppMgr->RecivedMessage(msg);
  		}
 		g_AppMgr->OnUpdate();
 
