@@ -43,7 +43,7 @@ void AppManager::StartDB()
 
 void AppManager::NewConnction(uint32_t conn)
 {
-	TaskMgr.PushConnction(conn, std::make_shared<DBConnection::Connction<MySqlConnection>*>
+	TaskMgr.PushConnction(conn, std::shared_ptr<DBConnection::Connction<MySqlConnection>>
 		(new DBConnection::Connction<MySqlConnection>("127.0.0.1", 3306, "root", "root", "testdatabase")));
 }
 

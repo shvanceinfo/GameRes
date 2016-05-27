@@ -10,8 +10,8 @@ struct TaskInfo
 {
 public:
 	TaskInfo(){};
-	TaskInfo(std::shared_ptr<DBConnection::Connction<MySqlConnection>*> conn_, std::string && cmd_) : conn(conn_), cmd(cmd_){}
-	std::shared_ptr<DBConnection::Connction<MySqlConnection>*> conn = nullptr;
+	TaskInfo(std::shared_ptr<DBConnection::Connction<MySqlConnection>> conn_, std::string && cmd_) : conn(conn_), cmd(cmd_){}
+	std::shared_ptr<DBConnection::Connction<MySqlConnection>> conn = nullptr;
 	std::string cmd = "";
 };
 

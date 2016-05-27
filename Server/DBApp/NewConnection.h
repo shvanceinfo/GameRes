@@ -21,12 +21,12 @@ namespace DBConnection
 			ip_(ip), port_(port), account_(account), pass_(pass), name_(name){}
 
 		//获取连接
-		ConnectionBase* GetSqlConnection()
+		std::shared_ptr<ConnectionBase> GetSqlConnection()
 		{
-			ConnectionBase* conn = nullptr;
+			std::shared_ptr<ConnectionBase> conn = nullptr;
 			if (false == que.try_pop(conn))
 			{
-				conn = new T();
+				conn = std::shared_ptr<T>(new T());
 				if (true == conn->init(ip_, port_, account_, pass_, name_))
 				{
 					return conn;
@@ -39,14 +39,14 @@ namespace DBConnection
 		}
 
 		//释放连接
-		void PushConnection(ConnectionBase* conn)
+		void PushConnection(std::shared_ptr<ConnectionBase> conn)
 		{
 			que.push(conn);
 		}
 
 	private:
 		//每个服对应的sql连接
-		tbb::concurrent_queue<ConnectionBase*> que;
+		tbb::concurrent_queue<std::shared_ptr<ConnectionBase>> que;
 		std::string ip_;
 		uint16_t port_;
 		std::string account_;
@@ -58,12 +58,12 @@ namespace DBConnection
 	class ConnectionMgr
 	{
 	public:
-		void PushConnction(uint16_t index, std::shared_ptr<Connction<T>*> conn)
+		void PushConnction(uint16_t index, std::shared_ptr<Connction<T>> conn)
 		{
 			m_Connections[index] = conn;
 		}
 
-		std::shared_ptr<Connction<T>*> GetConnction(uint16_t index)
+		std::shared_ptr<Connction<T>> GetConnction(uint16_t index)
 		{
 			auto itr = m_Connections.find(index);
 			if (itr == m_Connections.end())
@@ -75,7 +75,7 @@ namespace DBConnection
 		}
 
 	private:
-		std::unordered_map<uint16_t, std::shared_ptr<Connction<T>*>> m_Connections;
+		std::unordered_map<uint16_t, std::shared_ptr<Connction<T>>> m_Connections;
 	};
 }
 #endif

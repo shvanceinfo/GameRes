@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include "NetFrame.h"
 #include "AppManager.h"
+#include "NetFrame.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
