@@ -18,6 +18,11 @@ public:
 class MySqlConnection : public ConnectionBase
 {
 public:
+	~MySqlConnection()
+	{
+		mysql_close(mysql_);
+	}
+public:
 	bool init(std::string ip, uint16_t port, std::string account, std::string pass, std::string name)
 	{
 		MYSQL* mysqlInit;
@@ -27,7 +32,7 @@ public:
 			return false;
 		}
 
-		if (NULL != mysql_options(mysqlInit, MYSQL_SET_CHARSET_NAME, "UTF8"))
+		if (NULL != mysql_options(mysqlInit, MYSQL_SET_CHARSET_NAME, "utf8"))
 		{
 			return false;
 		}

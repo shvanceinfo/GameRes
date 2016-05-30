@@ -44,7 +44,7 @@ void AppManager::StartDB()
 void AppManager::NewConnction(uint16_t conn)
 {
 	TaskMgr.PushConnction(conn, std::shared_ptr<DBConnection::Connction<MySqlConnection>>
-		(new DBConnection::Connction<MySqlConnection>("127.0.0.1", 3306, "root", "root", "testdatabase")));
+		(new DBConnection::Connction<MySqlConnection>("127.0.0.1", 3306, "root", "root", "GameData")));
 }
 
 void AppManager::Close()
@@ -56,11 +56,14 @@ void AppManager::Close()
 
 void AppManager::OnUpdate()
 {
-	for (auto itr = m_MessageList.begin(); itr != m_MessageList.end(); itr++)
+	m_UserStatus[1] = false;
+	NewConnction(1);
+	for (auto itr = m_MessageList.begin(); itr != m_MessageList.end();)
 	{
 		auto stat = m_UserStatus.find(itr->get()->conn);
 		if (stat == m_UserStatus.end() || true == stat->second)
 		{
+			itr++;
 			continue;
 		}
 
@@ -68,10 +71,15 @@ void AppManager::OnUpdate()
 		auto conn = TaskMgr.GetConnction(stat->first);
 		if (conn == nullptr)
 		{
+			itr++;
 			continue;
 		}
 
-		TaskInfo temp(conn, std::string("select * from student"));
+		TaskInfo temp(conn, std::string("select * from Platform"));
+		DBThreadPool.post(temp);
+
 		stat->second = true;
+
+		//m_MessageList.erase(itr++);
 	}
 }

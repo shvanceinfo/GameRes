@@ -15,7 +15,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	uv::TCPServer netServer("127.0.0.1", 9998);
 	netServer.Run();
-	
+
 	while (true)
 	{
 		if (AppManager::STATUS::CLOSE == g_AppMgr->GetStatus())
@@ -29,7 +29,12 @@ int _tmain(int argc, _TCHAR* argv[])
  		if (nullptr != msg)
  		{
  			g_AppMgr->RecivedMessage(msg);
- 		}
+		}
+		else
+		{
+			std::shared_ptr<uv::MessageInfo> msg1(new uv::MessageInfo(1,"222",3));
+			g_AppMgr->RecivedMessage(msg1);
+		}
 		g_AppMgr->OnUpdate();
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));

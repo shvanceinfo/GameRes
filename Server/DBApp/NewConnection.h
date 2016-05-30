@@ -34,7 +34,6 @@ namespace DBConnection
 
 				return nullptr;
 			}
-
 			return conn;
 		}
 
