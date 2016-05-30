@@ -11,7 +11,6 @@
 #include <list>
 #include <thread>
 #include <memory>
-#include "MySqlConnection.h"
 #include "ProducerConsumerQueue.h"
 
 template<typename T>
