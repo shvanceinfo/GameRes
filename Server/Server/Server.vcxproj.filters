@@ -25,6 +25,9 @@
     <Filter Include="Comm">
       <UniqueIdentifier>{972f361b-ba09-4f0a-a8e7-8c5426d8a3ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\Mail">
+      <UniqueIdentifier>{b68b47c4-dc7e-4cd4-82b1-d17c39b957d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -60,6 +63,9 @@
     <ClInclude Include="..\NetApp\Observer.h">
       <Filter>Comm</Filter>
     </ClInclude>
+    <ClInclude Include="Mail.h">
+      <Filter>Logic\Mail</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -88,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="AppInitialze.cpp">
       <Filter>NetMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="Mail.cpp">
+      <Filter>Logic\Mail</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

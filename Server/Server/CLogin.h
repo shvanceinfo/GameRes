@@ -21,6 +21,13 @@ public:
 	void HandleCreateRole(int cmd, int connection, std::string recvMsg);
 	//全用角色
 	void HandleSelectRole(int cmd, int connection, std::string recvMsg);
+	//拉取公告、客服信息、运维公告
+	void HandleAskNotice(int cmd, int connection, std::string recvMsg);
+	
+	//请求移动TODO
+	//GCAskMove
+	//请求进入场景TODO放在Map类里面
+	//GCAskEnterScene
 private:
 	CLogin(){};
 	~CLogin(){}

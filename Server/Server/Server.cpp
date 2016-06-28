@@ -28,8 +28,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	uv::TCPServer netServer("127.0.0.1", 9999);
 	netServer.Run();
 
-	uv::TCPClient netClient(1, "127.0.0.1", 9998);
-	netClient.Run();
+	//uv::TCPClient netClient(1, "127.0.0.1", 9998);
+	//netClient.Run();
 
 	g_AppManager->SetEchoServere(&netServer);
 
@@ -51,7 +51,7 @@ int _tmain(int argc, _TCHAR* argv[])
  	}
 
 	netServer.Close();
-	netClient.Close();
+	//netClient.Close();
 	return 0;
 }
 

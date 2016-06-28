@@ -42,6 +42,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CNetErrorMessage_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CNetErrorMessage_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGSNotifyService_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CGSNotifyService_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CGSNotifyChangeScene_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGSNotifyChangeScene_reflection_ = NULL;
@@ -141,9 +144,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGCAskTowerInstanceAward_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGCAskTowerInstanceAward_reflection_ = NULL;
-const ::google::protobuf::Descriptor* CGCAskEMailList_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* MainInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  CGCAskEMailList_reflection_ = NULL;
+  MainInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* CGSNotifyEMailList_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  CGSNotifyEMailList_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GCAskReadEMail_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GCAskReadEMail_reflection_ = NULL;
@@ -156,9 +162,6 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CGSNotifyRankList_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGSNotifyRankList_reflection_ = NULL;
-const ::google::protobuf::Descriptor* CGSNotifyEMailList_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  CGSNotifyEMailList_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CGCSendCreateRole_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CGCSendCreateRole_reflection_ = NULL;
@@ -205,6 +208,8 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
   CGCAskGuideComplate_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* CeC2GType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* CeG2CType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* PostType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* EmailState_descriptor_ = NULL;
 
 }  // namespace
 
@@ -351,7 +356,27 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CNetErrorMessage),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CNetErrorMessage, _internal_metadata_),
       -1);
-  CGSNotifyChangeScene_descriptor_ = file->message_type(7);
+  CGSNotifyService_descriptor_ = file->message_type(7);
+  static const int CGSNotifyService_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, msgtime_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, title_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, content_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, author_),
+  };
+  CGSNotifyService_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      CGSNotifyService_descriptor_,
+      CGSNotifyService::default_instance_,
+      CGSNotifyService_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(CGSNotifyService),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyService, _internal_metadata_),
+      -1);
+  CGSNotifyChangeScene_descriptor_ = file->message_type(8);
   static const int CGSNotifyChangeScene_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyChangeScene, m_un32mapid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyChangeScene, m_un32sceneid_),
@@ -371,7 +396,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyChangeScene),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyChangeScene, _internal_metadata_),
       -1);
-  CGSNotifyRoleAppear_descriptor_ = file->message_type(8);
+  CGSNotifyRoleAppear_descriptor_ = file->message_type(9);
   static const int CGSNotifyRoleAppear_offsets_[19] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleAppear, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleAppear, m_n32rolenickname_),
@@ -404,7 +429,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyRoleAppear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleAppear, _internal_metadata_),
       -1);
-  CGSObjectDisappear_descriptor_ = file->message_type(9);
+  CGSObjectDisappear_descriptor_ = file->message_type(10);
   static const int CGSObjectDisappear_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectDisappear, objnum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectDisappear, m_un32objid_),
@@ -420,7 +445,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSObjectDisappear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectDisappear, _internal_metadata_),
       -1);
-  CGCAskLogout_descriptor_ = file->message_type(10);
+  CGCAskLogout_descriptor_ = file->message_type(11);
   static const int CGCAskLogout_offsets_[1] = {
   };
   CGCAskLogout_reflection_ =
@@ -434,7 +459,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskLogout),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskLogout, _internal_metadata_),
       -1);
-  CGSObjectMove_descriptor_ = file->message_type(11);
+  CGSObjectMove_descriptor_ = file->message_type(12);
   static const int CGSObjectMove_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectMove, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectMove, m_fcurposx_),
@@ -456,7 +481,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSObjectMove),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSObjectMove, _internal_metadata_),
       -1);
-  CGCAskMove_descriptor_ = file->message_type(12);
+  CGCAskMove_descriptor_ = file->message_type(13);
   static const int CGCAskMove_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMove, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMove, m_fcurposx_),
@@ -478,7 +503,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskMove),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMove, _internal_metadata_),
       -1);
-  CGSNotifyRoleProfileChange_descriptor_ = file->message_type(13);
+  CGSNotifyRoleProfileChange_descriptor_ = file->message_type(14);
   static const int CGSNotifyRoleProfileChange_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleProfileChange, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleProfileChange, m_un32weapontypeid_),
@@ -496,7 +521,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyRoleProfileChange),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleProfileChange, _internal_metadata_),
       -1);
-  CGCReportPassGate_descriptor_ = file->message_type(14);
+  CGCReportPassGate_descriptor_ = file->message_type(15);
   static const int CGCReportPassGate_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportPassGate, m_un32mapid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportPassGate, m_un32sceneid_),
@@ -518,7 +543,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportPassGate),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportPassGate, _internal_metadata_),
       -1);
-  CGCAskTreasureBoxDropGoods_descriptor_ = file->message_type(15);
+  CGCAskTreasureBoxDropGoods_descriptor_ = file->message_type(16);
   static const int CGCAskTreasureBoxDropGoods_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTreasureBoxDropGoods, m_un32boxid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTreasureBoxDropGoods, m_isshowaward_),
@@ -534,7 +559,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskTreasureBoxDropGoods),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTreasureBoxDropGoods, _internal_metadata_),
       -1);
-  CGCAskEnterScene_descriptor_ = file->message_type(16);
+  CGCAskEnterScene_descriptor_ = file->message_type(17);
   static const int CGCAskEnterScene_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterScene, m_n32mapid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterScene, m_n32sceneid_),
@@ -555,7 +580,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskEnterScene),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterScene, _internal_metadata_),
       -1);
-  CGSNotifyRoleMapScheduleList_descriptor_ = file->message_type(17);
+  CGSNotifyRoleMapScheduleList_descriptor_ = file->message_type(18);
   static const int CGSNotifyRoleMapScheduleList_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleMapScheduleList, linenum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleMapScheduleList, mapid_),
@@ -571,7 +596,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyRoleMapScheduleList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleMapScheduleList, _internal_metadata_),
       -1);
-  CGSNotifyRoleFightProperty_descriptor_ = file->message_type(18);
+  CGSNotifyRoleFightProperty_descriptor_ = file->message_type(19);
   static const int CGSNotifyRoleFightProperty_offsets_[1] = {
   };
   CGSNotifyRoleFightProperty_reflection_ =
@@ -585,7 +610,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyRoleFightProperty),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRoleFightProperty, _internal_metadata_),
       -1);
-  CGSNotifyAssetChange_descriptor_ = file->message_type(19);
+  CGSNotifyAssetChange_descriptor_ = file->message_type(20);
   static const int CGSNotifyAssetChange_offsets_[1] = {
   };
   CGSNotifyAssetChange_reflection_ =
@@ -599,7 +624,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyAssetChange),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyAssetChange, _internal_metadata_),
       -1);
-  CGSNotifyLevelChange_descriptor_ = file->message_type(20);
+  CGSNotifyLevelChange_descriptor_ = file->message_type(21);
   static const int CGSNotifyLevelChange_offsets_[1] = {
   };
   CGSNotifyLevelChange_reflection_ =
@@ -613,7 +638,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyLevelChange),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyLevelChange, _internal_metadata_),
       -1);
-  CGSNotifyExpChange_descriptor_ = file->message_type(21);
+  CGSNotifyExpChange_descriptor_ = file->message_type(22);
   static const int CGSNotifyExpChange_offsets_[1] = {
   };
   CGSNotifyExpChange_reflection_ =
@@ -627,7 +652,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyExpChange),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyExpChange, _internal_metadata_),
       -1);
-  CGSNotifyCurProperty_descriptor_ = file->message_type(22);
+  CGSNotifyCurProperty_descriptor_ = file->message_type(23);
   static const int CGSNotifyCurProperty_offsets_[1] = {
   };
   CGSNotifyCurProperty_reflection_ =
@@ -641,7 +666,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyCurProperty),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyCurProperty, _internal_metadata_),
       -1);
-  CGSNotifyDisplayGateIncome_descriptor_ = file->message_type(23);
+  CGSNotifyDisplayGateIncome_descriptor_ = file->message_type(24);
   static const int CGSNotifyDisplayGateIncome_offsets_[1] = {
   };
   CGSNotifyDisplayGateIncome_reflection_ =
@@ -655,7 +680,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyDisplayGateIncome),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyDisplayGateIncome, _internal_metadata_),
       -1);
-  CGCAskRelive_descriptor_ = file->message_type(24);
+  CGCAskRelive_descriptor_ = file->message_type(25);
   static const int CGCAskRelive_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRelive, _relivetype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRelive, _assettype_),
@@ -672,7 +697,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskRelive),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRelive, _internal_metadata_),
       -1);
-  CGCReportExp_descriptor_ = file->message_type(25);
+  CGCReportExp_descriptor_ = file->message_type(26);
   static const int CGCReportExp_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportExp, m_un32gotexp_),
   };
@@ -687,7 +712,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportExp),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportExp, _internal_metadata_),
       -1);
-  CGCReportUseSkill_descriptor_ = file->message_type(26);
+  CGCReportUseSkill_descriptor_ = file->message_type(27);
   static const int CGCReportUseSkill_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportUseSkill, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportUseSkill, m_un32skillid_),
@@ -709,7 +734,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportUseSkill),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportUseSkill, _internal_metadata_),
       -1);
-  CGSNotifySkillReleased_descriptor_ = file->message_type(27);
+  CGSNotifySkillReleased_descriptor_ = file->message_type(28);
   static const int CGSNotifySkillReleased_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifySkillReleased, m_un32objectid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifySkillReleased, m_un32skillid_),
@@ -731,7 +756,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifySkillReleased),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifySkillReleased, _internal_metadata_),
       -1);
-  CGCReportOBjectAppear_descriptor_ = file->message_type(28);
+  CGCReportOBjectAppear_descriptor_ = file->message_type(29);
   static const int CGCReportOBjectAppear_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectAppear, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectAppear, m_un32tempid_),
@@ -753,7 +778,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportOBjectAppear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectAppear, _internal_metadata_),
       -1);
-  CGSNotifyObjectAppear_descriptor_ = file->message_type(29);
+  CGSNotifyObjectAppear_descriptor_ = file->message_type(30);
   static const int CGSNotifyObjectAppear_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAppear, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAppear, m_un32tempid_),
@@ -775,7 +800,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyObjectAppear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAppear, _internal_metadata_),
       -1);
-  CGCReportOBjectDisappear_descriptor_ = file->message_type(30);
+  CGCReportOBjectDisappear_descriptor_ = file->message_type(31);
   static const int CGCReportOBjectDisappear_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectDisappear, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectDisappear, m_n32reason_),
@@ -791,7 +816,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportOBjectDisappear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportOBjectDisappear, _internal_metadata_),
       -1);
-  CGSNotifyObjectDisappear_descriptor_ = file->message_type(31);
+  CGSNotifyObjectDisappear_descriptor_ = file->message_type(32);
   static const int CGSNotifyObjectDisappear_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectDisappear, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectDisappear, m_n32reason_),
@@ -807,7 +832,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyObjectDisappear),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectDisappear, _internal_metadata_),
       -1);
-  CGCReportObjectAction_descriptor_ = file->message_type(32);
+  CGCReportObjectAction_descriptor_ = file->message_type(33);
   static const int CGCReportObjectAction_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectAction, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectAction, m_n32actioncate_),
@@ -829,7 +854,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportObjectAction),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectAction, _internal_metadata_),
       -1);
-  CGSNotifyObjectAction_descriptor_ = file->message_type(33);
+  CGSNotifyObjectAction_descriptor_ = file->message_type(34);
   static const int CGSNotifyObjectAction_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAction, m_un32objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAction, m_n32actioncate_),
@@ -851,7 +876,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyObjectAction),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectAction, _internal_metadata_),
       -1);
-  CGCReportObjectHurm_descriptor_ = file->message_type(34);
+  CGCReportObjectHurm_descriptor_ = file->message_type(35);
   static const int CGCReportObjectHurm_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectHurm, m_bhost_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectHurm, m_un32objid_),
@@ -870,7 +895,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportObjectHurm),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportObjectHurm, _internal_metadata_),
       -1);
-  CGSNotifyObjectHurm_descriptor_ = file->message_type(35);
+  CGSNotifyObjectHurm_descriptor_ = file->message_type(36);
   static const int CGSNotifyObjectHurm_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectHurm, m_bhost_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectHurm, m_un32objid_),
@@ -889,7 +914,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyObjectHurm),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyObjectHurm, _internal_metadata_),
       -1);
-  CGCAskEnterTowerInstance_descriptor_ = file->message_type(36);
+  CGCAskEnterTowerInstance_descriptor_ = file->message_type(37);
   static const int CGCAskEnterTowerInstance_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterTowerInstance, m_un32towerid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterTowerInstance, m_bcurwave_),
@@ -905,7 +930,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskEnterTowerInstance),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEnterTowerInstance, _internal_metadata_),
       -1);
-  CGCReportTowerInstanceScore_descriptor_ = file->message_type(37);
+  CGCReportTowerInstanceScore_descriptor_ = file->message_type(38);
   static const int CGCReportTowerInstanceScore_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportTowerInstanceScore, m_un32towerid_),
   };
@@ -920,7 +945,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportTowerInstanceScore),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportTowerInstanceScore, _internal_metadata_),
       -1);
-  CGCAskTowerInstanceRank_descriptor_ = file->message_type(38);
+  CGCAskTowerInstanceRank_descriptor_ = file->message_type(39);
   static const int CGCAskTowerInstanceRank_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTowerInstanceRank, m_un16type_),
   };
@@ -935,7 +960,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskTowerInstanceRank),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTowerInstanceRank, _internal_metadata_),
       -1);
-  CGCAskTowerInstanceAward_descriptor_ = file->message_type(39);
+  CGCAskTowerInstanceAward_descriptor_ = file->message_type(40);
   static const int CGCAskTowerInstanceAward_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTowerInstanceAward, m_u32towerid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTowerInstanceAward, m_u16towertype_),
@@ -951,21 +976,42 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskTowerInstanceAward),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskTowerInstanceAward, _internal_metadata_),
       -1);
-  CGCAskEMailList_descriptor_ = file->message_type(40);
-  static const int CGCAskEMailList_offsets_[1] = {
+  MainInfo_descriptor_ = file->message_type(41);
+  static const int MainInfo_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, title_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, content_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, state_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, awardstate_),
   };
-  CGCAskEMailList_reflection_ =
+  MainInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      CGCAskEMailList_descriptor_,
-      CGCAskEMailList::default_instance_,
-      CGCAskEMailList_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEMailList, _has_bits_[0]),
+      MainInfo_descriptor_,
+      MainInfo::default_instance_,
+      MainInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, _has_bits_[0]),
       -1,
       -1,
-      sizeof(CGCAskEMailList),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskEMailList, _internal_metadata_),
+      sizeof(MainInfo),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MainInfo, _internal_metadata_),
       -1);
-  GCAskReadEMail_descriptor_ = file->message_type(41);
+  CGSNotifyEMailList_descriptor_ = file->message_type(42);
+  static const int CGSNotifyEMailList_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, m_un32emailnum_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, m_mailinfo_),
+  };
+  CGSNotifyEMailList_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      CGSNotifyEMailList_descriptor_,
+      CGSNotifyEMailList::default_instance_,
+      CGSNotifyEMailList_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(CGSNotifyEMailList),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, _internal_metadata_),
+      -1);
+  GCAskReadEMail_descriptor_ = file->message_type(43);
   static const int GCAskReadEMail_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GCAskReadEMail, m_un32emailid_),
   };
@@ -980,7 +1026,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(GCAskReadEMail),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GCAskReadEMail, _internal_metadata_),
       -1);
-  CGCAskGetEMailPrize_descriptor_ = file->message_type(42);
+  CGCAskGetEMailPrize_descriptor_ = file->message_type(44);
   static const int CGCAskGetEMailPrize_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGetEMailPrize, m_un32emailid_),
   };
@@ -995,7 +1041,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskGetEMailPrize),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGetEMailPrize, _internal_metadata_),
       -1);
-  CGCAskRemoveEMail_descriptor_ = file->message_type(43);
+  CGCAskRemoveEMail_descriptor_ = file->message_type(45);
   static const int CGCAskRemoveEMail_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRemoveEMail, m_un32emailid_),
   };
@@ -1010,7 +1056,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskRemoveEMail),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRemoveEMail, _internal_metadata_),
       -1);
-  CGSNotifyRankList_descriptor_ = file->message_type(44);
+  CGSNotifyRankList_descriptor_ = file->message_type(46);
   static const int CGSNotifyRankList_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRankList, m_n8rankcate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRankList, m_n32selfrank_),
@@ -1028,22 +1074,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGSNotifyRankList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyRankList, _internal_metadata_),
       -1);
-  CGSNotifyEMailList_descriptor_ = file->message_type(45);
-  static const int CGSNotifyEMailList_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, m_un32emailnum_),
-  };
-  CGSNotifyEMailList_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      CGSNotifyEMailList_descriptor_,
-      CGSNotifyEMailList::default_instance_,
-      CGSNotifyEMailList_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(CGSNotifyEMailList),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGSNotifyEMailList, _internal_metadata_),
-      -1);
-  CGCSendCreateRole_descriptor_ = file->message_type(46);
+  CGCSendCreateRole_descriptor_ = file->message_type(47);
   static const int CGCSendCreateRole_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRole, _u32vocationid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRole, _bytegender_),
@@ -1061,7 +1092,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCSendCreateRole),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRole, _internal_metadata_),
       -1);
-  CGCSendCreateRoleRet_descriptor_ = file->message_type(47);
+  CGCSendCreateRoleRet_descriptor_ = file->message_type(48);
   static const int CGCSendCreateRoleRet_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRoleRet, _result_),
   };
@@ -1076,7 +1107,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCSendCreateRoleRet),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCSendCreateRoleRet, _internal_metadata_),
       -1);
-  CGCAskRankList_descriptor_ = file->message_type(48);
+  CGCAskRankList_descriptor_ = file->message_type(49);
   static const int CGCAskRankList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRankList, m_n8rankcate_),
   };
@@ -1091,7 +1122,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskRankList),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskRankList, _internal_metadata_),
       -1);
-  CGCAsChargeIOS_descriptor_ = file->message_type(49);
+  CGCAsChargeIOS_descriptor_ = file->message_type(50);
   static const int CGCAsChargeIOS_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, m_bisdebug_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, m_strlen_),
@@ -1108,7 +1139,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAsChargeIOS),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAsChargeIOS, _internal_metadata_),
       -1);
-  CGCNotifyChargeIOS_descriptor_ = file->message_type(50);
+  CGCNotifyChargeIOS_descriptor_ = file->message_type(51);
   static const int CGCNotifyChargeIOS_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, m_nresult_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, m_strlen_),
@@ -1125,7 +1156,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCNotifyChargeIOS),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCNotifyChargeIOS, _internal_metadata_),
       -1);
-  CGCReportProcuce_descriptor_ = file->message_type(51);
+  CGCReportProcuce_descriptor_ = file->message_type(52);
   static const int CGCReportProcuce_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _bookid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _busediamond_),
@@ -1141,7 +1172,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCReportProcuce),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCReportProcuce, _internal_metadata_),
       -1);
-  CGCAskChapterAward_descriptor_ = file->message_type(52);
+  CGCAskChapterAward_descriptor_ = file->message_type(53);
   static const int CGCAskChapterAward_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _chapternum_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _hardchapter_),
@@ -1157,7 +1188,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskChapterAward),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskChapterAward, _internal_metadata_),
       -1);
-  CGCAskMedalInfo_descriptor_ = file->message_type(53);
+  CGCAskMedalInfo_descriptor_ = file->message_type(54);
   static const int CGCAskMedalInfo_offsets_[1] = {
   };
   CGCAskMedalInfo_reflection_ =
@@ -1171,7 +1202,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskMedalInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMedalInfo, _internal_metadata_),
       -1);
-  CGCAskMedalLevelUp_descriptor_ = file->message_type(54);
+  CGCAskMedalLevelUp_descriptor_ = file->message_type(55);
   static const int CGCAskMedalLevelUp_offsets_[1] = {
   };
   CGCAskMedalLevelUp_reflection_ =
@@ -1185,7 +1216,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskMedalLevelUp),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskMedalLevelUp, _internal_metadata_),
       -1);
-  CGCAskAddFriend_descriptor_ = file->message_type(55);
+  CGCAskAddFriend_descriptor_ = file->message_type(56);
   static const int CGCAskAddFriend_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _friendopt_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _rolename_),
@@ -1202,7 +1233,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskAddFriend, _internal_metadata_),
       -1);
   CGCAskAddFriend_FriendSendType_descriptor_ = CGCAskAddFriend_descriptor_->enum_type(0);
-  CGCVipFriend_descriptor_ = file->message_type(56);
+  CGCVipFriend_descriptor_ = file->message_type(57);
   static const int CGCVipFriend_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCVipFriend, _friendopt_),
   };
@@ -1218,7 +1249,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCVipFriend, _internal_metadata_),
       -1);
   CGCVipFriend_FriendSendType_descriptor_ = CGCVipFriend_descriptor_->enum_type(0);
-  CGCAskFriendRecord_descriptor_ = file->message_type(57);
+  CGCAskFriendRecord_descriptor_ = file->message_type(58);
   static const int CGCAskFriendRecord_offsets_[1] = {
   };
   CGCAskFriendRecord_reflection_ =
@@ -1232,7 +1263,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskFriendRecord),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskFriendRecord, _internal_metadata_),
       -1);
-  CGCAskSelectPlayer_descriptor_ = file->message_type(58);
+  CGCAskSelectPlayer_descriptor_ = file->message_type(59);
   static const int CGCAskSelectPlayer_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskSelectPlayer, _byte_),
   };
@@ -1247,7 +1278,7 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       sizeof(CGCAskSelectPlayer),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskSelectPlayer, _internal_metadata_),
       -1);
-  CGCAskGuideComplate_descriptor_ = file->message_type(59);
+  CGCAskGuideComplate_descriptor_ = file->message_type(60);
   static const int CGCAskGuideComplate_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGuideComplate, groupid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CGCAskGuideComplate, u8finish_),
@@ -1265,6 +1296,8 @@ void protobuf_AssignDesc_NetMessage_2eproto() {
       -1);
   CeC2GType_descriptor_ = file->enum_type(0);
   CeG2CType_descriptor_ = file->enum_type(1);
+  PostType_descriptor_ = file->enum_type(2);
+  EmailState_descriptor_ = file->enum_type(3);
 }
 
 namespace {
@@ -1291,6 +1324,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
       CGCAskSelectRole_descriptor_, &CGCAskSelectRole::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CNetErrorMessage_descriptor_, &CNetErrorMessage::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      CGSNotifyService_descriptor_, &CGSNotifyService::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGSNotifyChangeScene_descriptor_, &CGSNotifyChangeScene::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1358,7 +1393,9 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGCAskTowerInstanceAward_descriptor_, &CGCAskTowerInstanceAward::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      CGCAskEMailList_descriptor_, &CGCAskEMailList::default_instance());
+      MainInfo_descriptor_, &MainInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      CGSNotifyEMailList_descriptor_, &CGSNotifyEMailList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GCAskReadEMail_descriptor_, &GCAskReadEMail::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1367,8 +1404,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
       CGCAskRemoveEMail_descriptor_, &CGCAskRemoveEMail::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGSNotifyRankList_descriptor_, &CGSNotifyRankList::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      CGSNotifyEMailList_descriptor_, &CGSNotifyEMailList::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       CGCSendCreateRole_descriptor_, &CGCSendCreateRole::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -1416,6 +1451,8 @@ void protobuf_ShutdownFile_NetMessage_2eproto() {
   delete CGCAskSelectRole_reflection_;
   delete CNetErrorMessage::default_instance_;
   delete CNetErrorMessage_reflection_;
+  delete CGSNotifyService::default_instance_;
+  delete CGSNotifyService_reflection_;
   delete CGSNotifyChangeScene::default_instance_;
   delete CGSNotifyChangeScene_reflection_;
   delete CGSNotifyRoleAppear::default_instance_;
@@ -1482,8 +1519,10 @@ void protobuf_ShutdownFile_NetMessage_2eproto() {
   delete CGCAskTowerInstanceRank_reflection_;
   delete CGCAskTowerInstanceAward::default_instance_;
   delete CGCAskTowerInstanceAward_reflection_;
-  delete CGCAskEMailList::default_instance_;
-  delete CGCAskEMailList_reflection_;
+  delete MainInfo::default_instance_;
+  delete MainInfo_reflection_;
+  delete CGSNotifyEMailList::default_instance_;
+  delete CGSNotifyEMailList_reflection_;
   delete GCAskReadEMail::default_instance_;
   delete GCAskReadEMail_reflection_;
   delete CGCAskGetEMailPrize::default_instance_;
@@ -1492,8 +1531,6 @@ void protobuf_ShutdownFile_NetMessage_2eproto() {
   delete CGCAskRemoveEMail_reflection_;
   delete CGSNotifyRankList::default_instance_;
   delete CGSNotifyRankList_reflection_;
-  delete CGSNotifyEMailList::default_instance_;
-  delete CGSNotifyEMailList_reflection_;
   delete CGCSendCreateRole::default_instance_;
   delete CGCSendCreateRole_reflection_;
   delete CGCSendCreateRoleRet::default_instance_;
@@ -1555,265 +1592,276 @@ void protobuf_AddDesc_NetMessage_2eproto() {
     " \001(\r\"%\n\020CGCAskSelectRole\022\021\n\t_roleName\030\001 "
     "\001(\t\"b\n\020CNetErrorMessage\022\022\n\nprotocolId\030\001 "
     "\001(\r\022\021\n\tstrLength\030\002 \001(\r\022\021\n\terrorCode\030\003 \001("
-    "\005\022\024\n\014errorMessage\030\004 \001(\t\"\215\001\n\024CGSNotifyCha"
-    "ngeScene\022\023\n\013m_un32MapID\030\001 \001(\r\022\025\n\rm_un32S"
-    "ceneID\030\002 \001(\r\022\026\n\016m_un32ClientNO\030\003 \001(\r\022\017\n\007"
-    "m_fPosX\030\004 \001(\002\022\017\n\007m_fPosY\030\005 \001(\002\022\017\n\007m_fPos"
-    "Z\030\006 \001(\002\"\266\003\n\023CGSNotifyRoleAppear\022\023\n\013m_un3"
-    "2ObjID\030\001 \001(\r\022\031\n\021m_n32RoleNickName\030\002 \001(\t\022"
-    "\025\n\rm_n32CareerID\030\003 \001(\005\022\021\n\tm_bGender\030\004 \001("
-    "\010\022\032\n\022m_un32WeaponTypeID\030\005 \001(\r\022\030\n\020m_un32C"
-    "oatTypeID\030\006 \001(\r\022\023\n\013m_un32Level\030\007 \001(\r\022\022\n\n"
-    "m_fCurPosX\030\010 \001(\002\022\022\n\nm_fCurPosY\030\t \001(\002\022\022\n\n"
-    "m_fCurPosZ\030\n \001(\002\022\022\n\nm_fTarPosX\030\013 \001(\002\022\022\n\n"
-    "m_fTarPosY\030\014 \001(\002\022\022\n\nm_fTarPosZ\030\r \001(\002\022\024\n\014"
-    "m_fMoveSpeed\030\016 \001(\002\022\030\n\020m_un32CurTitleID\030\017"
-    " \001(\r\022\023\n\013m_un32CurHp\030\020 \001(\r\022\023\n\013m_u32WingID"
-    "\030\021 \001(\r\022\024\n\014m_u32MedalID\030\022 \001(\r\022\022\n\nm_u32Pet"
-    "ID\030\023 \001(\r\"=\n\022CGSObjectDisappear\022\016\n\006ObjNum"
-    "\030\001 \001(\r\022\027\n\013m_un32ObjID\030\002 \003(\rB\002\020\001\"\016\n\014CGCAs"
-    "kLogout\"\262\001\n\rCGSObjectMove\022\023\n\013m_un32ObjID"
-    "\030\001 \001(\r\022\022\n\nm_fCurPosX\030\002 \001(\002\022\022\n\nm_fCurPosY"
-    "\030\003 \001(\002\022\022\n\nm_fCurPosZ\030\004 \001(\002\022\022\n\nm_fTarPosX"
-    "\030\005 \001(\002\022\022\n\nm_fTarPosY\030\006 \001(\002\022\022\n\nm_fTarPosZ"
-    "\030\007 \001(\002\022\024\n\014m_fMoveSpeed\030\010 \001(\002\"\253\001\n\nCGCAskM"
-    "ove\022\023\n\013m_un32ObjID\030\001 \001(\r\022\022\n\nm_fCurPosX\030\002"
-    " \001(\002\022\022\n\nm_fCurPosY\030\003 \001(\002\022\022\n\nm_fCurPosZ\030\004"
-    " \001(\002\022\020\n\010node_num\030\005 \001(\r\022\022\n\nm_fTarPosX\030\006 \001"
-    "(\002\022\022\n\nm_fTarPosY\030\007 \001(\002\022\022\n\nm_fTarPosZ\030\010 \001"
-    "(\002\"|\n\032CGSNotifyRoleProfileChange\022\023\n\013m_un"
-    "32ObjID\030\001 \001(\r\022\032\n\022m_un32WeaponTypeID\030\002 \001("
-    "\r\022\030\n\020m_un32CoatTypeID\030\003 \001(\r\022\023\n\013m_un32Lev"
-    "el\030\004 \001(\r\"\332\001\n\021CGCReportPassGate\022\023\n\013m_un32"
-    "MapID\030\001 \001(\r\022\025\n\rm_un32SceneID\030\002 \001(\r\022\026\n\016m_"
-    "un32HPVessel\030\003 \001(\r\022\026\n\016m_un32MPVessel\030\004 \001"
-    "(\r\022\027\n\017m_un32GotExpNum\030\005 \001(\r\022\032\n\022m_un32Got"
-    "SilverNum\030\006 \001(\r\022\027\n\017m_un32UseSecond\030\007 \001(\r"
-    "\022\033\n\023m_bPickAllTempGoods\030\010 \001(\010\"H\n\032CGCAskT"
-    "reasureBoxDropGoods\022\023\n\013m_un32BoxID\030\001 \001(\r"
-    "\022\025\n\rm_isShowAward\030\002 \001(\010\"\261\001\n\020CGCAskEnterS"
-    "cene\022\022\n\nm_n32MapID\030\001 \001(\005\022\024\n\014m_n32SceneID"
-    "\030\002 \001(\005\022\024\n\014m_bEnterByUI\030\003 \001(\010\022\026\n\016m_un32HP"
-    "Vessel\030\004 \001(\r\022\026\n\016m_un32MPVessel\030\005 \001(\r\022\024\n\014"
-    "m_un32GotExp\030\006 \001(\r\022\027\n\017m_un32GotSilver\030\007 "
-    "\001(\r\">\n\034CGSNotifyRoleMapScheduleList\022\017\n\007l"
-    "ineNum\030\001 \001(\r\022\r\n\005mapID\030\002 \001(\r\"\034\n\032CGSNotify"
-    "RoleFightProperty\"\026\n\024CGSNotifyAssetChang"
-    "e\"\026\n\024CGSNotifyLevelChange\"\024\n\022CGSNotifyEx"
-    "pChange\"\026\n\024CGSNotifyCurProperty\"\034\n\032CGSNo"
-    "tifyDisplayGateIncome\"O\n\014CGCAskRelive\022\023\n"
-    "\013_reliveType\030\001 \001(\010\022\022\n\n_assetType\030\002 \001(\010\022\026"
-    "\n\016m_un32AssetNum\030\003 \001(\r\"$\n\014CGCReportExp\022\024"
-    "\n\014m_un32GotExp\030\001 \001(\r\"\245\001\n\021CGCReportUseSki"
-    "ll\022\023\n\013m_un32ObjID\030\001 \001(\r\022\025\n\rm_un32SkillID"
-    "\030\002 \001(\r\022\017\n\007m_fPosX\030\003 \001(\002\022\017\n\007m_fPosY\030\004 \001(\002"
-    "\022\017\n\007m_fPosZ\030\005 \001(\002\022\017\n\007m_fDirX\030\006 \001(\002\022\017\n\007m_"
-    "fDirY\030\007 \001(\002\022\017\n\007m_fDirZ\030\010 \001(\002\"\255\001\n\026CGSNoti"
-    "fySkillReleased\022\026\n\016m_un32ObjectID\030\001 \001(\r\022"
+    "\005\022\024\n\014errorMessage\030\004 \001(\t\"\205\001\n\020CGSNotifySer"
+    "vice\022\"\n\004type\030\001 \001(\0162\024.NetPackage.PostType"
+    "\022\014\n\004time\030\002 \001(\r\022\017\n\007msgTime\030\003 \001(\t\022\r\n\005title"
+    "\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\016\n\006author\030\006 \001(\t\""
+    "\215\001\n\024CGSNotifyChangeScene\022\023\n\013m_un32MapID\030"
+    "\001 \001(\r\022\025\n\rm_un32SceneID\030\002 \001(\r\022\026\n\016m_un32Cl"
+    "ientNO\030\003 \001(\r\022\017\n\007m_fPosX\030\004 \001(\002\022\017\n\007m_fPosY"
+    "\030\005 \001(\002\022\017\n\007m_fPosZ\030\006 \001(\002\"\266\003\n\023CGSNotifyRol"
+    "eAppear\022\023\n\013m_un32ObjID\030\001 \001(\r\022\031\n\021m_n32Rol"
+    "eNickName\030\002 \001(\t\022\025\n\rm_n32CareerID\030\003 \001(\005\022\021"
+    "\n\tm_bGender\030\004 \001(\010\022\032\n\022m_un32WeaponTypeID\030"
+    "\005 \001(\r\022\030\n\020m_un32CoatTypeID\030\006 \001(\r\022\023\n\013m_un3"
+    "2Level\030\007 \001(\r\022\022\n\nm_fCurPosX\030\010 \001(\002\022\022\n\nm_fC"
+    "urPosY\030\t \001(\002\022\022\n\nm_fCurPosZ\030\n \001(\002\022\022\n\nm_fT"
+    "arPosX\030\013 \001(\002\022\022\n\nm_fTarPosY\030\014 \001(\002\022\022\n\nm_fT"
+    "arPosZ\030\r \001(\002\022\024\n\014m_fMoveSpeed\030\016 \001(\002\022\030\n\020m_"
+    "un32CurTitleID\030\017 \001(\r\022\023\n\013m_un32CurHp\030\020 \001("
+    "\r\022\023\n\013m_u32WingID\030\021 \001(\r\022\024\n\014m_u32MedalID\030\022"
+    " \001(\r\022\022\n\nm_u32PetID\030\023 \001(\r\"=\n\022CGSObjectDis"
+    "appear\022\016\n\006ObjNum\030\001 \001(\r\022\027\n\013m_un32ObjID\030\002 "
+    "\003(\rB\002\020\001\"\016\n\014CGCAskLogout\"\262\001\n\rCGSObjectMov"
+    "e\022\023\n\013m_un32ObjID\030\001 \001(\r\022\022\n\nm_fCurPosX\030\002 \001"
+    "(\002\022\022\n\nm_fCurPosY\030\003 \001(\002\022\022\n\nm_fCurPosZ\030\004 \001"
+    "(\002\022\022\n\nm_fTarPosX\030\005 \001(\002\022\022\n\nm_fTarPosY\030\006 \001"
+    "(\002\022\022\n\nm_fTarPosZ\030\007 \001(\002\022\024\n\014m_fMoveSpeed\030\010"
+    " \001(\002\"\253\001\n\nCGCAskMove\022\023\n\013m_un32ObjID\030\001 \001(\r"
+    "\022\022\n\nm_fCurPosX\030\002 \001(\002\022\022\n\nm_fCurPosY\030\003 \001(\002"
+    "\022\022\n\nm_fCurPosZ\030\004 \001(\002\022\020\n\010node_num\030\005 \001(\r\022\022"
+    "\n\nm_fTarPosX\030\006 \001(\002\022\022\n\nm_fTarPosY\030\007 \001(\002\022\022"
+    "\n\nm_fTarPosZ\030\010 \001(\002\"|\n\032CGSNotifyRoleProfi"
+    "leChange\022\023\n\013m_un32ObjID\030\001 \001(\r\022\032\n\022m_un32W"
+    "eaponTypeID\030\002 \001(\r\022\030\n\020m_un32CoatTypeID\030\003 "
+    "\001(\r\022\023\n\013m_un32Level\030\004 \001(\r\"\332\001\n\021CGCReportPa"
+    "ssGate\022\023\n\013m_un32MapID\030\001 \001(\r\022\025\n\rm_un32Sce"
+    "neID\030\002 \001(\r\022\026\n\016m_un32HPVessel\030\003 \001(\r\022\026\n\016m_"
+    "un32MPVessel\030\004 \001(\r\022\027\n\017m_un32GotExpNum\030\005 "
+    "\001(\r\022\032\n\022m_un32GotSilverNum\030\006 \001(\r\022\027\n\017m_un3"
+    "2UseSecond\030\007 \001(\r\022\033\n\023m_bPickAllTempGoods\030"
+    "\010 \001(\010\"H\n\032CGCAskTreasureBoxDropGoods\022\023\n\013m"
+    "_un32BoxID\030\001 \001(\r\022\025\n\rm_isShowAward\030\002 \001(\010\""
+    "\261\001\n\020CGCAskEnterScene\022\022\n\nm_n32MapID\030\001 \001(\005"
+    "\022\024\n\014m_n32SceneID\030\002 \001(\005\022\024\n\014m_bEnterByUI\030\003"
+    " \001(\010\022\026\n\016m_un32HPVessel\030\004 \001(\r\022\026\n\016m_un32MP"
+    "Vessel\030\005 \001(\r\022\024\n\014m_un32GotExp\030\006 \001(\r\022\027\n\017m_"
+    "un32GotSilver\030\007 \001(\r\">\n\034CGSNotifyRoleMapS"
+    "cheduleList\022\017\n\007lineNum\030\001 \001(\r\022\r\n\005mapID\030\002 "
+    "\001(\r\"\034\n\032CGSNotifyRoleFightProperty\"\026\n\024CGS"
+    "NotifyAssetChange\"\026\n\024CGSNotifyLevelChang"
+    "e\"\024\n\022CGSNotifyExpChange\"\026\n\024CGSNotifyCurP"
+    "roperty\"\034\n\032CGSNotifyDisplayGateIncome\"O\n"
+    "\014CGCAskRelive\022\023\n\013_reliveType\030\001 \001(\010\022\022\n\n_a"
+    "ssetType\030\002 \001(\010\022\026\n\016m_un32AssetNum\030\003 \001(\r\"$"
+    "\n\014CGCReportExp\022\024\n\014m_un32GotExp\030\001 \001(\r\"\245\001\n"
+    "\021CGCReportUseSkill\022\023\n\013m_un32ObjID\030\001 \001(\r\022"
     "\025\n\rm_un32SkillID\030\002 \001(\r\022\017\n\007m_fPosX\030\003 \001(\002\022"
     "\017\n\007m_fPosY\030\004 \001(\002\022\017\n\007m_fPosZ\030\005 \001(\002\022\017\n\007m_f"
     "DirX\030\006 \001(\002\022\017\n\007m_fDirY\030\007 \001(\002\022\017\n\007m_fDirZ\030\010"
-    " \001(\002\"\250\001\n\025CGCReportOBjectAppear\022\023\n\013m_un32"
-    "ObjID\030\001 \001(\r\022\024\n\014m_un32TempID\030\002 \001(\r\022\017\n\007m_f"
-    "PosX\030\003 \001(\002\022\017\n\007m_fPosY\030\004 \001(\002\022\017\n\007m_fPosZ\030\005"
-    " \001(\002\022\017\n\007m_fDirX\030\006 \001(\002\022\017\n\007m_fDirY\030\007 \001(\002\022\017"
-    "\n\007m_fDirZ\030\010 \001(\002\"\250\001\n\025CGSNotifyObjectAppea"
-    "r\022\023\n\013m_un32ObjID\030\001 \001(\r\022\024\n\014m_un32TempID\030\002"
-    " \001(\r\022\017\n\007m_fPosX\030\003 \001(\002\022\017\n\007m_fPosY\030\004 \001(\002\022\017"
-    "\n\007m_fPosZ\030\005 \001(\002\022\017\n\007m_fDirX\030\006 \001(\002\022\017\n\007m_fD"
-    "irY\030\007 \001(\002\022\017\n\007m_fDirZ\030\010 \001(\002\"D\n\030CGCReportO"
-    "BjectDisappear\022\023\n\013m_un32ObjID\030\001 \001(\r\022\023\n\013m"
-    "_n32Reason\030\002 \001(\005\"D\n\030CGSNotifyObjectDisap"
-    "pear\022\023\n\013m_un32ObjID\030\001 \001(\r\022\023\n\013m_n32Reason"
-    "\030\002 \001(\005\"\253\001\n\025CGCReportObjectAction\022\023\n\013m_un"
-    "32ObjID\030\001 \001(\r\022\027\n\017m_n32ActionCate\030\002 \001(\005\022\017"
-    "\n\007m_fDirX\030\003 \001(\002\022\017\n\007m_fDirY\030\004 \001(\002\022\017\n\007m_fD"
-    "irZ\030\005 \001(\002\022\017\n\007m_fPosX\030\006 \001(\002\022\017\n\007m_fPosY\030\007 "
-    "\001(\002\022\017\n\007m_fPosZ\030\010 \001(\002\"\253\001\n\025CGSNotifyObject"
-    "Action\022\023\n\013m_un32ObjID\030\001 \001(\r\022\027\n\017m_n32Acti"
-    "onCate\030\002 \001(\005\022\017\n\007m_fDirX\030\003 \001(\002\022\017\n\007m_fDirY"
-    "\030\004 \001(\002\022\017\n\007m_fDirZ\030\005 \001(\002\022\017\n\007m_fPosX\030\006 \001(\002"
-    "\022\017\n\007m_fPosY\030\007 \001(\002\022\017\n\007m_fPosZ\030\010 \001(\002\"z\n\023CG"
-    "CReportObjectHurm\022\017\n\007m_bHost\030\001 \001(\010\022\023\n\013m_"
-    "un32ObjID\030\002 \001(\r\022\024\n\014m_n32HPValue\030\003 \001(\005\022\022\n"
-    "\nm_n32CurHP\030\004 \001(\005\022\023\n\013m_n32Effect\030\005 \001(\005\"w"
-    "\n\023CGSNotifyObjectHurm\022\017\n\007m_bHost\030\001 \001(\010\022\023"
-    "\n\013m_un32ObjID\030\002 \001(\r\022\024\n\014m_n32HPValue\030\003 \001("
-    "\005\022\017\n\007m_n32HP\030\004 \001(\005\022\023\n\013m_n32Effect\030\005 \001(\005\""
-    "E\n\030CGCAskEnterTowerInstance\022\025\n\rm_un32Tow"
-    "erId\030\001 \001(\r\022\022\n\nm_bCurWave\030\002 \001(\010\"4\n\033CGCRep"
-    "ortTowerInstanceScore\022\025\n\rm_un32TowerId\030\001"
-    " \001(\r\"-\n\027CGCAskTowerInstanceRank\022\022\n\nm_un1"
-    "6Type\030\001 \001(\005\"H\n\030CGCAskTowerInstanceAward\022"
-    "\024\n\014m_u32TowerID\030\001 \001(\r\022\026\n\016m_u16TowerType\030"
-    "\002 \001(\r\"\021\n\017CGCAskEMailList\"\'\n\016GCAskReadEMa"
-    "il\022\025\n\rm_un32EMailID\030\001 \001(\r\",\n\023CGCAskGetEM"
-    "ailPrize\022\025\n\rm_un32EMailID\030\001 \001(\r\"*\n\021CGCAs"
-    "kRemoveEMail\022\025\n\rm_un32EMailID\030\001 \001(\r\"r\n\021C"
-    "GSNotifyRankList\022\024\n\014m_n8RankCate\030\001 \001(\005\022\025"
-    "\n\rm_n32SelfRank\030\002 \001(\005\022\032\n\022m_n32SelfRankVa"
-    "lue\030\003 \001(\005\022\024\n\014m_n32RankNum\030\004 \001(\005\",\n\022CGSNo"
-    "tifyEMailList\022\026\n\016m_un32EMailNum\030\001 \001(\r\"h\n"
-    "\021CGCSendCreateRole\022\026\n\016_u32VocationID\030\001 \001"
-    "(\r\022\023\n\013_byteGender\030\002 \001(\010\022\021\n\t_nickName\030\003 \001"
-    "(\t\022\023\n\013_byteVerify\030\004 \001(\010\"\'\n\024CGCSendCreate"
-    "RoleRet\022\017\n\007_result\030\001 \001(\005\"&\n\016CGCAskRankLi"
-    "st\022\024\n\014m_n8RankCate\030\001 \001(\r\"P\n\016CGCAsChargeI"
-    "OS\022\022\n\nm_bIsDebug\030\001 \001(\010\022\020\n\010m_strLen\030\002 \001(\r"
-    "\022\030\n\020m_szAppleReceipt\030\003 \001(\t\"S\n\022CGCNotifyC"
-    "hargeIOS\022\021\n\tm_nResult\030\001 \001(\005\022\020\n\010m_strLen\030"
-    "\002 \001(\r\022\030\n\020m_szAppleReceipt\030\003 \001(\t\"9\n\020CGCRe"
-    "portProcuce\022\017\n\007_bookID\030\001 \001(\r\022\024\n\014_bUseDia"
-    "mond\030\002 \001(\010\"\?\n\022CGCAskChapterAward\022\023\n\013_cha"
-    "pterNum\030\001 \001(\005\022\024\n\014_hardChapter\030\002 \001(\010\"\021\n\017C"
-    "GCAskMedalInfo\"\024\n\022CGCAskMedalLevelUp\"\325\001\n"
-    "\017CGCAskAddFriend\022>\n\n_FriendOpt\030\001 \001(\0162*.N"
-    "etPackage.CGCAskAddFriend.FriendSendType"
-    "\022\021\n\t_roleName\030\002 \001(\t\"o\n\016FriendSendType\022\n\n"
-    "\006UNKONW\020\000\022\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020"
-    "\003\022\020\n\014DeleteFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014Re"
-    "ceiveAward\020\006\"\274\001\n\014CGCVipFriend\022;\n\n_Friend"
-    "Opt\030\001 \001(\0162\'.NetPackage.CGCVipFriend.Frie"
-    "ndSendType\"o\n\016FriendSendType\022\n\n\006UNKONW\020\000"
-    "\022\r\n\tAddFriend\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020\003\022\020\n\014Dele"
-    "teFriend\020\004\022\r\n\tSendAward\020\005\022\020\n\014ReceiveAwar"
-    "d\020\006\"\024\n\022CGCAskFriendRecord\"#\n\022CGCAskSelec"
-    "tPlayer\022\r\n\005_byte\030\001 \001(\t\"8\n\023CGCAskGuideCom"
-    "plate\022\017\n\007GroupId\030\001 \001(\r\022\020\n\010u8Finish\030\002 \001(\010"
-    "*\367\027\n\tCeC2GType\022\016\n\nC2G_UNKOWN\020\000\022\014\n\010C2G_Pi"
-    "ng\020\001\022\r\n\tC2G_Login\020\002\022\022\n\016C2G_CreateRole\020\003\022"
-    "\022\n\016C2G_SelectRole\020\004\022\022\n\016C2G_EnterScene\020\005\022"
-    "\017\n\013C2G_AskMove\020\006\022\016\n\nC2G_Logout\020\007\022\020\n\014C2G_"
-    "BuyGoods\020\010\022\020\n\014C2G_UseGoods\020\t\022\020\n\014C2G_Pass"
-    "Gate\020\n\022\022\n\016C2G_EquipGoods\020\013\022\021\n\rC2G_SaleGo"
-    "ods\020\014\022\024\n\020C2G_BoxDropGoods\020\r\022\024\n\020C2G_AskMo"
-    "veGoods\020\016\022\031\n\025C2G_AskIntensifyEquip\020\017\022\030\n\024"
-    "C2G_AskTransmitEquip\020\020\022\021\n\rC2G_AskRelive\020"
-    "\021\022\032\n\026C2G_AskActiveSkillCard\020\022\022!\n\035C2G_Ask"
-    "RefreshActiveSkillCard\020\023\022\030\n\024C2G_AskBuySk"
-    "illPoint\020\024\022\021\n\rC2G_ReportExp\020\025\022\026\n\022C2G_Rep"
-    "ortUseSkill\020\026\022\032\n\026C2G_ReportOBjectAppear\020"
-    "\027\022\035\n\031C2G_ReportOBjectDisappear\020\030\022\032\n\026C2G_"
-    "ReportObjectAction\020\031\022\030\n\024C2G_ReportObject"
-    "Hurm\020\032\022\025\n\021C2G_AskCombineGem\020\033\022\024\n\020C2G_Ask"
-    "WashEquip\020\035\022\023\n\017C2G_AskInlayGem\020\036\022\027\n\023C2G_"
-    "AskChapterAward\020\037\022\027\n\023C2G_AskUpgradeEquip"
-    "\020 \022\031\n\025C2G_AskDecomposeEquip\020!\022\031\n\025C2G_Ask"
-    "GMSendAnnounce\020\"\022\017\n\013C2G_AskChat\020#\022\023\n\017C2G"
-    "_AskRankList\020$\022\024\n\020C2G_AskEMailList\020%\022\024\n\020"
-    "C2G_AskReadEMail\020&\022\030\n\024C2G_AskGetEMailPri"
-    "ze\020\'\022\026\n\022C2G_AskRemoveEMail\020(\022\032\n\026C2G_AskA"
-    "chievementList\020)\022\033\n\027C2G_AskAchievementPr"
-    "ize\020*\022\023\n\017C2G_AskUseTitle\020+\022!\n\035C2G_Report"
-    "AchievementSchedule\020,\022\035\n\031C2G_AskEnterTow"
-    "erInstance\020-\022 \n\034C2G_ReportTowerInstanceS"
-    "core\020.\022\034\n\030C2G_AskTowerInstanceRank\020/\022\035\n\031"
-    "C2G_AskTowerInstanceAward\0200\022\026\n\022C2G_AskBu"
-    "yHPVessel\0201\022\026\n\022C2G_AskBuyMPVessel\0202\022\023\n\017C"
-    "2G_AskShopTemp\0203\022\026\n\022C2G_AskBuyShopItem\0204"
-    "\022\024\n\020C2G_AskChargeIOS\0205\022\023\n\017C2G_AskAddGood"
-    "s\0206\022\026\n\022C2G_ReportHPVessel\0207\022\026\n\022C2G_Repor"
-    "tMPVessel\0208\022\025\n\021C2G_AskGMPassGate\0209\022\030\n\024C2"
-    "G_AskGMChangeLevel\020:\022\027\n\023C2G_AskSystemNot"
-    "ice\020;\022\021\n\rC2G_ReportBug\020<\022\026\n\022C2G_AskEnter"
-    "Goblin\020=\022\026\n\022C2G_AskGoblinTimes\020>\022\035\n\031C2G_"
-    "AskGoblinMultiBenefit\020\?\022\031\n\025C2G_AskBuyGob"
-    "linTimes\020@\022\025\n\021C2G_ReportProduce\020A\022\022\n\016C2G"
-    "_AcceptTask\020B\022\022\n\016C2G_SubmitTask\020C\022\024\n\020C2G"
-    "_GMAcceptTask\020D\022\032\n\026C2G_GMSendAnnouncemen"
-    "t\020E\022\020\n\014C2G_AskWepon\020F\022\033\n\027C2G_AskEquipWea"
-    "ponSkill\020G\022\023\n\017C2G_AskVipAward\020H\022\023\n\017C2G_A"
-    "skBuyPower\020I\022\026\n\022C2G_ReportScenario\020J\022\022\n\016"
-    "C2G_ReportHurt\020K\022\025\n\021C2G_AskCheckSkill\020L\022"
-    "\026\n\022C2G_AskCultureWing\020M\022\030\n\024C2G_AskEvolut"
-    "ionWing\020N\022\024\n\020C2G_AskArenaInfo\020O\022\023\n\017C2G_A"
-    "skHeroList\020P\022\024\n\020C2G_AskChallenge\020Q\022\035\n\031C2"
-    "G_ReportChallengeResult\020R\022\032\n\026C2G_AskBuyC"
-    "hallengeNum\020S\022\030\n\024C2G_AskHonorShopInfo\020T\022"
-    "\027\n\023C2G_AskBuyHonorItem\020U\022\023\n\017C2G_AskWingI"
-    "nfo\020V\022\033\n\027C2G_AskClearChallengeCD\020W\022\026\n\022C2"
-    "G_AskSyncPVPInfo\020X\022\030\n\024C2G_AskUnsyncPVPIn"
-    "fo\020Y\022\030\n\024C2G_AskJoinPVPBattle\020Z\022\035\n\031C2G_As"
-    "kEncouragePVPBattle\020[\022\037\n\033C2G_AskReceiveH"
-    "eroRankAward\020\\\022\025\n\021C2G_AskBeginSweep\020]\022\024\n"
-    "\020C2G_AskStopSweep\020^\022\032\n\026C2G_AskAccelerate"
-    "Sweep\020_\022\022\n\016C2G_AskUseItem\020`\022\025\n\021C2G_AskCr"
-    "eateTeam\020a\022\024\n\020C2G_PreviewMulti\020b\022\022\n\016C2G_"
-    "AskAddTeam\020c\022\024\n\020C2G_QuickAddTeam\020d\022\032\n\026C2"
-    "G_AskBeginFightMulti\020e\022\027\n\023C2G_SendFormTe"
-    "amMsg\020f\022\024\n\020C2G_AskLeaveTeam\020g\022\034\n\030C2G_Rep"
-    "ortMultiPlayerDie\020h\022\027\n\023C2G_AskJoinActivi"
-    "ty\020i\022\025\n\021C2G_AskMedalLevel\020j\022\027\n\023C2G_AskMe"
-    "dalLevelUp\020k\022\024\n\020C2G_AskAddFriend\020l\022\021\n\rC2"
-    "G_VipFriend\020m\022\027\n\023C2G_AskFriendRecord\020n\022\035"
-    "\n\031C2G_AskUseItemInWorldBoss\020o\022\027\n\023C2G_Ask"
-    "SelectPlayer\020p\022\034\n\030C2G_ReportAttackedTarg"
-    "et\020q\022\022\n\016C2G_AskPetData\020r\022\025\n\021C2G_AskPetLe"
-    "velUp\020s\022\021\n\rC2G_AskZhuiJi\020t\022\031\n\025C2G_AskCur"
-    "ZhuiJiCount\020u\022\034\n\030C2G_AskReceiveArenaAwar"
-    "d\020v\022\021\n\rC2G_SelectPet\020|\022\026\n\022C2G_AskChannel"
-    "List\020}\022\031\n\025C2G_AskChannelChangel\020~\022\030\n\024C2G"
-    "_AskGuideComplate\020\177\022\031\n\024C2G_ChallengePand"
-    "ora\020\201\001\022\030\n\023C2G_ResetPandoraNum\020\202\001\022\034\n\027C2G_"
-    "ChallengeAllPandora\020\203\001\022\024\n\017C2G_OpenPandor"
-    "a\020\204\001\022\024\n\017C2G_AskEquipPet\020\205\001*\360\021\n\tCeG2CType"
-    "\022\016\n\nG2C_UNKOWN\020\000\022\020\n\014G2C_LoginRet\020\001\022\020\n\014G2"
-    "C_RoleList\020\002\022\025\n\021G2C_RoleCreateRet\020\003\022\025\n\021G"
-    "2C_SelectRoleRet\020\004\022\026\n\022G2C_EnterSeceneRet"
-    "\020\005\022\017\n\013G2C_BagInfo\020\006\022\025\n\021G2C_EquipmentInfo"
-    "\020\007\022\021\n\rG2C_GemChange\020\010\022\031\n\025G2C_RoleFightPr"
-    "operty\020\t\022\023\n\017G2C_AssetChange\020\n\022\027\n\023G2C_Rol"
-    "eLevelChange\020\013\022\025\n\021G2C_RoleExpChange\020\014\022\027\n"
-    "\023G2C_RoleCurProperty\020\r\022\027\n\023G2C_RoleChange"
-    "Scene\020\016\022\023\n\017G2C_ErrorMssage\020\017\022\022\n\016G2C_Role"
-    "Appear\020\020\022\027\n\023G2C_ObjectDisappear\020\021\022\022\n\016G2C"
-    "_ObjectMove\020\022\022\030\n\024G2C_ObjectStopAction\020\023\022"
-    "\026\n\022G2C_RoleInfoChange\020\024\022!\n\035G2C_NotifyRol"
-    "eMapScheduleList\020\025\022\037\n\033G2C_NotifyDisplayG"
-    "ateIncome\020\026\022\036\n\032G2C_NotifySkillPointChang"
-    "e\020\027\022\032\n\026G2C_NotifyCurSkillInfo\020\030\022$\n G2C_N"
-    "otifyCanActiveSkillCardList\020\031\022\033\n\027G2C_Not"
-    "ifySkillReleased\020\032\022\032\n\026G2C_NotifyObjectAp"
-    "pear\020\033\022\035\n\031G2C_NotifyObjectDisappear\020\034\022\032\n"
-    "\026G2C_NotifyTimedCounter\020\035\022\032\n\026G2C_NotifyO"
-    "bjectAction\020\036\022\030\n\024G2C_NotifyObjectHurm\020\037\022"
-    "\026\n\022G2C_NotifyChatInfo\020 \022\026\n\022G2C_NotifyRan"
-    "kList\020!\022\027\n\023G2C_NotifyEMailList\020\"\022\026\n\022G2C_"
-    "NotifyPetEquip\020#\022\037\n\033G2C_NotifyAchievemen"
-    "tChange\020$\022\031\n\025G2C_NotifyTitleChange\020%\022\030\n\024"
-    "G2C_NotifyItemChange\020&\022\026\n\022G2C_NotifyShop"
-    "Temp\020\'\022\027\n\023G2C_NotifyChargeIOS\020(\022\026\n\022G2C_R"
-    "esponseNotice\020)\022\037\n\033G2C_NotifyGoblinRemai"
-    "nTimes\020*\022\026\n\022G2C_NotifyTaskInfo\020+\022\035\n\031G2C_"
-    "NotifySkillBookChange\020,\022\034\n\030G2c_NotifyEqu"
-    "ipSkillData\020-\022\027\n\023G2C_NotifyPowerInfo\020.\022!"
-    "\n\035G2C_NotifyWeaponSkillSchedule\020/\022\026\n\022G2C"
-    "_NotifyWingInfo\0200\022\027\n\023G2C_NotifyArenaInfo"
-    "\0201\022\032\n\026G2C_NotifyHeroBankInfo\0202\022\034\n\030G2C_No"
-    "tifyChallengerInfo\0203\022\035\n\031G2C_NotifyChalle"
-    "ngeResult\0204\022\027\n\023G2C_NotifyHonorShop\0205\022\030\n\024"
-    "G2C_NotifyChallenger\0206\022\023\n\017GSNotifyPVPRan"
-    "k\0207\022\022\n\016GSNotifyPVPLog\0208\022\036\n\032GSNotifyAddPV"
-    "PParticipator\0209\022!\n\035GSNotifyRemovePVPPart"
-    "icipator\020:\022\027\n\023GSNotifySweepResult\020;\022\025\n\021G"
-    "SNotifyMultiInfo\020<\022\024\n\020GSNotifyTeamInfo\020="
-    "\022\032\n\026GSNotifyStartCountDown\020>\022\'\n#GSNotify"
-    "StartCountDownPlayerOffLine\020\?\022\027\n\023GSNotif"
-    "yMultiResult\020@\022\030\n\024GSNotifyPlayerRelive\020A"
-    "\022\025\n\021GCNotifyTowerInfo\020B\022\027\n\023GCNotifyHisto"
-    "ryRank\020C\022\023\n\017GCNotifyCurRank\020D\022\036\n\032GCNotyf"
-    "yWorldBossAwardList\020E\022\025\n\021GCNotyfyMedalIn"
-    "fo\020F\022\031\n\025GSNotifyWorldBossOpen\020G\022\031\n\025GSNot"
-    "ifyActivityClose\020H\022\034\n\030GSNotifyAddFriendM"
-    "essage\020I\022\026\n\022GSNotifyFriendList\020J\022\031\n\025GSNo"
-    "tifyAddFriendList\020K\022\037\n\033GSNotifyWorldBoss"
-    "DamageList\020L\022\037\n\033GSNotifyWorldBossTemplat"
-    "eID\020M\022\030\n\024GSNotifySelectResult\020N\022\"\n\036GSNot"
-    "ifyWorldBossUseItemResult\020O\022\023\n\017GSNotifyP"
-    "etData\020P\022\027\n\023GSNotifyZhuiJiCount\020Q\022\031\n\025GSN"
-    "otifyFuncOpenParam\020U\022\026\n\022GSNotifyChannelC"
-    "ur\020W\022\027\n\023GSNotifyChannelList\020X\022\025\n\021GSNotif"
-    "yGuideList\020Y\022\027\n\023GSNotifyPandoraInfo\020Z", 11317);
+    " \001(\002\"\255\001\n\026CGSNotifySkillReleased\022\026\n\016m_un3"
+    "2ObjectID\030\001 \001(\r\022\025\n\rm_un32SkillID\030\002 \001(\r\022\017"
+    "\n\007m_fPosX\030\003 \001(\002\022\017\n\007m_fPosY\030\004 \001(\002\022\017\n\007m_fP"
+    "osZ\030\005 \001(\002\022\017\n\007m_fDirX\030\006 \001(\002\022\017\n\007m_fDirY\030\007 "
+    "\001(\002\022\017\n\007m_fDirZ\030\010 \001(\002\"\250\001\n\025CGCReportOBject"
+    "Appear\022\023\n\013m_un32ObjID\030\001 \001(\r\022\024\n\014m_un32Tem"
+    "pID\030\002 \001(\r\022\017\n\007m_fPosX\030\003 \001(\002\022\017\n\007m_fPosY\030\004 "
+    "\001(\002\022\017\n\007m_fPosZ\030\005 \001(\002\022\017\n\007m_fDirX\030\006 \001(\002\022\017\n"
+    "\007m_fDirY\030\007 \001(\002\022\017\n\007m_fDirZ\030\010 \001(\002\"\250\001\n\025CGSN"
+    "otifyObjectAppear\022\023\n\013m_un32ObjID\030\001 \001(\r\022\024"
+    "\n\014m_un32TempID\030\002 \001(\r\022\017\n\007m_fPosX\030\003 \001(\002\022\017\n"
+    "\007m_fPosY\030\004 \001(\002\022\017\n\007m_fPosZ\030\005 \001(\002\022\017\n\007m_fDi"
+    "rX\030\006 \001(\002\022\017\n\007m_fDirY\030\007 \001(\002\022\017\n\007m_fDirZ\030\010 \001"
+    "(\002\"D\n\030CGCReportOBjectDisappear\022\023\n\013m_un32"
+    "ObjID\030\001 \001(\r\022\023\n\013m_n32Reason\030\002 \001(\005\"D\n\030CGSN"
+    "otifyObjectDisappear\022\023\n\013m_un32ObjID\030\001 \001("
+    "\r\022\023\n\013m_n32Reason\030\002 \001(\005\"\253\001\n\025CGCReportObje"
+    "ctAction\022\023\n\013m_un32ObjID\030\001 \001(\r\022\027\n\017m_n32Ac"
+    "tionCate\030\002 \001(\005\022\017\n\007m_fDirX\030\003 \001(\002\022\017\n\007m_fDi"
+    "rY\030\004 \001(\002\022\017\n\007m_fDirZ\030\005 \001(\002\022\017\n\007m_fPosX\030\006 \001"
+    "(\002\022\017\n\007m_fPosY\030\007 \001(\002\022\017\n\007m_fPosZ\030\010 \001(\002\"\253\001\n"
+    "\025CGSNotifyObjectAction\022\023\n\013m_un32ObjID\030\001 "
+    "\001(\r\022\027\n\017m_n32ActionCate\030\002 \001(\005\022\017\n\007m_fDirX\030"
+    "\003 \001(\002\022\017\n\007m_fDirY\030\004 \001(\002\022\017\n\007m_fDirZ\030\005 \001(\002\022"
+    "\017\n\007m_fPosX\030\006 \001(\002\022\017\n\007m_fPosY\030\007 \001(\002\022\017\n\007m_f"
+    "PosZ\030\010 \001(\002\"z\n\023CGCReportObjectHurm\022\017\n\007m_b"
+    "Host\030\001 \001(\010\022\023\n\013m_un32ObjID\030\002 \001(\r\022\024\n\014m_n32"
+    "HPValue\030\003 \001(\005\022\022\n\nm_n32CurHP\030\004 \001(\005\022\023\n\013m_n"
+    "32Effect\030\005 \001(\005\"w\n\023CGSNotifyObjectHurm\022\017\n"
+    "\007m_bHost\030\001 \001(\010\022\023\n\013m_un32ObjID\030\002 \001(\r\022\024\n\014m"
+    "_n32HPValue\030\003 \001(\005\022\017\n\007m_n32HP\030\004 \001(\005\022\023\n\013m_"
+    "n32Effect\030\005 \001(\005\"E\n\030CGCAskEnterTowerInsta"
+    "nce\022\025\n\rm_un32TowerId\030\001 \001(\r\022\022\n\nm_bCurWave"
+    "\030\002 \001(\010\"4\n\033CGCReportTowerInstanceScore\022\025\n"
+    "\rm_un32TowerId\030\001 \001(\r\"-\n\027CGCAskTowerInsta"
+    "nceRank\022\022\n\nm_un16Type\030\001 \001(\005\"H\n\030CGCAskTow"
+    "erInstanceAward\022\024\n\014m_u32TowerID\030\001 \001(\r\022\026\n"
+    "\016m_u16TowerType\030\002 \001(\r\"\211\001\n\010MainInfo\022\n\n\002Id"
+    "\030\001 \001(\r\022\r\n\005Title\030\002 \001(\t\022\017\n\007Content\030\003 \001(\t\022%"
+    "\n\005State\030\004 \001(\0162\026.NetPackage.EmailState\022*\n"
+    "\nAwardState\030\005 \001(\0162\026.NetPackage.EmailStat"
+    "e\"V\n\022CGSNotifyEMailList\022\026\n\016m_un32EMailNu"
+    "m\030\001 \001(\r\022(\n\nm_mailInfo\030\002 \003(\0132\024.NetPackage"
+    ".MainInfo\"\'\n\016GCAskReadEMail\022\025\n\rm_un32EMa"
+    "ilID\030\001 \001(\r\",\n\023CGCAskGetEMailPrize\022\025\n\rm_u"
+    "n32EMailID\030\001 \001(\r\"*\n\021CGCAskRemoveEMail\022\025\n"
+    "\rm_un32EMailID\030\001 \001(\r\"r\n\021CGSNotifyRankLis"
+    "t\022\024\n\014m_n8RankCate\030\001 \001(\005\022\025\n\rm_n32SelfRank"
+    "\030\002 \001(\005\022\032\n\022m_n32SelfRankValue\030\003 \001(\005\022\024\n\014m_"
+    "n32RankNum\030\004 \001(\005\"h\n\021CGCSendCreateRole\022\026\n"
+    "\016_u32VocationID\030\001 \001(\r\022\023\n\013_byteGender\030\002 \001"
+    "(\010\022\021\n\t_nickName\030\003 \001(\t\022\023\n\013_byteVerify\030\004 \001"
+    "(\010\"\'\n\024CGCSendCreateRoleRet\022\017\n\007_result\030\001 "
+    "\001(\005\"&\n\016CGCAskRankList\022\024\n\014m_n8RankCate\030\001 "
+    "\001(\r\"P\n\016CGCAsChargeIOS\022\022\n\nm_bIsDebug\030\001 \001("
+    "\010\022\020\n\010m_strLen\030\002 \001(\r\022\030\n\020m_szAppleReceipt\030"
+    "\003 \001(\t\"S\n\022CGCNotifyChargeIOS\022\021\n\tm_nResult"
+    "\030\001 \001(\005\022\020\n\010m_strLen\030\002 \001(\r\022\030\n\020m_szAppleRec"
+    "eipt\030\003 \001(\t\"9\n\020CGCReportProcuce\022\017\n\007_bookI"
+    "D\030\001 \001(\r\022\024\n\014_bUseDiamond\030\002 \001(\010\"\?\n\022CGCAskC"
+    "hapterAward\022\023\n\013_chapterNum\030\001 \001(\005\022\024\n\014_har"
+    "dChapter\030\002 \001(\010\"\021\n\017CGCAskMedalInfo\"\024\n\022CGC"
+    "AskMedalLevelUp\"\325\001\n\017CGCAskAddFriend\022>\n\n_"
+    "FriendOpt\030\001 \001(\0162*.NetPackage.CGCAskAddFr"
+    "iend.FriendSendType\022\021\n\t_roleName\030\002 \001(\t\"o"
+    "\n\016FriendSendType\022\n\n\006UNKONW\020\000\022\r\n\tAddFrien"
+    "d\020\001\022\007\n\003Not\020\002\022\006\n\002Ok\020\003\022\020\n\014DeleteFriend\020\004\022\r"
+    "\n\tSendAward\020\005\022\020\n\014ReceiveAward\020\006\"\274\001\n\014CGCV"
+    "ipFriend\022;\n\n_FriendOpt\030\001 \001(\0162\'.NetPackag"
+    "e.CGCVipFriend.FriendSendType\"o\n\016FriendS"
+    "endType\022\n\n\006UNKONW\020\000\022\r\n\tAddFriend\020\001\022\007\n\003No"
+    "t\020\002\022\006\n\002Ok\020\003\022\020\n\014DeleteFriend\020\004\022\r\n\tSendAwa"
+    "rd\020\005\022\020\n\014ReceiveAward\020\006\"\024\n\022CGCAskFriendRe"
+    "cord\"#\n\022CGCAskSelectPlayer\022\r\n\005_byte\030\001 \001("
+    "\t\"8\n\023CGCAskGuideComplate\022\017\n\007GroupId\030\001 \001("
+    "\r\022\020\n\010u8Finish\030\002 \001(\010*\367\027\n\tCeC2GType\022\016\n\nC2G"
+    "_UNKOWN\020\000\022\014\n\010C2G_Ping\020\001\022\r\n\tC2G_Login\020\002\022\022"
+    "\n\016C2G_CreateRole\020\003\022\022\n\016C2G_SelectRole\020\004\022\022"
+    "\n\016C2G_EnterScene\020\005\022\017\n\013C2G_AskMove\020\006\022\016\n\nC"
+    "2G_Logout\020\007\022\020\n\014C2G_BuyGoods\020\010\022\020\n\014C2G_Use"
+    "Goods\020\t\022\020\n\014C2G_PassGate\020\n\022\022\n\016C2G_EquipGo"
+    "ods\020\013\022\021\n\rC2G_SaleGoods\020\014\022\024\n\020C2G_BoxDropG"
+    "oods\020\r\022\024\n\020C2G_AskMoveGoods\020\016\022\031\n\025C2G_AskI"
+    "ntensifyEquip\020\017\022\030\n\024C2G_AskTransmitEquip\020"
+    "\020\022\021\n\rC2G_AskRelive\020\021\022\032\n\026C2G_AskActiveSki"
+    "llCard\020\022\022!\n\035C2G_AskRefreshActiveSkillCar"
+    "d\020\023\022\030\n\024C2G_AskBuySkillPoint\020\024\022\021\n\rC2G_Rep"
+    "ortExp\020\025\022\026\n\022C2G_ReportUseSkill\020\026\022\032\n\026C2G_"
+    "ReportOBjectAppear\020\027\022\035\n\031C2G_ReportOBject"
+    "Disappear\020\030\022\032\n\026C2G_ReportObjectAction\020\031\022"
+    "\030\n\024C2G_ReportObjectHurm\020\032\022\025\n\021C2G_AskComb"
+    "ineGem\020\033\022\024\n\020C2G_AskWashEquip\020\035\022\023\n\017C2G_As"
+    "kInlayGem\020\036\022\027\n\023C2G_AskChapterAward\020\037\022\027\n\023"
+    "C2G_AskUpgradeEquip\020 \022\031\n\025C2G_AskDecompos"
+    "eEquip\020!\022\031\n\025C2G_AskGMSendAnnounce\020\"\022\017\n\013C"
+    "2G_AskChat\020#\022\023\n\017C2G_AskRankList\020$\022\024\n\020C2G"
+    "_AskEMailList\020%\022\024\n\020C2G_AskReadEMail\020&\022\030\n"
+    "\024C2G_AskGetEMailPrize\020\'\022\026\n\022C2G_AskRemove"
+    "EMail\020(\022\032\n\026C2G_AskAchievementList\020)\022\033\n\027C"
+    "2G_AskAchievementPrize\020*\022\023\n\017C2G_AskUseTi"
+    "tle\020+\022!\n\035C2G_ReportAchievementSchedule\020,"
+    "\022\035\n\031C2G_AskEnterTowerInstance\020-\022 \n\034C2G_R"
+    "eportTowerInstanceScore\020.\022\034\n\030C2G_AskTowe"
+    "rInstanceRank\020/\022\035\n\031C2G_AskTowerInstanceA"
+    "ward\0200\022\026\n\022C2G_AskBuyHPVessel\0201\022\026\n\022C2G_As"
+    "kBuyMPVessel\0202\022\023\n\017C2G_AskShopTemp\0203\022\026\n\022C"
+    "2G_AskBuyShopItem\0204\022\024\n\020C2G_AskChargeIOS\020"
+    "5\022\023\n\017C2G_AskAddGoods\0206\022\026\n\022C2G_ReportHPVe"
+    "ssel\0207\022\026\n\022C2G_ReportMPVessel\0208\022\025\n\021C2G_As"
+    "kGMPassGate\0209\022\030\n\024C2G_AskGMChangeLevel\020:\022"
+    "\027\n\023C2G_AskSystemNotice\020;\022\021\n\rC2G_ReportBu"
+    "g\020<\022\026\n\022C2G_AskEnterGoblin\020=\022\026\n\022C2G_AskGo"
+    "blinTimes\020>\022\035\n\031C2G_AskGoblinMultiBenefit"
+    "\020\?\022\031\n\025C2G_AskBuyGoblinTimes\020@\022\025\n\021C2G_Rep"
+    "ortProduce\020A\022\022\n\016C2G_AcceptTask\020B\022\022\n\016C2G_"
+    "SubmitTask\020C\022\024\n\020C2G_GMAcceptTask\020D\022\032\n\026C2"
+    "G_GMSendAnnouncement\020E\022\020\n\014C2G_AskWepon\020F"
+    "\022\033\n\027C2G_AskEquipWeaponSkill\020G\022\023\n\017C2G_Ask"
+    "VipAward\020H\022\023\n\017C2G_AskBuyPower\020I\022\026\n\022C2G_R"
+    "eportScenario\020J\022\022\n\016C2G_ReportHurt\020K\022\025\n\021C"
+    "2G_AskCheckSkill\020L\022\026\n\022C2G_AskCultureWing"
+    "\020M\022\030\n\024C2G_AskEvolutionWing\020N\022\024\n\020C2G_AskA"
+    "renaInfo\020O\022\023\n\017C2G_AskHeroList\020P\022\024\n\020C2G_A"
+    "skChallenge\020Q\022\035\n\031C2G_ReportChallengeResu"
+    "lt\020R\022\032\n\026C2G_AskBuyChallengeNum\020S\022\030\n\024C2G_"
+    "AskHonorShopInfo\020T\022\027\n\023C2G_AskBuyHonorIte"
+    "m\020U\022\023\n\017C2G_AskWingInfo\020V\022\033\n\027C2G_AskClear"
+    "ChallengeCD\020W\022\026\n\022C2G_AskSyncPVPInfo\020X\022\030\n"
+    "\024C2G_AskUnsyncPVPInfo\020Y\022\030\n\024C2G_AskJoinPV"
+    "PBattle\020Z\022\035\n\031C2G_AskEncouragePVPBattle\020["
+    "\022\037\n\033C2G_AskReceiveHeroRankAward\020\\\022\025\n\021C2G"
+    "_AskBeginSweep\020]\022\024\n\020C2G_AskStopSweep\020^\022\032"
+    "\n\026C2G_AskAccelerateSweep\020_\022\022\n\016C2G_AskUse"
+    "Item\020`\022\025\n\021C2G_AskCreateTeam\020a\022\024\n\020C2G_Pre"
+    "viewMulti\020b\022\022\n\016C2G_AskAddTeam\020c\022\024\n\020C2G_Q"
+    "uickAddTeam\020d\022\032\n\026C2G_AskBeginFightMulti\020"
+    "e\022\027\n\023C2G_SendFormTeamMsg\020f\022\024\n\020C2G_AskLea"
+    "veTeam\020g\022\034\n\030C2G_ReportMultiPlayerDie\020h\022\027"
+    "\n\023C2G_AskJoinActivity\020i\022\025\n\021C2G_AskMedalL"
+    "evel\020j\022\027\n\023C2G_AskMedalLevelUp\020k\022\024\n\020C2G_A"
+    "skAddFriend\020l\022\021\n\rC2G_VipFriend\020m\022\027\n\023C2G_"
+    "AskFriendRecord\020n\022\035\n\031C2G_AskUseItemInWor"
+    "ldBoss\020o\022\027\n\023C2G_AskSelectPlayer\020p\022\034\n\030C2G"
+    "_ReportAttackedTarget\020q\022\022\n\016C2G_AskPetDat"
+    "a\020r\022\025\n\021C2G_AskPetLevelUp\020s\022\021\n\rC2G_AskZhu"
+    "iJi\020t\022\031\n\025C2G_AskCurZhuiJiCount\020u\022\034\n\030C2G_"
+    "AskReceiveArenaAward\020v\022\021\n\rC2G_SelectPet\020"
+    "|\022\026\n\022C2G_AskChannelList\020}\022\031\n\025C2G_AskChan"
+    "nelChangel\020~\022\030\n\024C2G_AskGuideComplate\020\177\022\031"
+    "\n\024C2G_ChallengePandora\020\201\001\022\030\n\023C2G_ResetPa"
+    "ndoraNum\020\202\001\022\034\n\027C2G_ChallengeAllPandora\020\203"
+    "\001\022\024\n\017C2G_OpenPandora\020\204\001\022\024\n\017C2G_AskEquipP"
+    "et\020\205\001*\360\021\n\tCeG2CType\022\016\n\nG2C_UNKOWN\020\000\022\020\n\014G"
+    "2C_LoginRet\020\001\022\020\n\014G2C_RoleList\020\002\022\025\n\021G2C_R"
+    "oleCreateRet\020\003\022\025\n\021G2C_SelectRoleRet\020\004\022\026\n"
+    "\022G2C_EnterSeceneRet\020\005\022\017\n\013G2C_BagInfo\020\006\022\025"
+    "\n\021G2C_EquipmentInfo\020\007\022\021\n\rG2C_GemChange\020\010"
+    "\022\031\n\025G2C_RoleFightProperty\020\t\022\023\n\017G2C_Asset"
+    "Change\020\n\022\027\n\023G2C_RoleLevelChange\020\013\022\025\n\021G2C"
+    "_RoleExpChange\020\014\022\027\n\023G2C_RoleCurProperty\020"
+    "\r\022\027\n\023G2C_RoleChangeScene\020\016\022\023\n\017G2C_ErrorM"
+    "ssage\020\017\022\022\n\016G2C_RoleAppear\020\020\022\027\n\023G2C_Objec"
+    "tDisappear\020\021\022\022\n\016G2C_ObjectMove\020\022\022\030\n\024G2C_"
+    "ObjectStopAction\020\023\022\026\n\022G2C_RoleInfoChange"
+    "\020\024\022!\n\035G2C_NotifyRoleMapScheduleList\020\025\022\037\n"
+    "\033G2C_NotifyDisplayGateIncome\020\026\022\036\n\032G2C_No"
+    "tifySkillPointChange\020\027\022\032\n\026G2C_NotifyCurS"
+    "killInfo\020\030\022$\n G2C_NotifyCanActiveSkillCa"
+    "rdList\020\031\022\033\n\027G2C_NotifySkillReleased\020\032\022\032\n"
+    "\026G2C_NotifyObjectAppear\020\033\022\035\n\031G2C_NotifyO"
+    "bjectDisappear\020\034\022\032\n\026G2C_NotifyTimedCount"
+    "er\020\035\022\032\n\026G2C_NotifyObjectAction\020\036\022\030\n\024G2C_"
+    "NotifyObjectHurm\020\037\022\026\n\022G2C_NotifyChatInfo"
+    "\020 \022\026\n\022G2C_NotifyRankList\020!\022\027\n\023G2C_Notify"
+    "EMailList\020\"\022\026\n\022G2C_NotifyPetEquip\020#\022\037\n\033G"
+    "2C_NotifyAchievementChange\020$\022\031\n\025G2C_Noti"
+    "fyTitleChange\020%\022\030\n\024G2C_NotifyItemChange\020"
+    "&\022\026\n\022G2C_NotifyShopTemp\020\'\022\027\n\023G2C_NotifyC"
+    "hargeIOS\020(\022\026\n\022G2C_ResponseNotice\020)\022\037\n\033G2"
+    "C_NotifyGoblinRemainTimes\020*\022\026\n\022G2C_Notif"
+    "yTaskInfo\020+\022\035\n\031G2C_NotifySkillBookChange"
+    "\020,\022\034\n\030G2c_NotifyEquipSkillData\020-\022\027\n\023G2C_"
+    "NotifyPowerInfo\020.\022!\n\035G2C_NotifyWeaponSki"
+    "llSchedule\020/\022\026\n\022G2C_NotifyWingInfo\0200\022\027\n\023"
+    "G2C_NotifyArenaInfo\0201\022\032\n\026G2C_NotifyHeroB"
+    "ankInfo\0202\022\034\n\030G2C_NotifyChallengerInfo\0203\022"
+    "\035\n\031G2C_NotifyChallengeResult\0204\022\027\n\023G2C_No"
+    "tifyHonorShop\0205\022\030\n\024G2C_NotifyChallenger\020"
+    "6\022\023\n\017GSNotifyPVPRank\0207\022\022\n\016GSNotifyPVPLog"
+    "\0208\022\036\n\032GSNotifyAddPVPParticipator\0209\022!\n\035GS"
+    "NotifyRemovePVPParticipator\020:\022\027\n\023GSNotif"
+    "ySweepResult\020;\022\025\n\021GSNotifyMultiInfo\020<\022\024\n"
+    "\020GSNotifyTeamInfo\020=\022\032\n\026GSNotifyStartCoun"
+    "tDown\020>\022\'\n#GSNotifyStartCountDownPlayerO"
+    "ffLine\020\?\022\027\n\023GSNotifyMultiResult\020@\022\030\n\024GSN"
+    "otifyPlayerRelive\020A\022\025\n\021GCNotifyTowerInfo"
+    "\020B\022\027\n\023GCNotifyHistoryRank\020C\022\023\n\017GCNotifyC"
+    "urRank\020D\022\036\n\032GCNotyfyWorldBossAwardList\020E"
+    "\022\025\n\021GCNotyfyMedalInfo\020F\022\031\n\025GSNotifyWorld"
+    "BossOpen\020G\022\031\n\025GSNotifyActivityClose\020H\022\034\n"
+    "\030GSNotifyAddFriendMessage\020I\022\026\n\022GSNotifyF"
+    "riendList\020J\022\031\n\025GSNotifyAddFriendList\020K\022\037"
+    "\n\033GSNotifyWorldBossDamageList\020L\022\037\n\033GSNot"
+    "ifyWorldBossTemplateID\020M\022\030\n\024GSNotifySele"
+    "ctResult\020N\022\"\n\036GSNotifyWorldBossUseItemRe"
+    "sult\020O\022\023\n\017GSNotifyPetData\020P\022\027\n\023GSNotifyZ"
+    "huiJiCount\020Q\022\031\n\025GSNotifyFuncOpenParam\020U\022"
+    "\026\n\022GSNotifyChannelCur\020W\022\027\n\023GSNotifyChann"
+    "elList\020X\022\025\n\021GSNotifyGuideList\020Y\022\027\n\023GSNot"
+    "ifyPandoraInfo\020Z*;\n\010PostType\022\010\n\004None\020\000\022\n"
+    "\n\006System\020\001\022\010\n\004Post\020\002\022\017\n\013Annoucement\020\003*@\n"
+    "\nEmailState\022\013\n\007NotRead\020\000\022\010\n\004Read\020\001\022\013\n\007Re"
+    "ceive\020\002\022\016\n\nNotReceive\020\003", 11743);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "NetMessage.proto", &protobuf_RegisterTypes);
   CNetHead::default_instance_ = new CNetHead();
@@ -1823,6 +1871,7 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGSNotifyRoleBaseInfo::default_instance_ = new CGSNotifyRoleBaseInfo();
   CGCAskSelectRole::default_instance_ = new CGCAskSelectRole();
   CNetErrorMessage::default_instance_ = new CNetErrorMessage();
+  CGSNotifyService::default_instance_ = new CGSNotifyService();
   CGSNotifyChangeScene::default_instance_ = new CGSNotifyChangeScene();
   CGSNotifyRoleAppear::default_instance_ = new CGSNotifyRoleAppear();
   CGSObjectDisappear::default_instance_ = new CGSObjectDisappear();
@@ -1856,12 +1905,12 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGCReportTowerInstanceScore::default_instance_ = new CGCReportTowerInstanceScore();
   CGCAskTowerInstanceRank::default_instance_ = new CGCAskTowerInstanceRank();
   CGCAskTowerInstanceAward::default_instance_ = new CGCAskTowerInstanceAward();
-  CGCAskEMailList::default_instance_ = new CGCAskEMailList();
+  MainInfo::default_instance_ = new MainInfo();
+  CGSNotifyEMailList::default_instance_ = new CGSNotifyEMailList();
   GCAskReadEMail::default_instance_ = new GCAskReadEMail();
   CGCAskGetEMailPrize::default_instance_ = new CGCAskGetEMailPrize();
   CGCAskRemoveEMail::default_instance_ = new CGCAskRemoveEMail();
   CGSNotifyRankList::default_instance_ = new CGSNotifyRankList();
-  CGSNotifyEMailList::default_instance_ = new CGSNotifyEMailList();
   CGCSendCreateRole::default_instance_ = new CGCSendCreateRole();
   CGCSendCreateRoleRet::default_instance_ = new CGCSendCreateRoleRet();
   CGCAskRankList::default_instance_ = new CGCAskRankList();
@@ -1883,6 +1932,7 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGSNotifyRoleBaseInfo::default_instance_->InitAsDefaultInstance();
   CGCAskSelectRole::default_instance_->InitAsDefaultInstance();
   CNetErrorMessage::default_instance_->InitAsDefaultInstance();
+  CGSNotifyService::default_instance_->InitAsDefaultInstance();
   CGSNotifyChangeScene::default_instance_->InitAsDefaultInstance();
   CGSNotifyRoleAppear::default_instance_->InitAsDefaultInstance();
   CGSObjectDisappear::default_instance_->InitAsDefaultInstance();
@@ -1916,12 +1966,12 @@ void protobuf_AddDesc_NetMessage_2eproto() {
   CGCReportTowerInstanceScore::default_instance_->InitAsDefaultInstance();
   CGCAskTowerInstanceRank::default_instance_->InitAsDefaultInstance();
   CGCAskTowerInstanceAward::default_instance_->InitAsDefaultInstance();
-  CGCAskEMailList::default_instance_->InitAsDefaultInstance();
+  MainInfo::default_instance_->InitAsDefaultInstance();
+  CGSNotifyEMailList::default_instance_->InitAsDefaultInstance();
   GCAskReadEMail::default_instance_->InitAsDefaultInstance();
   CGCAskGetEMailPrize::default_instance_->InitAsDefaultInstance();
   CGCAskRemoveEMail::default_instance_->InitAsDefaultInstance();
   CGSNotifyRankList::default_instance_->InitAsDefaultInstance();
-  CGSNotifyEMailList::default_instance_->InitAsDefaultInstance();
   CGCSendCreateRole::default_instance_->InitAsDefaultInstance();
   CGCSendCreateRoleRet::default_instance_->InitAsDefaultInstance();
   CGCAskRankList::default_instance_->InitAsDefaultInstance();
@@ -2177,6 +2227,38 @@ bool CeG2CType_IsValid(int value) {
     case 88:
     case 89:
     case 90:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* PostType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return PostType_descriptor_;
+}
+bool PostType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* EmailState_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return EmailState_descriptor_;
+}
+bool EmailState_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;
@@ -6459,6 +6541,787 @@ void CNetErrorMessage::clear_errormessage() {
   }
   errormessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), errormessage);
   // @@protoc_insertion_point(field_set_allocated:NetPackage.CNetErrorMessage.errorMessage)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CGSNotifyService::kTypeFieldNumber;
+const int CGSNotifyService::kTimeFieldNumber;
+const int CGSNotifyService::kMsgTimeFieldNumber;
+const int CGSNotifyService::kTitleFieldNumber;
+const int CGSNotifyService::kContentFieldNumber;
+const int CGSNotifyService::kAuthorFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CGSNotifyService::CGSNotifyService()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NetPackage.CGSNotifyService)
+}
+
+void CGSNotifyService::InitAsDefaultInstance() {
+}
+
+CGSNotifyService::CGSNotifyService(const CGSNotifyService& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NetPackage.CGSNotifyService)
+}
+
+void CGSNotifyService::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  type_ = 0;
+  time_ = 0u;
+  msgtime_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  title_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  author_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CGSNotifyService::~CGSNotifyService() {
+  // @@protoc_insertion_point(destructor:NetPackage.CGSNotifyService)
+  SharedDtor();
+}
+
+void CGSNotifyService::SharedDtor() {
+  msgtime_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  title_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  author_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != default_instance_) {
+  }
+}
+
+void CGSNotifyService::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CGSNotifyService::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CGSNotifyService_descriptor_;
+}
+
+const CGSNotifyService& CGSNotifyService::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_NetMessage_2eproto();
+  return *default_instance_;
+}
+
+CGSNotifyService* CGSNotifyService::default_instance_ = NULL;
+
+CGSNotifyService* CGSNotifyService::New(::google::protobuf::Arena* arena) const {
+  CGSNotifyService* n = new CGSNotifyService;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CGSNotifyService::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<CGSNotifyService*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  if (_has_bits_[0 / 32] & 63u) {
+    ZR_(type_, time_);
+    if (has_msgtime()) {
+      msgtime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_title()) {
+      title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_content()) {
+      content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_author()) {
+      author_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+  }
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool CGSNotifyService::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NetPackage.CGSNotifyService)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .NetPackage.PostType type = 1;
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NetPackage::PostType_IsValid(value)) {
+            set_type(static_cast< ::NetPackage::PostType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_time;
+        break;
+      }
+
+      // optional uint32 time = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_time:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &time_)));
+          set_has_time();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_msgTime;
+        break;
+      }
+
+      // optional string msgTime = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_msgTime:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_msgtime()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->msgtime().data(), this->msgtime().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.CGSNotifyService.msgTime");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_title;
+        break;
+      }
+
+      // optional string title = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_title:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_title()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->title().data(), this->title().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.CGSNotifyService.title");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_content;
+        break;
+      }
+
+      // optional string content = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_content:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_content()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->content().data(), this->content().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.CGSNotifyService.content");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_author;
+        break;
+      }
+
+      // optional string author = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_author:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_author()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->author().data(), this->author().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.CGSNotifyService.author");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NetPackage.CGSNotifyService)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NetPackage.CGSNotifyService)
+  return false;
+#undef DO_
+}
+
+void CGSNotifyService::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NetPackage.CGSNotifyService)
+  // optional .NetPackage.PostType type = 1;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
+  }
+
+  // optional uint32 time = 2;
+  if (has_time()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->time(), output);
+  }
+
+  // optional string msgTime = 3;
+  if (has_msgtime()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->msgtime().data(), this->msgtime().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.msgTime");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->msgtime(), output);
+  }
+
+  // optional string title = 4;
+  if (has_title()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->title().data(), this->title().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.title");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->title(), output);
+  }
+
+  // optional string content = 5;
+  if (has_content()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->content().data(), this->content().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.content");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->content(), output);
+  }
+
+  // optional string author = 6;
+  if (has_author()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->author().data(), this->author().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.author");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->author(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NetPackage.CGSNotifyService)
+}
+
+::google::protobuf::uint8* CGSNotifyService::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.CGSNotifyService)
+  // optional .NetPackage.PostType type = 1;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
+  }
+
+  // optional uint32 time = 2;
+  if (has_time()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->time(), target);
+  }
+
+  // optional string msgTime = 3;
+  if (has_msgtime()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->msgtime().data(), this->msgtime().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.msgTime");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->msgtime(), target);
+  }
+
+  // optional string title = 4;
+  if (has_title()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->title().data(), this->title().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.title");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->title(), target);
+  }
+
+  // optional string content = 5;
+  if (has_content()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->content().data(), this->content().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.content");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->content(), target);
+  }
+
+  // optional string author = 6;
+  if (has_author()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->author().data(), this->author().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.CGSNotifyService.author");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->author(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.CGSNotifyService)
+  return target;
+}
+
+int CGSNotifyService::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & 63u) {
+    // optional .NetPackage.PostType type = 1;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+
+    // optional uint32 time = 2;
+    if (has_time()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->time());
+    }
+
+    // optional string msgTime = 3;
+    if (has_msgtime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->msgtime());
+    }
+
+    // optional string title = 4;
+    if (has_title()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->title());
+    }
+
+    // optional string content = 5;
+    if (has_content()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->content());
+    }
+
+    // optional string author = 6;
+    if (has_author()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->author());
+    }
+
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void CGSNotifyService::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const CGSNotifyService* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const CGSNotifyService>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void CGSNotifyService::MergeFrom(const CGSNotifyService& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type()) {
+      set_type(from.type());
+    }
+    if (from.has_time()) {
+      set_time(from.time());
+    }
+    if (from.has_msgtime()) {
+      set_has_msgtime();
+      msgtime_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.msgtime_);
+    }
+    if (from.has_title()) {
+      set_has_title();
+      title_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.title_);
+    }
+    if (from.has_content()) {
+      set_has_content();
+      content_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_);
+    }
+    if (from.has_author()) {
+      set_has_author();
+      author_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.author_);
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void CGSNotifyService::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CGSNotifyService::CopyFrom(const CGSNotifyService& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CGSNotifyService::IsInitialized() const {
+
+  return true;
+}
+
+void CGSNotifyService::Swap(CGSNotifyService* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CGSNotifyService::InternalSwap(CGSNotifyService* other) {
+  std::swap(type_, other->type_);
+  std::swap(time_, other->time_);
+  msgtime_.Swap(&other->msgtime_);
+  title_.Swap(&other->title_);
+  content_.Swap(&other->content_);
+  author_.Swap(&other->author_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata CGSNotifyService::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = CGSNotifyService_descriptor_;
+  metadata.reflection = CGSNotifyService_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// CGSNotifyService
+
+// optional .NetPackage.PostType type = 1;
+bool CGSNotifyService::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void CGSNotifyService::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void CGSNotifyService::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void CGSNotifyService::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+ ::NetPackage::PostType CGSNotifyService::type() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.type)
+  return static_cast< ::NetPackage::PostType >(type_);
+}
+ void CGSNotifyService::set_type(::NetPackage::PostType value) {
+  assert(::NetPackage::PostType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.type)
+}
+
+// optional uint32 time = 2;
+bool CGSNotifyService::has_time() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void CGSNotifyService::set_has_time() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void CGSNotifyService::clear_has_time() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void CGSNotifyService::clear_time() {
+  time_ = 0u;
+  clear_has_time();
+}
+ ::google::protobuf::uint32 CGSNotifyService::time() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.time)
+  return time_;
+}
+ void CGSNotifyService::set_time(::google::protobuf::uint32 value) {
+  set_has_time();
+  time_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.time)
+}
+
+// optional string msgTime = 3;
+bool CGSNotifyService::has_msgtime() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void CGSNotifyService::set_has_msgtime() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void CGSNotifyService::clear_has_msgtime() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void CGSNotifyService::clear_msgtime() {
+  msgtime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_msgtime();
+}
+ const ::std::string& CGSNotifyService::msgtime() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.msgTime)
+  return msgtime_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_msgtime(const ::std::string& value) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.msgTime)
+}
+ void CGSNotifyService::set_msgtime(const char* value) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.msgTime)
+}
+ void CGSNotifyService::set_msgtime(const char* value, size_t size) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.msgTime)
+}
+ ::std::string* CGSNotifyService::mutable_msgtime() {
+  set_has_msgtime();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.msgTime)
+  return msgtime_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* CGSNotifyService::release_msgtime() {
+  clear_has_msgtime();
+  return msgtime_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_allocated_msgtime(::std::string* msgtime) {
+  if (msgtime != NULL) {
+    set_has_msgtime();
+  } else {
+    clear_has_msgtime();
+  }
+  msgtime_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msgtime);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.msgTime)
+}
+
+// optional string title = 4;
+bool CGSNotifyService::has_title() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void CGSNotifyService::set_has_title() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void CGSNotifyService::clear_has_title() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void CGSNotifyService::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_title();
+}
+ const ::std::string& CGSNotifyService::title() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_title(const ::std::string& value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.title)
+}
+ void CGSNotifyService::set_title(const char* value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.title)
+}
+ void CGSNotifyService::set_title(const char* value, size_t size) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.title)
+}
+ ::std::string* CGSNotifyService::mutable_title() {
+  set_has_title();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* CGSNotifyService::release_title() {
+  clear_has_title();
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    set_has_title();
+  } else {
+    clear_has_title();
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.title)
+}
+
+// optional string content = 5;
+bool CGSNotifyService::has_content() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void CGSNotifyService::set_has_content() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void CGSNotifyService::clear_has_content() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void CGSNotifyService::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+ const ::std::string& CGSNotifyService::content() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.content)
+}
+ void CGSNotifyService::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.content)
+}
+ void CGSNotifyService::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.content)
+}
+ ::std::string* CGSNotifyService::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* CGSNotifyService::release_content() {
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.content)
+}
+
+// optional string author = 6;
+bool CGSNotifyService::has_author() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+void CGSNotifyService::set_has_author() {
+  _has_bits_[0] |= 0x00000020u;
+}
+void CGSNotifyService::clear_has_author() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+void CGSNotifyService::clear_author() {
+  author_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_author();
+}
+ const ::std::string& CGSNotifyService::author() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.author)
+  return author_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_author(const ::std::string& value) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.author)
+}
+ void CGSNotifyService::set_author(const char* value) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.author)
+}
+ void CGSNotifyService::set_author(const char* value, size_t size) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.author)
+}
+ ::std::string* CGSNotifyService::mutable_author() {
+  set_has_author();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.author)
+  return author_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* CGSNotifyService::release_author() {
+  clear_has_author();
+  return author_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void CGSNotifyService::set_allocated_author(::std::string* author) {
+  if (author != NULL) {
+    set_has_author();
+  } else {
+    clear_has_author();
+  }
+  author_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), author);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.author)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -21758,122 +22621,834 @@ void CGCAskTowerInstanceAward::clear_m_u16towertype() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MainInfo::kIdFieldNumber;
+const int MainInfo::kTitleFieldNumber;
+const int MainInfo::kContentFieldNumber;
+const int MainInfo::kStateFieldNumber;
+const int MainInfo::kAwardStateFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-CGCAskEMailList::CGCAskEMailList()
+MainInfo::MainInfo()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(constructor:NetPackage.MainInfo)
 }
 
-void CGCAskEMailList::InitAsDefaultInstance() {
+void MainInfo::InitAsDefaultInstance() {
 }
 
-CGCAskEMailList::CGCAskEMailList(const CGCAskEMailList& from)
+MainInfo::MainInfo(const MainInfo& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(copy_constructor:NetPackage.MainInfo)
 }
 
-void CGCAskEMailList::SharedCtor() {
+void MainInfo::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  id_ = 0u;
+  title_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  state_ = 0;
+  awardstate_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-CGCAskEMailList::~CGCAskEMailList() {
-  // @@protoc_insertion_point(destructor:NetPackage.CGCAskEMailList)
+MainInfo::~MainInfo() {
+  // @@protoc_insertion_point(destructor:NetPackage.MainInfo)
   SharedDtor();
 }
 
-void CGCAskEMailList::SharedDtor() {
+void MainInfo::SharedDtor() {
+  title_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
 
-void CGCAskEMailList::SetCachedSize(int size) const {
+void MainInfo::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* CGCAskEMailList::descriptor() {
+const ::google::protobuf::Descriptor* MainInfo::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return CGCAskEMailList_descriptor_;
+  return MainInfo_descriptor_;
 }
 
-const CGCAskEMailList& CGCAskEMailList::default_instance() {
+const MainInfo& MainInfo::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_NetMessage_2eproto();
   return *default_instance_;
 }
 
-CGCAskEMailList* CGCAskEMailList::default_instance_ = NULL;
+MainInfo* MainInfo::default_instance_ = NULL;
 
-CGCAskEMailList* CGCAskEMailList::New(::google::protobuf::Arena* arena) const {
-  CGCAskEMailList* n = new CGCAskEMailList;
+MainInfo* MainInfo::New(::google::protobuf::Arena* arena) const {
+  MainInfo* n = new MainInfo;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void CGCAskEMailList::Clear() {
+void MainInfo::Clear() {
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<MainInfo*>(16)->f)
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  if (_has_bits_[0 / 32] & 31u) {
+    ZR_(id_, state_);
+    if (has_title()) {
+      title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_content()) {
+      content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    awardstate_ = 0;
+  }
+
+#undef ZR_HELPER_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
   }
 }
 
-bool CGCAskEMailList::MergePartialFromCodedStream(
+bool MainInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(parse_start:NetPackage.MainInfo)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 Id = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &id_)));
+          set_has_id();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_Title;
+        break;
+      }
+
+      // optional string Title = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_Title:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_title()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->title().data(), this->title().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.MainInfo.Title");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_Content;
+        break;
+      }
+
+      // optional string Content = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_Content:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_content()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->content().data(), this->content().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "NetPackage.MainInfo.Content");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_State;
+        break;
+      }
+
+      // optional .NetPackage.EmailState State = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_State:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NetPackage::EmailState_IsValid(value)) {
+            set_state(static_cast< ::NetPackage::EmailState >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(4, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_AwardState;
+        break;
+      }
+
+      // optional .NetPackage.EmailState AwardState = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_AwardState:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::NetPackage::EmailState_IsValid(value)) {
+            set_awardstate(static_cast< ::NetPackage::EmailState >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(5, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(parse_success:NetPackage.MainInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(parse_failure:NetPackage.MainInfo)
   return false;
 #undef DO_
 }
 
-void CGCAskEMailList::SerializeWithCachedSizes(
+void MainInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(serialize_start:NetPackage.MainInfo)
+  // optional uint32 Id = 1;
+  if (has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  }
+
+  // optional string Title = 2;
+  if (has_title()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->title().data(), this->title().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.MainInfo.Title");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->title(), output);
+  }
+
+  // optional string Content = 3;
+  if (has_content()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->content().data(), this->content().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.MainInfo.Content");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->content(), output);
+  }
+
+  // optional .NetPackage.EmailState State = 4;
+  if (has_state()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->state(), output);
+  }
+
+  // optional .NetPackage.EmailState AwardState = 5;
+  if (has_awardstate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->awardstate(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(serialize_end:NetPackage.MainInfo)
 }
 
-::google::protobuf::uint8* CGCAskEMailList::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MainInfo::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.MainInfo)
+  // optional uint32 Id = 1;
+  if (has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  }
+
+  // optional string Title = 2;
+  if (has_title()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->title().data(), this->title().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.MainInfo.Title");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->title(), target);
+  }
+
+  // optional string Content = 3;
+  if (has_content()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->content().data(), this->content().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "NetPackage.MainInfo.Content");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->content(), target);
+  }
+
+  // optional .NetPackage.EmailState State = 4;
+  if (has_state()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->state(), target);
+  }
+
+  // optional .NetPackage.EmailState AwardState = 5;
+  if (has_awardstate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      5, this->awardstate(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.CGCAskEMailList)
+  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.MainInfo)
   return target;
 }
 
-int CGCAskEMailList::ByteSize() const {
+int MainInfo::ByteSize() const {
   int total_size = 0;
+
+  if (_has_bits_[0 / 32] & 31u) {
+    // optional uint32 Id = 1;
+    if (has_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->id());
+    }
+
+    // optional string Title = 2;
+    if (has_title()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->title());
+    }
+
+    // optional string Content = 3;
+    if (has_content()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->content());
+    }
+
+    // optional .NetPackage.EmailState State = 4;
+    if (has_state()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->state());
+    }
+
+    // optional .NetPackage.EmailState AwardState = 5;
+    if (has_awardstate()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->awardstate());
+    }
+
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MainInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MainInfo* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const MainInfo>(
+          &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MainInfo::MergeFrom(const MainInfo& from) {
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_id()) {
+      set_id(from.id());
+    }
+    if (from.has_title()) {
+      set_has_title();
+      title_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.title_);
+    }
+    if (from.has_content()) {
+      set_has_content();
+      content_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_);
+    }
+    if (from.has_state()) {
+      set_state(from.state());
+    }
+    if (from.has_awardstate()) {
+      set_awardstate(from.awardstate());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MainInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MainInfo::CopyFrom(const MainInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MainInfo::IsInitialized() const {
+
+  return true;
+}
+
+void MainInfo::Swap(MainInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MainInfo::InternalSwap(MainInfo* other) {
+  std::swap(id_, other->id_);
+  title_.Swap(&other->title_);
+  content_.Swap(&other->content_);
+  std::swap(state_, other->state_);
+  std::swap(awardstate_, other->awardstate_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MainInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MainInfo_descriptor_;
+  metadata.reflection = MainInfo_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MainInfo
+
+// optional uint32 Id = 1;
+bool MainInfo::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void MainInfo::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void MainInfo::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void MainInfo::clear_id() {
+  id_ = 0u;
+  clear_has_id();
+}
+ ::google::protobuf::uint32 MainInfo::id() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Id)
+  return id_;
+}
+ void MainInfo::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Id)
+}
+
+// optional string Title = 2;
+bool MainInfo::has_title() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void MainInfo::set_has_title() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void MainInfo::clear_has_title() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void MainInfo::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_title();
+}
+ const ::std::string& MainInfo::title() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MainInfo::set_title(const ::std::string& value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Title)
+}
+ void MainInfo::set_title(const char* value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.MainInfo.Title)
+}
+ void MainInfo::set_title(const char* value, size_t size) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.MainInfo.Title)
+}
+ ::std::string* MainInfo::mutable_title() {
+  set_has_title();
+  // @@protoc_insertion_point(field_mutable:NetPackage.MainInfo.Title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* MainInfo::release_title() {
+  clear_has_title();
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MainInfo::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    set_has_title();
+  } else {
+    clear_has_title();
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.MainInfo.Title)
+}
+
+// optional string Content = 3;
+bool MainInfo::has_content() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void MainInfo::set_has_content() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void MainInfo::clear_has_content() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void MainInfo::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+ const ::std::string& MainInfo::content() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MainInfo::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Content)
+}
+ void MainInfo::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.MainInfo.Content)
+}
+ void MainInfo::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.MainInfo.Content)
+}
+ ::std::string* MainInfo::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:NetPackage.MainInfo.Content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* MainInfo::release_content() {
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void MainInfo::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.MainInfo.Content)
+}
+
+// optional .NetPackage.EmailState State = 4;
+bool MainInfo::has_state() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void MainInfo::set_has_state() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void MainInfo::clear_has_state() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void MainInfo::clear_state() {
+  state_ = 0;
+  clear_has_state();
+}
+ ::NetPackage::EmailState MainInfo::state() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.State)
+  return static_cast< ::NetPackage::EmailState >(state_);
+}
+ void MainInfo::set_state(::NetPackage::EmailState value) {
+  assert(::NetPackage::EmailState_IsValid(value));
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.State)
+}
+
+// optional .NetPackage.EmailState AwardState = 5;
+bool MainInfo::has_awardstate() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void MainInfo::set_has_awardstate() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void MainInfo::clear_has_awardstate() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void MainInfo::clear_awardstate() {
+  awardstate_ = 0;
+  clear_has_awardstate();
+}
+ ::NetPackage::EmailState MainInfo::awardstate() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.AwardState)
+  return static_cast< ::NetPackage::EmailState >(awardstate_);
+}
+ void MainInfo::set_awardstate(::NetPackage::EmailState value) {
+  assert(::NetPackage::EmailState_IsValid(value));
+  set_has_awardstate();
+  awardstate_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.AwardState)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CGSNotifyEMailList::kMUn32EMailNumFieldNumber;
+const int CGSNotifyEMailList::kMMailInfoFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CGSNotifyEMailList::CGSNotifyEMailList()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NetPackage.CGSNotifyEMailList)
+}
+
+void CGSNotifyEMailList::InitAsDefaultInstance() {
+}
+
+CGSNotifyEMailList::CGSNotifyEMailList(const CGSNotifyEMailList& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:NetPackage.CGSNotifyEMailList)
+}
+
+void CGSNotifyEMailList::SharedCtor() {
+  _cached_size_ = 0;
+  m_un32emailnum_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+CGSNotifyEMailList::~CGSNotifyEMailList() {
+  // @@protoc_insertion_point(destructor:NetPackage.CGSNotifyEMailList)
+  SharedDtor();
+}
+
+void CGSNotifyEMailList::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void CGSNotifyEMailList::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* CGSNotifyEMailList::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return CGSNotifyEMailList_descriptor_;
+}
+
+const CGSNotifyEMailList& CGSNotifyEMailList::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_NetMessage_2eproto();
+  return *default_instance_;
+}
+
+CGSNotifyEMailList* CGSNotifyEMailList::default_instance_ = NULL;
+
+CGSNotifyEMailList* CGSNotifyEMailList::New(::google::protobuf::Arena* arena) const {
+  CGSNotifyEMailList* n = new CGSNotifyEMailList;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void CGSNotifyEMailList::Clear() {
+  m_un32emailnum_ = 0u;
+  m_mailinfo_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool CGSNotifyEMailList::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NetPackage.CGSNotifyEMailList)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint32 m_un32EMailNum = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &m_un32emailnum_)));
+          set_has_m_un32emailnum();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_m_mailInfo;
+        break;
+      }
+
+      // repeated .NetPackage.MainInfo m_mailInfo = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_m_mailInfo:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_m_mailInfo:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_m_mailinfo()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_loop_m_mailInfo;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NetPackage.CGSNotifyEMailList)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NetPackage.CGSNotifyEMailList)
+  return false;
+#undef DO_
+}
+
+void CGSNotifyEMailList::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NetPackage.CGSNotifyEMailList)
+  // optional uint32 m_un32EMailNum = 1;
+  if (has_m_un32emailnum()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->m_un32emailnum(), output);
+  }
+
+  // repeated .NetPackage.MainInfo m_mailInfo = 2;
+  for (unsigned int i = 0, n = this->m_mailinfo_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->m_mailinfo(i), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NetPackage.CGSNotifyEMailList)
+}
+
+::google::protobuf::uint8* CGSNotifyEMailList::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.CGSNotifyEMailList)
+  // optional uint32 m_un32EMailNum = 1;
+  if (has_m_un32emailnum()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->m_un32emailnum(), target);
+  }
+
+  // repeated .NetPackage.MainInfo m_mailInfo = 2;
+  for (unsigned int i = 0, n = this->m_mailinfo_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->m_mailinfo(i), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.CGSNotifyEMailList)
+  return target;
+}
+
+int CGSNotifyEMailList::ByteSize() const {
+  int total_size = 0;
+
+  // optional uint32 m_un32EMailNum = 1;
+  if (has_m_un32emailnum()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->m_un32emailnum());
+  }
+
+  // repeated .NetPackage.MainInfo m_mailInfo = 2;
+  total_size += 1 * this->m_mailinfo_size();
+  for (int i = 0; i < this->m_mailinfo_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->m_mailinfo(i));
+  }
 
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
@@ -21886,10 +23461,10 @@ int CGCAskEMailList::ByteSize() const {
   return total_size;
 }
 
-void CGCAskEMailList::MergeFrom(const ::google::protobuf::Message& from) {
+void CGSNotifyEMailList::MergeFrom(const ::google::protobuf::Message& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const CGCAskEMailList* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const CGCAskEMailList>(
+  const CGSNotifyEMailList* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const CGSNotifyEMailList>(
           &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -21898,49 +23473,112 @@ void CGCAskEMailList::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void CGCAskEMailList::MergeFrom(const CGCAskEMailList& from) {
+void CGSNotifyEMailList::MergeFrom(const CGSNotifyEMailList& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  m_mailinfo_.MergeFrom(from.m_mailinfo_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_m_un32emailnum()) {
+      set_m_un32emailnum(from.m_un32emailnum());
+    }
+  }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
   }
 }
 
-void CGCAskEMailList::CopyFrom(const ::google::protobuf::Message& from) {
+void CGSNotifyEMailList::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void CGCAskEMailList::CopyFrom(const CGCAskEMailList& from) {
+void CGSNotifyEMailList::CopyFrom(const CGSNotifyEMailList& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CGCAskEMailList::IsInitialized() const {
+bool CGSNotifyEMailList::IsInitialized() const {
 
   return true;
 }
 
-void CGCAskEMailList::Swap(CGCAskEMailList* other) {
+void CGSNotifyEMailList::Swap(CGSNotifyEMailList* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void CGCAskEMailList::InternalSwap(CGCAskEMailList* other) {
+void CGSNotifyEMailList::InternalSwap(CGSNotifyEMailList* other) {
+  std::swap(m_un32emailnum_, other->m_un32emailnum_);
+  m_mailinfo_.UnsafeArenaSwap(&other->m_mailinfo_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::google::protobuf::Metadata CGCAskEMailList::GetMetadata() const {
+::google::protobuf::Metadata CGSNotifyEMailList::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = CGCAskEMailList_descriptor_;
-  metadata.reflection = CGCAskEMailList_reflection_;
+  metadata.descriptor = CGSNotifyEMailList_descriptor_;
+  metadata.reflection = CGSNotifyEMailList_reflection_;
   return metadata;
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CGCAskEMailList
+// CGSNotifyEMailList
+
+// optional uint32 m_un32EMailNum = 1;
+bool CGSNotifyEMailList::has_m_un32emailnum() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void CGSNotifyEMailList::set_has_m_un32emailnum() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void CGSNotifyEMailList::clear_has_m_un32emailnum() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void CGSNotifyEMailList::clear_m_un32emailnum() {
+  m_un32emailnum_ = 0u;
+  clear_has_m_un32emailnum();
+}
+ ::google::protobuf::uint32 CGSNotifyEMailList::m_un32emailnum() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
+  return m_un32emailnum_;
+}
+ void CGSNotifyEMailList::set_m_un32emailnum(::google::protobuf::uint32 value) {
+  set_has_m_un32emailnum();
+  m_un32emailnum_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
+}
+
+// repeated .NetPackage.MainInfo m_mailInfo = 2;
+int CGSNotifyEMailList::m_mailinfo_size() const {
+  return m_mailinfo_.size();
+}
+void CGSNotifyEMailList::clear_m_mailinfo() {
+  m_mailinfo_.Clear();
+}
+const ::NetPackage::MainInfo& CGSNotifyEMailList::m_mailinfo(int index) const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Get(index);
+}
+::NetPackage::MainInfo* CGSNotifyEMailList::mutable_m_mailinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Mutable(index);
+}
+::NetPackage::MainInfo* CGSNotifyEMailList::add_m_mailinfo() {
+  // @@protoc_insertion_point(field_add:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >*
+CGSNotifyEMailList::mutable_m_mailinfo() {
+  // @@protoc_insertion_point(field_mutable_list:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return &m_mailinfo_;
+}
+const ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >&
+CGSNotifyEMailList::m_mailinfo() const {
+  // @@protoc_insertion_point(field_list:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_;
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
@@ -23176,265 +24814,6 @@ void CGSNotifyRankList::clear_m_n32ranknum() {
   set_has_m_n32ranknum();
   m_n32ranknum_ = value;
   // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyRankList.m_n32RankNum)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CGSNotifyEMailList::kMUn32EMailNumFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-CGSNotifyEMailList::CGSNotifyEMailList()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:NetPackage.CGSNotifyEMailList)
-}
-
-void CGSNotifyEMailList::InitAsDefaultInstance() {
-}
-
-CGSNotifyEMailList::CGSNotifyEMailList(const CGSNotifyEMailList& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:NetPackage.CGSNotifyEMailList)
-}
-
-void CGSNotifyEMailList::SharedCtor() {
-  _cached_size_ = 0;
-  m_un32emailnum_ = 0u;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-CGSNotifyEMailList::~CGSNotifyEMailList() {
-  // @@protoc_insertion_point(destructor:NetPackage.CGSNotifyEMailList)
-  SharedDtor();
-}
-
-void CGSNotifyEMailList::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void CGSNotifyEMailList::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* CGSNotifyEMailList::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return CGSNotifyEMailList_descriptor_;
-}
-
-const CGSNotifyEMailList& CGSNotifyEMailList::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_NetMessage_2eproto();
-  return *default_instance_;
-}
-
-CGSNotifyEMailList* CGSNotifyEMailList::default_instance_ = NULL;
-
-CGSNotifyEMailList* CGSNotifyEMailList::New(::google::protobuf::Arena* arena) const {
-  CGSNotifyEMailList* n = new CGSNotifyEMailList;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void CGSNotifyEMailList::Clear() {
-  m_un32emailnum_ = 0u;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool CGSNotifyEMailList::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:NetPackage.CGSNotifyEMailList)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 m_un32EMailNum = 1;
-      case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &m_un32emailnum_)));
-          set_has_m_un32emailnum();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:NetPackage.CGSNotifyEMailList)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:NetPackage.CGSNotifyEMailList)
-  return false;
-#undef DO_
-}
-
-void CGSNotifyEMailList::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:NetPackage.CGSNotifyEMailList)
-  // optional uint32 m_un32EMailNum = 1;
-  if (has_m_un32emailnum()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->m_un32emailnum(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:NetPackage.CGSNotifyEMailList)
-}
-
-::google::protobuf::uint8* CGSNotifyEMailList::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NetPackage.CGSNotifyEMailList)
-  // optional uint32 m_un32EMailNum = 1;
-  if (has_m_un32emailnum()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->m_un32emailnum(), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:NetPackage.CGSNotifyEMailList)
-  return target;
-}
-
-int CGSNotifyEMailList::ByteSize() const {
-  int total_size = 0;
-
-  // optional uint32 m_un32EMailNum = 1;
-  if (has_m_un32emailnum()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->m_un32emailnum());
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void CGSNotifyEMailList::MergeFrom(const ::google::protobuf::Message& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const CGSNotifyEMailList* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const CGSNotifyEMailList>(
-          &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void CGSNotifyEMailList::MergeFrom(const CGSNotifyEMailList& from) {
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_m_un32emailnum()) {
-      set_m_un32emailnum(from.m_un32emailnum());
-    }
-  }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void CGSNotifyEMailList::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void CGSNotifyEMailList::CopyFrom(const CGSNotifyEMailList& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool CGSNotifyEMailList::IsInitialized() const {
-
-  return true;
-}
-
-void CGSNotifyEMailList::Swap(CGSNotifyEMailList* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void CGSNotifyEMailList::InternalSwap(CGSNotifyEMailList* other) {
-  std::swap(m_un32emailnum_, other->m_un32emailnum_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata CGSNotifyEMailList::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = CGSNotifyEMailList_descriptor_;
-  metadata.reflection = CGSNotifyEMailList_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CGSNotifyEMailList
-
-// optional uint32 m_un32EMailNum = 1;
-bool CGSNotifyEMailList::has_m_un32emailnum() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void CGSNotifyEMailList::set_has_m_un32emailnum() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void CGSNotifyEMailList::clear_has_m_un32emailnum() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void CGSNotifyEMailList::clear_m_un32emailnum() {
-  m_un32emailnum_ = 0u;
-  clear_has_m_un32emailnum();
-}
- ::google::protobuf::uint32 CGSNotifyEMailList::m_un32emailnum() const {
-  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
-  return m_un32emailnum_;
-}
- void CGSNotifyEMailList::set_m_un32emailnum(::google::protobuf::uint32 value) {
-  set_has_m_un32emailnum();
-  m_un32emailnum_ = value;
-  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

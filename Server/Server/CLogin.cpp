@@ -4,7 +4,6 @@
 #include "CLogin.h"
 #include "NetFrame.h"
 #include "GameClient.hpp"
-#include "AppInitialze.h"
 
 std::unordered_map<int, NetPackage::CGCSendCreateRole> m_UserList;
 

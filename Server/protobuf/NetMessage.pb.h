@@ -40,7 +40,6 @@ void protobuf_ShutdownFile_NetMessage_2eproto();
 class CGCAsChargeIOS;
 class CGCAskAddFriend;
 class CGCAskChapterAward;
-class CGCAskEMailList;
 class CGCAskEnterScene;
 class CGCAskEnterTowerInstance;
 class CGCAskFriendRecord;
@@ -88,6 +87,7 @@ class CGSNotifyRoleBaseInfo;
 class CGSNotifyRoleFightProperty;
 class CGSNotifyRoleMapScheduleList;
 class CGSNotifyRoleProfileChange;
+class CGSNotifyService;
 class CGSNotifySkillReleased;
 class CGSObjectDisappear;
 class CGSObjectMove;
@@ -97,6 +97,7 @@ class CRequestLogin;
 class CRequestLoginRet;
 class CRequestPing;
 class GCAskReadEMail;
+class MainInfo;
 
 enum CGCAskAddFriend_FriendSendType {
   CGCAskAddFriend_FriendSendType_UNKONW = 0,
@@ -393,6 +394,48 @@ inline bool CeG2CType_Parse(
     const ::std::string& name, CeG2CType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<CeG2CType>(
     CeG2CType_descriptor(), name, value);
+}
+enum PostType {
+  None = 0,
+  System = 1,
+  Post = 2,
+  Annoucement = 3
+};
+bool PostType_IsValid(int value);
+const PostType PostType_MIN = None;
+const PostType PostType_MAX = Annoucement;
+const int PostType_ARRAYSIZE = PostType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* PostType_descriptor();
+inline const ::std::string& PostType_Name(PostType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    PostType_descriptor(), value);
+}
+inline bool PostType_Parse(
+    const ::std::string& name, PostType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<PostType>(
+    PostType_descriptor(), name, value);
+}
+enum EmailState {
+  NotRead = 0,
+  Read = 1,
+  Receive = 2,
+  NotReceive = 3
+};
+bool EmailState_IsValid(int value);
+const EmailState EmailState_MIN = NotRead;
+const EmailState EmailState_MAX = NotReceive;
+const int EmailState_ARRAYSIZE = EmailState_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* EmailState_descriptor();
+inline const ::std::string& EmailState_Name(EmailState value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    EmailState_descriptor(), value);
+}
+inline bool EmailState_Parse(
+    const ::std::string& name, EmailState* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<EmailState>(
+    EmailState_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1376,6 +1419,165 @@ class CNetErrorMessage : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static CNetErrorMessage* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CGSNotifyService : public ::google::protobuf::Message {
+ public:
+  CGSNotifyService();
+  virtual ~CGSNotifyService();
+
+  CGSNotifyService(const CGSNotifyService& from);
+
+  inline CGSNotifyService& operator=(const CGSNotifyService& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CGSNotifyService& default_instance();
+
+  void Swap(CGSNotifyService* other);
+
+  // implements Message ----------------------------------------------
+
+  inline CGSNotifyService* New() const { return New(NULL); }
+
+  CGSNotifyService* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CGSNotifyService& from);
+  void MergeFrom(const CGSNotifyService& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CGSNotifyService* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .NetPackage.PostType type = 1;
+  bool has_type() const;
+  void clear_type();
+  static const int kTypeFieldNumber = 1;
+  ::NetPackage::PostType type() const;
+  void set_type(::NetPackage::PostType value);
+
+  // optional uint32 time = 2;
+  bool has_time() const;
+  void clear_time();
+  static const int kTimeFieldNumber = 2;
+  ::google::protobuf::uint32 time() const;
+  void set_time(::google::protobuf::uint32 value);
+
+  // optional string msgTime = 3;
+  bool has_msgtime() const;
+  void clear_msgtime();
+  static const int kMsgTimeFieldNumber = 3;
+  const ::std::string& msgtime() const;
+  void set_msgtime(const ::std::string& value);
+  void set_msgtime(const char* value);
+  void set_msgtime(const char* value, size_t size);
+  ::std::string* mutable_msgtime();
+  ::std::string* release_msgtime();
+  void set_allocated_msgtime(::std::string* msgtime);
+
+  // optional string title = 4;
+  bool has_title() const;
+  void clear_title();
+  static const int kTitleFieldNumber = 4;
+  const ::std::string& title() const;
+  void set_title(const ::std::string& value);
+  void set_title(const char* value);
+  void set_title(const char* value, size_t size);
+  ::std::string* mutable_title();
+  ::std::string* release_title();
+  void set_allocated_title(::std::string* title);
+
+  // optional string content = 5;
+  bool has_content() const;
+  void clear_content();
+  static const int kContentFieldNumber = 5;
+  const ::std::string& content() const;
+  void set_content(const ::std::string& value);
+  void set_content(const char* value);
+  void set_content(const char* value, size_t size);
+  ::std::string* mutable_content();
+  ::std::string* release_content();
+  void set_allocated_content(::std::string* content);
+
+  // optional string author = 6;
+  bool has_author() const;
+  void clear_author();
+  static const int kAuthorFieldNumber = 6;
+  const ::std::string& author() const;
+  void set_author(const ::std::string& value);
+  void set_author(const char* value);
+  void set_author(const char* value, size_t size);
+  ::std::string* mutable_author();
+  ::std::string* release_author();
+  void set_allocated_author(::std::string* author);
+
+  // @@protoc_insertion_point(class_scope:NetPackage.CGSNotifyService)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_time();
+  inline void clear_has_time();
+  inline void set_has_msgtime();
+  inline void clear_has_msgtime();
+  inline void set_has_title();
+  inline void clear_has_title();
+  inline void set_has_content();
+  inline void clear_has_content();
+  inline void set_has_author();
+  inline void clear_has_author();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  int type_;
+  ::google::protobuf::uint32 time_;
+  ::google::protobuf::internal::ArenaStringPtr msgtime_;
+  ::google::protobuf::internal::ArenaStringPtr title_;
+  ::google::protobuf::internal::ArenaStringPtr content_;
+  ::google::protobuf::internal::ArenaStringPtr author_;
+  friend void  protobuf_AddDesc_NetMessage_2eproto();
+  friend void protobuf_AssignDesc_NetMessage_2eproto();
+  friend void protobuf_ShutdownFile_NetMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static CGSNotifyService* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -5375,14 +5577,14 @@ class CGCAskTowerInstanceAward : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class CGCAskEMailList : public ::google::protobuf::Message {
+class MainInfo : public ::google::protobuf::Message {
  public:
-  CGCAskEMailList();
-  virtual ~CGCAskEMailList();
+  MainInfo();
+  virtual ~MainInfo();
 
-  CGCAskEMailList(const CGCAskEMailList& from);
+  MainInfo(const MainInfo& from);
 
-  inline CGCAskEMailList& operator=(const CGCAskEMailList& from) {
+  inline MainInfo& operator=(const MainInfo& from) {
     CopyFrom(from);
     return *this;
   }
@@ -5396,19 +5598,19 @@ class CGCAskEMailList : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const CGCAskEMailList& default_instance();
+  static const MainInfo& default_instance();
 
-  void Swap(CGCAskEMailList* other);
+  void Swap(MainInfo* other);
 
   // implements Message ----------------------------------------------
 
-  inline CGCAskEMailList* New() const { return New(NULL); }
+  inline MainInfo* New() const { return New(NULL); }
 
-  CGCAskEMailList* New(::google::protobuf::Arena* arena) const;
+  MainInfo* New(::google::protobuf::Arena* arena) const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CGCAskEMailList& from);
-  void MergeFrom(const CGCAskEMailList& from);
+  void CopyFrom(const MainInfo& from);
+  void MergeFrom(const MainInfo& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -5423,7 +5625,7 @@ class CGCAskEMailList : public ::google::protobuf::Message {
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(CGCAskEMailList* other);
+  void InternalSwap(MainInfo* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _internal_metadata_.arena();
@@ -5439,18 +5641,180 @@ class CGCAskEMailList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:NetPackage.CGCAskEMailList)
+  // optional uint32 Id = 1;
+  bool has_id() const;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
+
+  // optional string Title = 2;
+  bool has_title() const;
+  void clear_title();
+  static const int kTitleFieldNumber = 2;
+  const ::std::string& title() const;
+  void set_title(const ::std::string& value);
+  void set_title(const char* value);
+  void set_title(const char* value, size_t size);
+  ::std::string* mutable_title();
+  ::std::string* release_title();
+  void set_allocated_title(::std::string* title);
+
+  // optional string Content = 3;
+  bool has_content() const;
+  void clear_content();
+  static const int kContentFieldNumber = 3;
+  const ::std::string& content() const;
+  void set_content(const ::std::string& value);
+  void set_content(const char* value);
+  void set_content(const char* value, size_t size);
+  ::std::string* mutable_content();
+  ::std::string* release_content();
+  void set_allocated_content(::std::string* content);
+
+  // optional .NetPackage.EmailState State = 4;
+  bool has_state() const;
+  void clear_state();
+  static const int kStateFieldNumber = 4;
+  ::NetPackage::EmailState state() const;
+  void set_state(::NetPackage::EmailState value);
+
+  // optional .NetPackage.EmailState AwardState = 5;
+  bool has_awardstate() const;
+  void clear_awardstate();
+  static const int kAwardStateFieldNumber = 5;
+  ::NetPackage::EmailState awardstate() const;
+  void set_awardstate(::NetPackage::EmailState value);
+
+  // @@protoc_insertion_point(class_scope:NetPackage.MainInfo)
  private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_title();
+  inline void clear_has_title();
+  inline void set_has_content();
+  inline void clear_has_content();
+  inline void set_has_state();
+  inline void clear_has_state();
+  inline void set_has_awardstate();
+  inline void clear_has_awardstate();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr title_;
+  ::google::protobuf::uint32 id_;
+  int state_;
+  ::google::protobuf::internal::ArenaStringPtr content_;
+  int awardstate_;
   friend void  protobuf_AddDesc_NetMessage_2eproto();
   friend void protobuf_AssignDesc_NetMessage_2eproto();
   friend void protobuf_ShutdownFile_NetMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static CGCAskEMailList* default_instance_;
+  static MainInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CGSNotifyEMailList : public ::google::protobuf::Message {
+ public:
+  CGSNotifyEMailList();
+  virtual ~CGSNotifyEMailList();
+
+  CGSNotifyEMailList(const CGSNotifyEMailList& from);
+
+  inline CGSNotifyEMailList& operator=(const CGSNotifyEMailList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CGSNotifyEMailList& default_instance();
+
+  void Swap(CGSNotifyEMailList* other);
+
+  // implements Message ----------------------------------------------
+
+  inline CGSNotifyEMailList* New() const { return New(NULL); }
+
+  CGSNotifyEMailList* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const CGSNotifyEMailList& from);
+  void MergeFrom(const CGSNotifyEMailList& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CGSNotifyEMailList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 m_un32EMailNum = 1;
+  bool has_m_un32emailnum() const;
+  void clear_m_un32emailnum();
+  static const int kMUn32EMailNumFieldNumber = 1;
+  ::google::protobuf::uint32 m_un32emailnum() const;
+  void set_m_un32emailnum(::google::protobuf::uint32 value);
+
+  // repeated .NetPackage.MainInfo m_mailInfo = 2;
+  int m_mailinfo_size() const;
+  void clear_m_mailinfo();
+  static const int kMMailInfoFieldNumber = 2;
+  const ::NetPackage::MainInfo& m_mailinfo(int index) const;
+  ::NetPackage::MainInfo* mutable_m_mailinfo(int index);
+  ::NetPackage::MainInfo* add_m_mailinfo();
+  ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >*
+      mutable_m_mailinfo();
+  const ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >&
+      m_mailinfo() const;
+
+  // @@protoc_insertion_point(class_scope:NetPackage.CGSNotifyEMailList)
+ private:
+  inline void set_has_m_un32emailnum();
+  inline void clear_has_m_un32emailnum();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo > m_mailinfo_;
+  ::google::protobuf::uint32 m_un32emailnum_;
+  friend void  protobuf_AddDesc_NetMessage_2eproto();
+  friend void protobuf_AssignDesc_NetMessage_2eproto();
+  friend void protobuf_ShutdownFile_NetMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static CGSNotifyEMailList* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -5837,95 +6201,6 @@ class CGSNotifyRankList : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static CGSNotifyRankList* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class CGSNotifyEMailList : public ::google::protobuf::Message {
- public:
-  CGSNotifyEMailList();
-  virtual ~CGSNotifyEMailList();
-
-  CGSNotifyEMailList(const CGSNotifyEMailList& from);
-
-  inline CGSNotifyEMailList& operator=(const CGSNotifyEMailList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CGSNotifyEMailList& default_instance();
-
-  void Swap(CGSNotifyEMailList* other);
-
-  // implements Message ----------------------------------------------
-
-  inline CGSNotifyEMailList* New() const { return New(NULL); }
-
-  CGSNotifyEMailList* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const CGSNotifyEMailList& from);
-  void MergeFrom(const CGSNotifyEMailList& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(CGSNotifyEMailList* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional uint32 m_un32EMailNum = 1;
-  bool has_m_un32emailnum() const;
-  void clear_m_un32emailnum();
-  static const int kMUn32EMailNumFieldNumber = 1;
-  ::google::protobuf::uint32 m_un32emailnum() const;
-  void set_m_un32emailnum(::google::protobuf::uint32 value);
-
-  // @@protoc_insertion_point(class_scope:NetPackage.CGSNotifyEMailList)
- private:
-  inline void set_has_m_un32emailnum();
-  inline void clear_has_m_un32emailnum();
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 m_un32emailnum_;
-  friend void  protobuf_AddDesc_NetMessage_2eproto();
-  friend void protobuf_AssignDesc_NetMessage_2eproto();
-  friend void protobuf_ShutdownFile_NetMessage_2eproto();
-
-  void InitAsDefaultInstance();
-  static CGSNotifyEMailList* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -8568,6 +8843,271 @@ inline void CNetErrorMessage::set_allocated_errormessage(::std::string* errormes
   }
   errormessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), errormessage);
   // @@protoc_insertion_point(field_set_allocated:NetPackage.CNetErrorMessage.errorMessage)
+}
+
+// -------------------------------------------------------------------
+
+// CGSNotifyService
+
+// optional .NetPackage.PostType type = 1;
+inline bool CGSNotifyService::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CGSNotifyService::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CGSNotifyService::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CGSNotifyService::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::NetPackage::PostType CGSNotifyService::type() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.type)
+  return static_cast< ::NetPackage::PostType >(type_);
+}
+inline void CGSNotifyService::set_type(::NetPackage::PostType value) {
+  assert(::NetPackage::PostType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.type)
+}
+
+// optional uint32 time = 2;
+inline bool CGSNotifyService::has_time() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CGSNotifyService::set_has_time() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CGSNotifyService::clear_has_time() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CGSNotifyService::clear_time() {
+  time_ = 0u;
+  clear_has_time();
+}
+inline ::google::protobuf::uint32 CGSNotifyService::time() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.time)
+  return time_;
+}
+inline void CGSNotifyService::set_time(::google::protobuf::uint32 value) {
+  set_has_time();
+  time_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.time)
+}
+
+// optional string msgTime = 3;
+inline bool CGSNotifyService::has_msgtime() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CGSNotifyService::set_has_msgtime() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CGSNotifyService::clear_has_msgtime() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CGSNotifyService::clear_msgtime() {
+  msgtime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_msgtime();
+}
+inline const ::std::string& CGSNotifyService::msgtime() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.msgTime)
+  return msgtime_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_msgtime(const ::std::string& value) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.msgTime)
+}
+inline void CGSNotifyService::set_msgtime(const char* value) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.msgTime)
+}
+inline void CGSNotifyService::set_msgtime(const char* value, size_t size) {
+  set_has_msgtime();
+  msgtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.msgTime)
+}
+inline ::std::string* CGSNotifyService::mutable_msgtime() {
+  set_has_msgtime();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.msgTime)
+  return msgtime_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CGSNotifyService::release_msgtime() {
+  clear_has_msgtime();
+  return msgtime_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_allocated_msgtime(::std::string* msgtime) {
+  if (msgtime != NULL) {
+    set_has_msgtime();
+  } else {
+    clear_has_msgtime();
+  }
+  msgtime_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msgtime);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.msgTime)
+}
+
+// optional string title = 4;
+inline bool CGSNotifyService::has_title() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CGSNotifyService::set_has_title() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CGSNotifyService::clear_has_title() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void CGSNotifyService::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_title();
+}
+inline const ::std::string& CGSNotifyService::title() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_title(const ::std::string& value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.title)
+}
+inline void CGSNotifyService::set_title(const char* value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.title)
+}
+inline void CGSNotifyService::set_title(const char* value, size_t size) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.title)
+}
+inline ::std::string* CGSNotifyService::mutable_title() {
+  set_has_title();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CGSNotifyService::release_title() {
+  clear_has_title();
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    set_has_title();
+  } else {
+    clear_has_title();
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.title)
+}
+
+// optional string content = 5;
+inline bool CGSNotifyService::has_content() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void CGSNotifyService::set_has_content() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void CGSNotifyService::clear_has_content() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void CGSNotifyService::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+inline const ::std::string& CGSNotifyService::content() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.content)
+}
+inline void CGSNotifyService::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.content)
+}
+inline void CGSNotifyService::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.content)
+}
+inline ::std::string* CGSNotifyService::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CGSNotifyService::release_content() {
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.content)
+}
+
+// optional string author = 6;
+inline bool CGSNotifyService::has_author() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void CGSNotifyService::set_has_author() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void CGSNotifyService::clear_has_author() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void CGSNotifyService::clear_author() {
+  author_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_author();
+}
+inline const ::std::string& CGSNotifyService::author() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyService.author)
+  return author_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_author(const ::std::string& value) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyService.author)
+}
+inline void CGSNotifyService::set_author(const char* value) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.CGSNotifyService.author)
+}
+inline void CGSNotifyService::set_author(const char* value, size_t size) {
+  set_has_author();
+  author_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.CGSNotifyService.author)
+}
+inline ::std::string* CGSNotifyService::mutable_author() {
+  set_has_author();
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyService.author)
+  return author_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CGSNotifyService::release_author() {
+  clear_has_author();
+  return author_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CGSNotifyService::set_allocated_author(::std::string* author) {
+  if (author != NULL) {
+    set_has_author();
+  } else {
+    clear_has_author();
+  }
+  author_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), author);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.CGSNotifyService.author)
 }
 
 // -------------------------------------------------------------------
@@ -12051,7 +12591,245 @@ inline void CGCAskTowerInstanceAward::set_m_u16towertype(::google::protobuf::uin
 
 // -------------------------------------------------------------------
 
-// CGCAskEMailList
+// MainInfo
+
+// optional uint32 Id = 1;
+inline bool MainInfo::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MainInfo::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MainInfo::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MainInfo::clear_id() {
+  id_ = 0u;
+  clear_has_id();
+}
+inline ::google::protobuf::uint32 MainInfo::id() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Id)
+  return id_;
+}
+inline void MainInfo::set_id(::google::protobuf::uint32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Id)
+}
+
+// optional string Title = 2;
+inline bool MainInfo::has_title() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MainInfo::set_has_title() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MainInfo::clear_has_title() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MainInfo::clear_title() {
+  title_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_title();
+}
+inline const ::std::string& MainInfo::title() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Title)
+  return title_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MainInfo::set_title(const ::std::string& value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Title)
+}
+inline void MainInfo::set_title(const char* value) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.MainInfo.Title)
+}
+inline void MainInfo::set_title(const char* value, size_t size) {
+  set_has_title();
+  title_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.MainInfo.Title)
+}
+inline ::std::string* MainInfo::mutable_title() {
+  set_has_title();
+  // @@protoc_insertion_point(field_mutable:NetPackage.MainInfo.Title)
+  return title_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MainInfo::release_title() {
+  clear_has_title();
+  return title_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MainInfo::set_allocated_title(::std::string* title) {
+  if (title != NULL) {
+    set_has_title();
+  } else {
+    clear_has_title();
+  }
+  title_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), title);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.MainInfo.Title)
+}
+
+// optional string Content = 3;
+inline bool MainInfo::has_content() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MainInfo::set_has_content() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MainInfo::clear_has_content() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MainInfo::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+inline const ::std::string& MainInfo::content() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.Content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MainInfo::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.Content)
+}
+inline void MainInfo::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:NetPackage.MainInfo.Content)
+}
+inline void MainInfo::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:NetPackage.MainInfo.Content)
+}
+inline ::std::string* MainInfo::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:NetPackage.MainInfo.Content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MainInfo::release_content() {
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MainInfo::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:NetPackage.MainInfo.Content)
+}
+
+// optional .NetPackage.EmailState State = 4;
+inline bool MainInfo::has_state() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MainInfo::set_has_state() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MainInfo::clear_has_state() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MainInfo::clear_state() {
+  state_ = 0;
+  clear_has_state();
+}
+inline ::NetPackage::EmailState MainInfo::state() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.State)
+  return static_cast< ::NetPackage::EmailState >(state_);
+}
+inline void MainInfo::set_state(::NetPackage::EmailState value) {
+  assert(::NetPackage::EmailState_IsValid(value));
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.State)
+}
+
+// optional .NetPackage.EmailState AwardState = 5;
+inline bool MainInfo::has_awardstate() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MainInfo::set_has_awardstate() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MainInfo::clear_has_awardstate() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void MainInfo::clear_awardstate() {
+  awardstate_ = 0;
+  clear_has_awardstate();
+}
+inline ::NetPackage::EmailState MainInfo::awardstate() const {
+  // @@protoc_insertion_point(field_get:NetPackage.MainInfo.AwardState)
+  return static_cast< ::NetPackage::EmailState >(awardstate_);
+}
+inline void MainInfo::set_awardstate(::NetPackage::EmailState value) {
+  assert(::NetPackage::EmailState_IsValid(value));
+  set_has_awardstate();
+  awardstate_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.MainInfo.AwardState)
+}
+
+// -------------------------------------------------------------------
+
+// CGSNotifyEMailList
+
+// optional uint32 m_un32EMailNum = 1;
+inline bool CGSNotifyEMailList::has_m_un32emailnum() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CGSNotifyEMailList::set_has_m_un32emailnum() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CGSNotifyEMailList::clear_has_m_un32emailnum() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CGSNotifyEMailList::clear_m_un32emailnum() {
+  m_un32emailnum_ = 0u;
+  clear_has_m_un32emailnum();
+}
+inline ::google::protobuf::uint32 CGSNotifyEMailList::m_un32emailnum() const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
+  return m_un32emailnum_;
+}
+inline void CGSNotifyEMailList::set_m_un32emailnum(::google::protobuf::uint32 value) {
+  set_has_m_un32emailnum();
+  m_un32emailnum_ = value;
+  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
+}
+
+// repeated .NetPackage.MainInfo m_mailInfo = 2;
+inline int CGSNotifyEMailList::m_mailinfo_size() const {
+  return m_mailinfo_.size();
+}
+inline void CGSNotifyEMailList::clear_m_mailinfo() {
+  m_mailinfo_.Clear();
+}
+inline const ::NetPackage::MainInfo& CGSNotifyEMailList::m_mailinfo(int index) const {
+  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Get(index);
+}
+inline ::NetPackage::MainInfo* CGSNotifyEMailList::mutable_m_mailinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Mutable(index);
+}
+inline ::NetPackage::MainInfo* CGSNotifyEMailList::add_m_mailinfo() {
+  // @@protoc_insertion_point(field_add:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >*
+CGSNotifyEMailList::mutable_m_mailinfo() {
+  // @@protoc_insertion_point(field_mutable_list:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return &m_mailinfo_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::NetPackage::MainInfo >&
+CGSNotifyEMailList::m_mailinfo() const {
+  // @@protoc_insertion_point(field_list:NetPackage.CGSNotifyEMailList.m_mailInfo)
+  return m_mailinfo_;
+}
 
 // -------------------------------------------------------------------
 
@@ -12235,34 +13013,6 @@ inline void CGSNotifyRankList::set_m_n32ranknum(::google::protobuf::int32 value)
   set_has_m_n32ranknum();
   m_n32ranknum_ = value;
   // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyRankList.m_n32RankNum)
-}
-
-// -------------------------------------------------------------------
-
-// CGSNotifyEMailList
-
-// optional uint32 m_un32EMailNum = 1;
-inline bool CGSNotifyEMailList::has_m_un32emailnum() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void CGSNotifyEMailList::set_has_m_un32emailnum() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void CGSNotifyEMailList::clear_has_m_un32emailnum() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void CGSNotifyEMailList::clear_m_un32emailnum() {
-  m_un32emailnum_ = 0u;
-  clear_has_m_un32emailnum();
-}
-inline ::google::protobuf::uint32 CGSNotifyEMailList::m_un32emailnum() const {
-  // @@protoc_insertion_point(field_get:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
-  return m_un32emailnum_;
-}
-inline void CGSNotifyEMailList::set_m_un32emailnum(::google::protobuf::uint32 value) {
-  set_has_m_un32emailnum();
-  m_un32emailnum_ = value;
-  // @@protoc_insertion_point(field_set:NetPackage.CGSNotifyEMailList.m_un32EMailNum)
 }
 
 // -------------------------------------------------------------------
@@ -13115,6 +13865,8 @@ inline void CGCAskGuideComplate::set_u8finish(bool value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -13143,6 +13895,16 @@ template <> struct is_proto_enum< ::NetPackage::CeG2CType> : ::google::protobuf:
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::NetPackage::CeG2CType>() {
   return ::NetPackage::CeG2CType_descriptor();
+}
+template <> struct is_proto_enum< ::NetPackage::PostType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NetPackage::PostType>() {
+  return ::NetPackage::PostType_descriptor();
+}
+template <> struct is_proto_enum< ::NetPackage::EmailState> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NetPackage::EmailState>() {
+  return ::NetPackage::EmailState_descriptor();
 }
 
 }  // namespace protobuf
