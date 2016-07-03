@@ -1,4 +1,7 @@
 #include "Mail.h"
+#include "NetMessage.pb.h"
+
+DEFINE_INSTANCE(MaillManager)
 
 bool MaillManager::Initialze()
 {
@@ -12,10 +15,10 @@ void MaillManager::RegisterMessage()
 
 void MaillManager::HandleGetMailList(int cmd, int connection, std::string recvMsg)
 {
-// 	NetPackage::CGCAskEMailList inData;
-// 
-// 	if (false == inData.ParseFromString(recvMsg))
-// 	{
-// 		return;
-// 	}
+	NetPackage::CGSNotifyEMailList inData;
+
+	if (false == inData.ParseFromString(recvMsg))
+	{
+		return;
+	}
 }

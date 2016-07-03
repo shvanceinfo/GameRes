@@ -2,11 +2,6 @@
 #include "AppInitialze.h"
 #include "..\Server\CLogin.h"
 
-AppBase* appObject[] = {
-	g_Login,
-	g_Login
-};
-
 AppManager* AppManager::m_Instance = nullptr;
 
 AppManager* AppManager::GetInstance()
@@ -35,11 +30,10 @@ void ServerAppSubject::Detach(Observer* obj)
 
 bool AppManager::Run()
 {
-	for (size_t index = 0; index < sizeof(appObject) / sizeof(AppBase*); index++)
+	for (auto itr = m_Demos.begin(); itr != m_Demos.end(); itr++)
 	{
-		if (false == appObject[index]->Initialze())
+		if (false == (*itr)->Initialze())
 		{
-			std::cout << "App[" << index << "] Initialze error" << std::endl;
 			return false;
 		}
 	}

@@ -9,6 +9,7 @@
 #define BLOCK_RING_BUFFER_SIZE 1024 * 64
 
 class uv::TCPServer;
+class AppBase;
 
 struct MsgBlock
 {
@@ -80,6 +81,10 @@ public:
 	//获取状态
 	STATUS GetStatus(){ return status; }
 	void SetStatus(STATUS status_){ status = status_; }
+	void AddDemos(AppBase* demos)
+	{
+		m_Demos.push_back(demos);
+	}
 private:
 	//所有玩家已接收消息队列:TODO由于现在数据有点问题，所以暂时不开启环形对列
 	std::unordered_map<uint32_t, std::shared_ptr<MsgBlock>>	m_UserRecvMessage;
@@ -90,6 +95,7 @@ private:
 	//保存boost::shared_ptr<EchoServer>
 	uv::TCPServer* m_EchoServer;
 	STATUS status = NONE;
+	std::list<AppBase*> m_Demos;
 	static AppManager* m_Instance;
 };
 

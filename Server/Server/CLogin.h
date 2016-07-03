@@ -3,15 +3,12 @@
 #include <iostream>
 #include <string>
 #include "AppInitialze.h"
+#include "AppManager.h"
 
 class CLogin : public AppBase
 {
+	DEFINE_DEMO_CLASS(CLogin)
 public:
-	static CLogin* GetInstance()
-	{
-		static CLogin m_Instance;
-		return &m_Instance;
-	}
 	virtual bool Initialze();
 	void RegisterMessage();
 
@@ -28,9 +25,6 @@ public:
 	//GCAskMove
 	//请求进入场景TODO放在Map类里面
 	//GCAskEnterScene
-private:
-	CLogin(){};
-	~CLogin(){}
 };
 
 #define g_Login CLogin::GetInstance()

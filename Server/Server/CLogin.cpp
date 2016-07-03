@@ -7,6 +7,8 @@
 
 std::unordered_map<int, NetPackage::CGCSendCreateRole> m_UserList;
 
+DEFINE_INSTANCE(CLogin)
+
 bool CLogin::Initialze()
 {
 	RegisterMessage();
@@ -16,9 +18,9 @@ bool CLogin::Initialze()
 
 void CLogin::RegisterMessage()
 {
-	REGISTER_MH(NetPackage::CeC2GType::C2G_Login, CLogin::HandleLogin, g_Login);
-	REGISTER_MH(NetPackage::CeC2GType::C2G_CreateRole, CLogin::HandleCreateRole, g_Login);
-	REGISTER_MH(NetPackage::CeC2GType::C2G_SelectRole, CLogin::HandleSelectRole, g_Login);
+	REGISTER_MH(NetPackage::CeC2GType::C2G_Login, CLogin::HandleLogin, this);
+	REGISTER_MH(NetPackage::CeC2GType::C2G_CreateRole, CLogin::HandleCreateRole, this);
+	REGISTER_MH(NetPackage::CeC2GType::C2G_SelectRole, CLogin::HandleSelectRole, this);
 }
 
 void CLogin::HandleLogin(int cmd, int connection, std::string recvMsg)
@@ -120,9 +122,9 @@ void CLogin::HandleSelectRole(int cmd, int connection, std::string recvMsg)
 	outData.set_m_un32mapid(100000001);
 	outData.set_m_un32sceneid(1);
 	outData.set_m_un32clientno(19);
-	outData.set_m_fposx(-2.12);
-	outData.set_m_fposy(-0.82);
-	outData.set_m_fposz(-0.01);
+	outData.set_m_fposx(-2.12f);
+	outData.set_m_fposy(-0.82f);
+	outData.set_m_fposz(-0.01f);
 
 	g_AppManager->SendClient(connection, NetPackage::CeG2CType::G2C_RoleChangeScene, &outData);
 }
